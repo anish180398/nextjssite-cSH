@@ -1,26 +1,320 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-dark: #0D0D0D;
+  --color-brand-yellow: #F7C948;
+  --color-brand-white: #EAEAEA;
+  --color-brand-orange: #FA5A15;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0D0D0D;
+  --card: #ffffff;
+  --card-foreground: #0D0D0D;
+  --popover: #ffffff;
+  --popover-foreground: #0D0D0D;
+  --primary: #F7C948;
+  --primary-foreground: #0D0D0D;
+  --secondary: #EAEAEA;
+  --secondary-foreground: #0D0D0D;
+  --muted: #EAEAEA;
+  --muted-foreground: #0D0D0D;
+  --accent: #F7C948;
+  --accent-foreground: #0D0D0D;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #EAEAEA;
+  --input: #EAEAEA;
+  --ring: #F7C948;
+  --radius: 0.5rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+.dark {
+  --background: #0D0D0D;
+  --foreground: #EAEAEA;
+  --card: #0D0D0D;
+  --card-foreground: #EAEAEA;
+  --popover: #0D0D0D;
+  --popover-foreground: #EAEAEA;
+  --primary: #F7C948;
+  --primary-foreground: #0D0D0D;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #EAEAEA;
+  --muted: #1a1a1a;
+  --muted-foreground: #EAEAEA;
+  --accent: #F7C948;
+  --accent-foreground: #0D0D0D;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #EAEAEA;
+  --border: #1a1a1a;
+  --input: #1a1a1a;
+  --ring: #F7C948;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0D0D0D;
+    --foreground: #EAEAEA;
+    --card: #0D0D0D;
+    --card-foreground: #EAEAEA;
+    --popover: #0D0D0D;
+    --popover-foreground: #EAEAEA;
+    --primary: #F7C948;
+    --primary-foreground: #0D0D0D;
+    --secondary: #1a1a1a;
+    --secondary-foreground: #EAEAEA;
+    --muted: #1a1a1a;
+    --muted-foreground: #EAEAEA;
+    --accent: #F7C948;
+    --accent-foreground: #0D0D0D;
+    --destructive: #7f1d1d;
+    --destructive-foreground: #EAEAEA;
+    --border: #1a1a1a;
+    --input: #1a1a1a;
+    --ring: #F7C948;
   }
+}
+
+* {
+  border-color: hsl(var(--border));
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  line-height: 1.6;
+}
+
+/* Custom animations */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Grid pattern background */
+.bg-grid-pattern {
+  background-image: radial-gradient(circle, #F7C948 1px, transparent 1px);
+}
+
+/* Smooth scrolling */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Focus styles */
+.focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Prose styles for rich text content */
+.prose {
+  color: var(--foreground);
+  max-width: none;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: var(--foreground);
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.prose h1 {
+  font-size: 2.25rem;
+}
+
+.prose h2 {
+  font-size: 1.875rem;
+}
+
+.prose h3 {
+  font-size: 1.5rem;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--accent);
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--muted-foreground);
+}
+
+.prose code {
+  background-color: var(--muted);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+}
+
+.prose pre {
+  background-color: var(--muted);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+.prose img {
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* Skeleton loading animation */
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+@keyframes shake-up-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.shake-up-down {
+  animation: shake-up-down 3s infinite ease-in-out;
 }
