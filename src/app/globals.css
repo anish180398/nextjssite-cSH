@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-dark: #0D0D0D;
-  --color-brand-yellow: #F7C948;
+  --color-brand-dark: #000000;
+  --color-brand-violet: #940DE7;
   --color-brand-white: #EAEAEA;
-  --color-brand-orange: #FA5A15;
+  --color-brand-orange: #6a23c4;
 }
 
 :root {
@@ -14,19 +14,19 @@
   --card-foreground: #0D0D0D;
   --popover: #ffffff;
   --popover-foreground: #0D0D0D;
-  --primary: #F7C948;
+  --primary: #940DE7;
   --primary-foreground: #0D0D0D;
   --secondary: #EAEAEA;
   --secondary-foreground: #0D0D0D;
   --muted: #EAEAEA;
   --muted-foreground: #0D0D0D;
-  --accent: #F7C948;
+  --accent: #940DE7;
   --accent-foreground: #0D0D0D;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --border: #EAEAEA;
   --input: #EAEAEA;
-  --ring: #F7C948;
+  --ring: #940DE7;
   --radius: 0.5rem;
 }
 
@@ -61,19 +61,19 @@
   --card-foreground: #EAEAEA;
   --popover: #0D0D0D;
   --popover-foreground: #EAEAEA;
-  --primary: #F7C948;
+  --primary: #940DE7;
   --primary-foreground: #0D0D0D;
   --secondary: #1a1a1a;
   --secondary-foreground: #EAEAEA;
   --muted: #1a1a1a;
   --muted-foreground: #EAEAEA;
-  --accent: #F7C948;
+  --accent: #940DE7;
   --accent-foreground: #0D0D0D;
   --destructive: #7f1d1d;
   --destructive-foreground: #EAEAEA;
   --border: #1a1a1a;
   --input: #1a1a1a;
-  --ring: #F7C948;
+  --ring: #940DE7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -84,19 +84,19 @@
     --card-foreground: #EAEAEA;
     --popover: #0D0D0D;
     --popover-foreground: #EAEAEA;
-    --primary: #F7C948;
+    --primary: #940DE7;
     --primary-foreground: #0D0D0D;
     --secondary: #1a1a1a;
     --secondary-foreground: #EAEAEA;
     --muted: #1a1a1a;
     --muted-foreground: #EAEAEA;
-    --accent: #F7C948;
+    --accent: #940DE7;
     --accent-foreground: #0D0D0D;
     --destructive: #7f1d1d;
     --destructive-foreground: #EAEAEA;
     --border: #1a1a1a;
     --input: #1a1a1a;
-    --ring: #F7C948;
+    --ring: #940DE7;
   }
 }
 
@@ -142,7 +142,7 @@ body {
 
 /* Grid pattern background */
 .bg-grid-pattern {
-  background-image: radial-gradient(circle, #F7C948 1px, transparent 1px);
+  background-image: radial-gradient(circle, #940DE7 1px, transparent 1px);
 }
 
 /* Smooth scrolling */

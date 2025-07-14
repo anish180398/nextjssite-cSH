@@ -45,11 +45,11 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     return {
       title: blogPost.fields.title,
       description: blogPost.fields.excerpt,
-      authors: [{ name: blogPost.fields.author || "CodeStreetHive" }],
+      authors: [{ name: blogPost.fields.author || "Reign of Vision" }],
       openGraph: {
-        title: `${blogPost.fields.title} - CodeStreetHive Blog`,
+        title: `${blogPost.fields.title} - Reign of Vision Blog`,
         description: blogPost.fields.excerpt,
-        url: `https://codestreethive.com/blog/${blogPost.fields.slug}`,
+        url: `https://Reign of Vision.com/blog/${blogPost.fields.slug}`,
         type: "article",
         publishedTime: blogPost.fields.publishedDate || blogPost.sys.createdAt,
         images: imageUrl ? [imageUrl] : undefined,
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   } catch (error) {
     return {
       title: "Blog Post",
-      description: "Read the latest insights from CodeStreetHive.",
+      description: "Read the latest insights from Reign of Vision.",
     };
   }
 }
@@ -125,7 +125,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     ? `${getReadingTime(JSON.stringify(blogPost.fields.body))} min read`
     : "5 min read";
 
-  const currentUrl = `https://codestreethive.com/blog/${blogPost.fields.slug}`;
+  const currentUrl = `https://Reign of Vision.com/blog/${blogPost.fields.slug}`;
 
   return (
     <div className="min-h-screen">
@@ -162,7 +162,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 mb-6">
               <div className="flex items-center space-x-1">
                 <User className="h-4 w-4" />
-                <span>{blogPost.fields.author || "CodeStreetHive"}</span>
+                <span>{blogPost.fields.author || "Reign of Vision"}</span>
               </div>
               <div className="flex items-center space-x-1">
                 <Calendar className="h-4 w-4" />
@@ -298,7 +298,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-900">
-                          {blogPost.fields.author || "CodeStreetHive Team"}
+                          {blogPost.fields.author || "Reign of Vision Team"}
                         </h4>
                         <p className="text-sm text-gray-600">Expert Developer</p>
                       </div>

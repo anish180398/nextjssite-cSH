@@ -15,7 +15,7 @@ const services = [
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://codestreethive.com'
+  const baseUrl = 'https://Reign of Vision.com'
   
   // Static pages
   const staticPages = [

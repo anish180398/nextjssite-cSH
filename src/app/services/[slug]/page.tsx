@@ -198,16 +198,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${service.title} | CodeStreetHive Services`,
+    title: `${service.title} | Reign of Vision Services`,
     description: service.description,
     openGraph: {
-      title: `${service.title} | CodeStreetHive Services`,
+      title: `${service.title} | Reign of Vision Services`,
       description: service.description,
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${service.title} | CodeStreetHive Services`,
+      title: `${service.title} | Reign of Vision Services`,
       description: service.description,
     },
   };

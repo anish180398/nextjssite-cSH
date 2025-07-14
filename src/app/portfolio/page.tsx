@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   title: "Our Portfolio",
   description: "Explore our portfolio of successful projects including web applications, mobile apps, and digital solutions. See how we've helped businesses achieve their goals.",
   openGraph: {
-    title: "Portfolio - CodeStreetHive Digital Agency",
+    title: "Portfolio - Reign of Vision Digital Agency",
     description: "Discover the innovative digital solutions we've created for our clients across various industries.",
-    url: "https://codestreethive.com/portfolio",
+    url: "https://Reign of Vision.com/portfolio",
   }
 };
 
@@ -233,7 +233,7 @@ export default function PortfolioPage() {
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               Let's create something amazing together. Contact us to discuss your ideas.
             </p>
-            <Button asChild size="lg" className="bg-brand-yellow hover:bg-brand-primary/80">
+            <Button asChild size="lg" className="bg-brand-violet hover:bg-brand-primary/80">
               <Link href="/contact" className="flex items-center space-x-2">
                 <span>Get Started</span>
                 <ArrowRight className="h-5 w-5" />

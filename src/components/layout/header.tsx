@@ -7,7 +7,8 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
-
+import Image from "next/image";
+import Logo from "@/assets/images/logo.png";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
@@ -39,15 +40,21 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto max-w-7xl p-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link
               href="/"
-              className="text-2xl font-bold text-brand-white hover:text-brand-yellow transition-colors duration-200"
+              className="flex items-center gap-2 text-2xl font-bold text-brand-white hover:text-brand-violet transition-colors duration-200"
             >
-              CodeStreetHive
+              <Image
+                src={Logo}
+                alt="Reign of Vision"
+                width={100}
+                height={100}
+              />
+              <h1 className="text-2xl font-bold text-brand-white hover:text-brand-violet transition-colors duration-200">Reign of Vision</h1>
             </Link>
           </div>
 
@@ -60,8 +67,8 @@ export default function Header() {
                   href={item.href}
                   className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                     pathname === item.href
-                      ? "text-brand-yellow"
-                      : "text-brand-white hover:text-brand-yellow"
+                      ? "text-brand-violet"
+                      : "text-brand-white hover:text-brand-violet"
                   }`}
                 >
                   {item.name}
@@ -75,7 +82,7 @@ export default function Header() {
             <ThemeToggle />
             <Button
               asChild
-              className="bg-brand-yellow hover:bg-brand-yellow/90 text-brand-dark font-semibold px-6 py-2 rounded-lg transition-all duration-200 hover:scale-105"
+              className="bg-brand-violet hover:bg-brand-violet/90 text-brand-dark font-semibold px-6 py-2 rounded-lg transition-all duration-200 hover:scale-105"
             >
               <Link href="/contact">Get Started</Link>
             </Button>
@@ -86,7 +93,7 @@ export default function Header() {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-brand-white hover:text-brand-yellow focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-yellow transition-colors duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-md text-brand-white hover:text-brand-violet focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-violet transition-colors duration-200"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -109,8 +116,8 @@ export default function Header() {
                   href={item.href}
                   className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
                     pathname === item.href
-                      ? "text-brand-yellow"
-                      : "text-brand-white hover:text-brand-yellow"
+                      ? "text-brand-violet"
+                      : "text-brand-white hover:text-brand-violet"
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
@@ -120,7 +127,7 @@ export default function Header() {
               <div className="px-3 py-2">
                 <Button
                   asChild
-                  className="w-full bg-brand-yellow hover:bg-brand-yellow/90 text-brand-dark font-semibold py-2 rounded-lg transition-all duration-200"
+                  className="w-full bg-brand-violet hover:bg-brand-violet/90 text-brand-dark font-semibold py-2 rounded-lg transition-all duration-200"
                 >
                   <Link href="/contact" onClick={() => setIsOpen(false)}>
                     Get Started

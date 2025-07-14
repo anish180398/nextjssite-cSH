@@ -34,7 +34,7 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
   const imageUrl = getImageUrl();
 
   return (
-    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 bg-white dark:bg-brand-dark border-brand-white/20 dark:border-brand-white/10 hover:border-brand-yellow/50">
+    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 bg-white dark:bg-brand-dark border-brand-white/20 dark:border-brand-white/10 hover:border-brand-violet/50">
       <div className="relative aspect-video overflow-hidden bg-brand-white/10 dark:bg-brand-white/5">
         {imageUrl ? (
           <Image
@@ -52,20 +52,20 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
             }}
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-brand-yellow/20 to-brand-yellow/10 flex items-center justify-center">
+          <div className="w-full h-full bg-gradient-to-br from-brand-violet/20 to-brand-violet/10 flex items-center justify-center">
             <div className="text-4xl">🚀</div>
           </div>
         )}
         
         <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="w-8 h-8 bg-white dark:bg-brand-dark rounded-full flex items-center justify-center shadow-md border border-brand-white/20">
-            <ExternalLink className="w-4 h-4 text-brand-yellow" />
+            <ExternalLink className="w-4 h-4 text-brand-violet" />
           </div>
         </div>
       </div>
       
       <CardHeader>
-        <CardTitle className="text-xl group-hover:text-brand-yellow transition-colors text-brand-dark dark:group-hover:text-brand-yellow">
+        <CardTitle className="text-xl group-hover:text-brand-violet transition-colors text-brand-dark dark:group-hover:text-brand-violet">
           {item.fields.title}
         </CardTitle>
       </CardHeader>
@@ -80,20 +80,20 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
             {item.fields.tags.slice(0, 3).map((tag, index) => (
               <span
                 key={index}
-                className="px-2 py-1 text-xs font-medium bg-brand-yellow/10 text-brand-yellow rounded-full border border-brand-yellow/20"
+                className="px-2 py-1 text-xs font-medium bg-brand-violet/10 text-brand-violet rounded-full border border-brand-violet/20"
               >
                 {tag}
               </span>
             ))}
             {item.fields.tags.length > 3 && (
-              <span className="px-2 py-1 text-xs font-medium bg-brand-white/10 text-brand-dark rounded-full border border-brand-yellow/20">
+              <span className="px-2 py-1 text-xs font-medium bg-brand-white/10 text-brand-dark rounded-full border border-brand-violet/20">
                 +{item.fields.tags.length - 3} more
               </span>
             )}
           </div>
         )}
         
-        <Button asChild variant="outline" size="sm" className="w-full group border-brand-yellow/30 text-brand-yellow hover:bg-brand-yellow hover:text-brand-dark transition-all duration-200">
+        <Button asChild variant="outline" size="sm" className="w-full group border-brand-violet/30 text-brand-violet hover:bg-brand-violet hover:text-brand-dark transition-all duration-200">
           <Link href={`/portfolio/${item.fields.slug}`} className="flex items-center justify-center space-x-2">
             <span>View Project</span>
             <ExternalLink className="w-4 h-4" />

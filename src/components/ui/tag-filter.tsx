@@ -40,8 +40,8 @@ export function TagFilter({
             className={cn(
               "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border",
               selectedTag === tag
-                ? "bg-brand-yellow text-brand-dark border-brand-yellow shadow-md"
-                : "bg-white dark:bg-brand-dark text-brand-dark dark:text-brand-white border-brand-white/20 dark:border-brand-white/10 hover:border-brand-yellow hover:text-brand-yellow"
+                ? "bg-brand-violet text-brand-dark border-brand-violet shadow-md"
+                : "bg-white dark:bg-brand-dark text-brand-dark dark:text-brand-white border-brand-white/20 dark:border-brand-white/10 hover:border-brand-violet hover:text-brand-violet"
             )}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -55,7 +55,7 @@ export function TagFilter({
       <div className="md:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full px-4 py-3 bg-white dark:bg-brand-dark border border-brand-white/20 dark:border-brand-white/10 rounded-lg shadow-sm text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow"
+          className="w-full px-4 py-3 bg-white dark:bg-brand-dark border border-brand-white/20 dark:border-brand-white/10 rounded-lg shadow-sm text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-brand-violet focus:border-brand-violet"
         >
           <span className="text-brand-dark dark:text-brand-white font-medium">
             Filter: {selectedTag}
@@ -93,8 +93,8 @@ export function TagFilter({
                   className={cn(
                     "w-full px-4 py-3 text-left text-sm transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg",
                     selectedTag === tag
-                      ? "bg-brand-yellow/10 text-brand-yellow font-medium"
-                      : "text-brand-dark dark:text-brand-white hover:bg-brand-yellow/5"
+                      ? "bg-brand-violet/10 text-brand-violet font-medium"
+                      : "text-brand-dark dark:text-brand-white hover:bg-brand-violet/5"
                   )}
                 >
                   {tag}

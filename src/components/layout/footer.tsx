@@ -2,7 +2,8 @@
 import Link from "next/link";
 import { Github, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
-
+import Image from "next/image";
+import Logo from "@/assets/images/logo.png";
 const footerNavigation = {
   company: [
     { name: "About", href: "/about" },
@@ -19,17 +20,17 @@ const footerNavigation = {
   social: [
     {
       name: "Twitter",
-      href: "https://twitter.com/codestreethive",
+      href: "https://twitter.com/Reign of Vision",
       icon: Twitter,
     },
     {
       name: "GitHub",
-      href: "https://github.com/codestreethive",
+      href: "https://github.com/Reign of Vision",
       icon: Github,
     },
     {
       name: "LinkedIn",
-      href: "https://linkedin.com/company/codestreethive",
+      href: "https://linkedin.com/company/Reign of Vision",
       icon: Linkedin,
     },
   ],
@@ -58,10 +59,10 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="h-8 w-8 rounded-lg bg-brand-yellow flex items-center justify-center">
-                <span className="text-brand-dark font-bold text-sm">CSH</span>
-              </div>
-              <span className="text-xl font-bold text-brand-white">CodeStreetHive</span>
+             
+            <Image src={Logo} alt="Reign of Vision" width={48} height={48} />
+              
+              <span className="text-xl font-semibold text-brand-white">Reign of Vision</span>
             </div>
             <p className="text-brand-white/70 text-sm leading-relaxed">
               We craft exceptional digital experiences that drive business growth.
@@ -69,26 +70,26 @@ export default function Footer() {
             </p>
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-sm text-brand-white/70">
-                <Mail className="h-4 w-4 text-brand-yellow" />
+                <Mail className="h-4 w-4 text-brand-violet" />
                 <a
-                  href="mailto:hello@codestreethive.com"
-                  className="hover:text-brand-yellow transition-colors"
+                  href="mailto:hello@Reign of Vision.com"
+                  className="hover:text-brand-violet transition-colors"
                 >
-                  hello@codestreethive.com
+                  hello@reignofvision.com
                 </a>
               </div>
               <div className="flex items-center space-x-2 text-sm text-brand-white/70">
-                <Phone className="h-4 w-4 text-brand-yellow" />
+                <Phone className="h-4 w-4 text-brand-violet" />
                 <a
                   href="tel:+1234567890"
-                  className="hover:text-brand-yellow transition-colors"
+                  className="hover:text-brand-violet transition-colors"
                 >
                   +91 9514015234
                 </a>
               </div>
               <div className="flex items-center space-x-2 text-sm text-brand-white/70">
-                <MapPin className="h-4 w-4 text-brand-yellow" />
-                <span>Chennai, Tamil Nadu</span>
+                <MapPin className="h-4 w-4 text-brand-violet" />
+                <span>India</span>
               </div>
             </div>
           </div>
@@ -96,7 +97,7 @@ export default function Footer() {
           {/* Navigation Links */}
           <div className="grid grid-cols-2 gap-8">
             <div>
-              <h3 className="text-sm font-semibold text-brand-yellow uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-brand-violet uppercase tracking-wider mb-4">
                 Company
               </h3>
               <ul className="space-y-2">
@@ -104,7 +105,7 @@ export default function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-sm text-brand-white/70 hover:text-brand-yellow transition-colors"
+                      className="text-sm text-brand-white/70 hover:text-brand-violet transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -113,7 +114,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-brand-yellow uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-brand-violet uppercase tracking-wider mb-4">
                 Support
               </h3>
               <ul className="space-y-2">
@@ -121,7 +122,7 @@ export default function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-sm text-brand-white/70 hover:text-brand-yellow transition-colors"
+                      className="text-sm text-brand-white/70 hover:text-brand-violet transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -134,7 +135,7 @@ export default function Footer() {
           {/* Newsletter & Social */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-sm font-semibold text-brand-yellow uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-brand-violet uppercase tracking-wider mb-4">
                 Stay Updated
               </h3>
               <p className="text-sm text-brand-white/70 mb-4">
@@ -146,13 +147,13 @@ export default function Footer() {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 px-3 py-2 bg-brand-dark border border-brand-white/20 rounded-md text-brand-white placeholder-brand-white/50 focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="flex-1 px-3 py-2 bg-brand-dark border border-brand-white/20 rounded-md text-brand-white placeholder-brand-white/50 focus:outline-none focus:ring-2 focus:ring-brand-violet focus:border-brand-violet"
                   required
                 />
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-4 py-2 bg-brand-yellow text-brand-dark font-semibold rounded-md hover:bg-brand-yellow/90 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:ring-offset-2 focus:ring-offset-brand-dark disabled:opacity-50"
+                  className="px-4 py-2 bg-brand-violet text-brand-dark font-semibold rounded-md hover:bg-brand-violet/90 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-violet focus:ring-offset-2 focus:ring-offset-brand-dark disabled:opacity-50"
                 >
                   {isSubmitting ? "Subscribing..." : "Subscribe"}
                 </button>
@@ -160,7 +161,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold text-brand-yellow uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-brand-violet uppercase tracking-wider mb-4">
                 Follow Us
               </h3>
               <div className="flex space-x-4">
@@ -172,7 +173,7 @@ export default function Footer() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-brand-white/70 hover:text-brand-yellow transition-colors"
+                      className="text-brand-white/70 hover:text-brand-violet transition-colors"
                       aria-label={`Follow us on ${item.name}`}
                     >
                       <Icon className="h-5 w-5" />
@@ -188,18 +189,18 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-brand-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-brand-white/70">
-              © {new Date().getFullYear()} CodeStreetHive. All rights reserved.
+              © {new Date().getFullYear()} Reign of Vision. All rights reserved.
             </p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
               <Link
                 href="/privacy"
-                className="text-sm text-brand-white/70 hover:text-brand-yellow transition-colors"
+                className="text-sm text-brand-white/70 hover:text-brand-violet transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-sm text-brand-white/70 hover:text-brand-yellow transition-colors"
+                className="text-sm text-brand-white/70 hover:text-brand-violet transition-colors"
               >
                 Terms of Service
               </Link>

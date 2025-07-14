@@ -46,9 +46,9 @@ export async function generateMetadata({ params }: PortfolioPageProps): Promise<
       title: portfolioItem.fields.title,
       description: portfolioItem.fields.excerpt,
       openGraph: {
-        title: `${portfolioItem.fields.title} - CodeStreetHive Portfolio`,
+        title: `${portfolioItem.fields.title} - Reign of Vision Portfolio`,
         description: portfolioItem.fields.excerpt,
-        url: `https://codestreethive.com/portfolio/${portfolioItem.fields.slug}`,
+        url: `https://Reign of Vision.com/portfolio/${portfolioItem.fields.slug}`,
         type: "article",
         images: imageUrl ? [imageUrl] : undefined,
       },

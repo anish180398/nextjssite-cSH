@@ -33,7 +33,7 @@ export function ValuesSection() {
         {/* Header */}
         <div className="text-left mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-brand-white mb-6">
-            Achieving what matters most to <span className="text-brand-yellow">you</span>
+            Achieving what matters most to <span className="text-brand-violet">you</span>
           </h2>
           <p className="text-lg text-brand-white/70 max-w-5xl mx-auto">
           We offer innovative digital services but first and foremost, we believe that building a committed partnership with you first is vital in driving your business to fundamentally advance in this digital universe
@@ -52,13 +52,13 @@ export function ValuesSection() {
                 <CardContent className="p-8">
                   {/* Icon */}
                   <div className="mb-6">
-                    <div className="w-16 h-16  rounded-xl flex items-center justify-center group-hover:bg-brand-yellow/20 transition-colors duration-300">
+                    <div className="w-16 h-16  rounded-xl flex items-center justify-center group-hover:bg-brand-violet/20 transition-colors duration-300">
                       <IconComponent className="w-8 h-8 text-brand-orange" />
                     </div>
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-xl font-bold text-brand-white mb-4 group-hover:text-brand-yellow transition-colors duration-200">
+                  <h3 className="text-xl font-bold text-brand-white mb-4 group-hover:text-brand-violet transition-colors duration-200">
                     {value.title}
                   </h3>
                   
@@ -87,13 +87,13 @@ export function ValuesSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-brand-yellow hover:bg-brand-yellow/90 text-brand-dark font-semibold rounded-lg transition-all duration-200 hover:scale-105"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet hover:bg-brand-violet/90 text-brand-dark font-semibold rounded-lg transition-all duration-200 hover:scale-105"
               >
                 Start Your Journey
               </a>
               <a
                 href="/about"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-brand-dark font-semibold rounded-lg transition-all duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-brand-violet text-brand-violet hover:bg-brand-violet hover:text-brand-dark font-semibold rounded-lg transition-all duration-200"
               >
                 Learn More About Us
               </a>

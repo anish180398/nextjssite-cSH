@@ -4,11 +4,11 @@ import ContactForm from "@/components/ui/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with CodeStreetHive for your next digital project. We're here to help bring your vision to life with expert web development and design services.",
+  description: "Get in touch with Reign of Vision for your next digital project. We're here to help bring your vision to life with expert web development and design services.",
   openGraph: {
-    title: "Contact CodeStreetHive - Let's Build Something Amazing",
+    title: "Contact Reign of Vision - Let's Build Something Amazing",
     description: "Ready to start your next digital project? Contact our team of experts for web development, design, and digital strategy services.",
-    url: "https://codestreethive.com/contact",
+    url: "https://Reign of Vision.com/contact",
   }
 };
 
@@ -70,10 +70,10 @@ export default function ContactPage() {
                       Send us an email and we'll respond within 24 hours.
                     </p>
                     <a
-                      href="mailto:hello@codestreethive.com"
+                      href="mailto:hello@Reign of Vision.com"
                       className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
                     >
-                      hello@codestreethive.com
+                      hello@Reign of Vision.com
                     </a>
                   </div>
                 </div>

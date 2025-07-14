@@ -5,18 +5,18 @@ import { PortfolioShowcase } from "@/components/sections/portfolio-showcase";
 import { Testimonials } from "@/components/sections/testimonials";
 
 export const metadata = {
-  title: "CodeStreetHive - Digital Innovation Agency",
+  title: "Reign of Vision - Digital Innovation Agency",
   description: "Transform your digital dreams into reality with cutting-edge web development, innovative design, and strategic digital marketing.",
   keywords: ["web development", "digital marketing", "UI/UX design", "mobile apps", "SEO"],
   openGraph: {
-    title: "CodeStreetHive - Digital Innovation Agency",
+    title: "Reign of Vision - Digital Innovation Agency",
     description: "Transform your digital dreams into reality with cutting-edge web development, innovative design, and strategic digital marketing.",
     type: "website",
-    url: "https://codestreethive.com",
+    url: "https://Reign of Vision.com",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CodeStreetHive - Digital Innovation Agency",
+    title: "Reign of Vision - Digital Innovation Agency",
     description: "Transform your digital dreams into reality with cutting-edge web development, innovative design, and strategic digital marketing.",
   },
 };
@@ -27,7 +27,6 @@ export default function Home() {
       <Hero />
       <ValuesSection />
       <PortfolioShowcase />
-      <ServicesGrid />
       <Testimonials />
     </main>
   );

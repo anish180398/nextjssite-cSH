@@ -16,16 +16,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 
 export const metadata: Metadata = {
-  title: "Our Services | CodeStreetHive",
+  title: "Our Services | Reign of Vision",
   description: "Comprehensive digital solutions including web development, mobile apps, UI/UX design, SEO, and digital strategy consulting.",
   openGraph: {
-    title: "Our Services | CodeStreetHive",
+    title: "Our Services | Reign of Vision",
     description: "Comprehensive digital solutions including web development, mobile apps, UI/UX design, SEO, and digital strategy consulting.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Services | CodeStreetHive",
+    title: "Our Services | Reign of Vision",
     description: "Comprehensive digital solutions including web development, mobile apps, UI/UX design, SEO, and digital strategy consulting.",
   },
 };

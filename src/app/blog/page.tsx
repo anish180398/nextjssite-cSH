@@ -11,11 +11,11 @@ import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Stay updated with the latest insights, trends, and best practices in web development, design, and digital strategy from the CodeStreetHive team.",
+  description: "Stay updated with the latest insights, trends, and best practices in web development, design, and digital strategy from the Reign of Vision team.",
   openGraph: {
-    title: "Blog - CodeStreetHive Digital Agency",
+    title: "Blog - Reign of Vision Digital Agency",
     description: "Expert insights on web development, design trends, and digital strategy to help your business thrive online.",
-    url: "https://codestreethive.com/blog",
+    url: "https://Reign of Vision.com/blog",
   }
 };
 
@@ -54,7 +54,7 @@ function BlogCard({ post }: { post: BlogPost }) {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-1">
               <User className="h-4 w-4" />
-              <span>{post.fields.author || "CodeStreetHive"}</span>
+              <span>{post.fields.author || "Reign of Vision"}</span>
             </div>
             <div className="flex items-center space-x-1">
               <Calendar className="h-4 w-4" />

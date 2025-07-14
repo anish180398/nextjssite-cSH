@@ -32,7 +32,7 @@ const services = [
     title: "Branding and Strategy", 
     slug: "branding-and-strategy",
     icon: "code",
-    description: "Empower your projects with CodeStreetHive's cutting-edge tools. Experience enhanced efficiency in construction management with our sophisticated automated solutions.",
+    description: "Empower your projects with Reign of Vision's cutting-edge tools. Experience enhanced efficiency in construction management with our sophisticated automated solutions.",
     features: ["React & Next.js", "Node.js Backend", "Database Design", "API Integration"],
   },
   {
@@ -40,7 +40,7 @@ const services = [
     title: "Full Stack Development",
     slug: "full-stack-development", 
     icon: "smartphone",
-    description: "Minimize complexity, maximize productivity. CodeStreetHive's robust features are engineered to streamline your construction process, delivering results that stand out for their excellence.",
+    description: "Minimize complexity, maximize productivity. Reign of Vision's robust features are engineered to streamline your construction process, delivering results that stand out for their excellence.",
     features: ["iOS & Android", "React Native", "App Store Optimization", "Push Notifications"],
   },
   {
@@ -70,7 +70,7 @@ export default function ServicesGrid() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-white mb-6">
-            Our <span className="text-brand-yellow">Services</span>
+            Our <span className="text-brand-violet">Services</span>
           </h2>
           <p className="text-lg text-brand-white/70 max-w-3xl mx-auto">
             We offer comprehensive digital solutions to help your business thrive in the digital landscape.
@@ -87,13 +87,13 @@ export default function ServicesGrid() {
                 key={index}
                 className={`relative group hover:shadow-xl transition-all duration-300 border-2 ${
                   service.popular
-                    ? "border-brand-yellow bg-brand-dark"
-                    : "border-brand-white/10 bg-brand-dark hover:border-brand-yellow/50"
+                    ? "border-brand-violet bg-brand-dark"
+                    : "border-brand-white/10 bg-brand-dark hover:border-brand-violet/50"
                 }`}
               >
                 {service.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-brand-yellow text-brand-dark font-semibold px-4 py-1">
+                    <Badge className="bg-brand-violet text-brand-dark font-semibold px-4 py-1">
                       Most Popular
                     </Badge>
                   </div>
@@ -103,13 +103,13 @@ export default function ServicesGrid() {
                   <div className="flex items-center justify-between mb-4">
                     <div className={`p-3 rounded-lg ${
                       service.popular 
-                        ? "bg-brand-yellow/20" 
-                        : "bg-brand-yellow/10 group-hover:bg-brand-yellow/20"
+                        ? "bg-brand-violet/20" 
+                        : "bg-brand-violet/10 group-hover:bg-brand-violet/20"
                     } transition-colors duration-300`}>
-                      <IconComponent className="h-6 w-6 text-brand-yellow" />
+                      <IconComponent className="h-6 w-6 text-brand-violet" />
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-brand-yellow">
+                      <div className="text-2xl font-bold text-brand-violet">
                         {service.price}
                       </div>
                     </div>
@@ -129,7 +129,7 @@ export default function ServicesGrid() {
                   <ul className="space-y-3 mb-6">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center text-sm">
-                        <div className="w-2 h-2 bg-brand-yellow rounded-full mr-3 flex-shrink-0"></div>
+                        <div className="w-2 h-2 bg-brand-violet rounded-full mr-3 flex-shrink-0"></div>
                         <span className="text-brand-white/80">{feature}</span>
                       </li>
                     ))}
@@ -140,8 +140,8 @@ export default function ServicesGrid() {
                     asChild
                     className={`w-full group/btn ${
                       service.popular
-                        ? "bg-brand-yellow hover:bg-brand-yellow/90 text-brand-dark"
-                        : "bg-transparent border-2 border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-brand-dark"
+                        ? "bg-brand-violet hover:bg-brand-violet/90 text-brand-dark"
+                        : "bg-transparent border-2 border-brand-violet text-brand-violet hover:bg-brand-violet hover:text-brand-dark"
                     } transition-all duration-200`}
                   >
                     <Link href="/contact" className="flex items-center justify-center">
@@ -157,7 +157,7 @@ export default function ServicesGrid() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <div className="bg-brand-yellow/10 rounded-2xl p-8 border border-brand-yellow/20">
+          <div className="bg-brand-violet/10 rounded-2xl p-8 border border-brand-violet/20">
             <h3 className="text-2xl font-bold text-brand-white mb-4">
               Need a Custom Solution?
             </h3>
@@ -168,7 +168,7 @@ export default function ServicesGrid() {
             <Button
               asChild
               size="lg"
-              className="bg-brand-yellow hover:bg-brand-yellow/90 text-brand-dark font-semibold px-8 py-4 rounded-lg transition-all duration-200 hover:scale-105"
+              className="bg-brand-violet hover:bg-brand-violet/90 text-brand-dark font-semibold px-8 py-4 rounded-lg transition-all duration-200 hover:scale-105"
             >
               <Link href="/contact" className="flex items-center">
                 Schedule a Consultation

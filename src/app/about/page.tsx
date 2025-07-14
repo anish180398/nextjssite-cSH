@@ -4,11 +4,11 @@ import { Target, Users, Lightbulb, Award } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn about CodeStreetHive - a passionate team of developers, designers, and digital strategists dedicated to building exceptional web experiences that drive business results.",
+  description: "Learn about Reign of Vision - a passionate team of developers, designers, and digital strategists dedicated to building exceptional web experiences that drive business results.",
   openGraph: {
-    title: "About CodeStreetHive - Our Story & Team",
-    description: "Meet the talented team behind CodeStreetHive and discover our mission to transform businesses through innovative digital solutions.",
-    url: "https://codestreethive.com/about",
+    title: "About Reign of Vision - Our Story & Team",
+    description: "Meet the talented team behind Reign of Vision and discover our mission to transform businesses through innovative digital solutions.",
+    url: "https://Reign of Vision.com/about",
   }
 };
 
@@ -93,7 +93,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
-                    CodeStreetHive was founded in 2021 with a simple mission: to help businesses 
+                    Reign of Vision was founded in 2021 with a simple mission: to help businesses 
                     thrive in the digital age through exceptional web development and design. 
                     We believe that great digital experiences shouldn't be a luxury reserved 
                     for large corporations.
@@ -182,7 +182,7 @@ export default function AboutPage() {
                 Meet Our Team
               </h2>
               <p className="text-lg text-gray-600">
-                The talented people behind CodeStreetHive
+                The talented people behind Reign of Vision
               </p>
             </div>
             

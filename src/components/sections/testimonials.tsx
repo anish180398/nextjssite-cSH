@@ -13,7 +13,7 @@ const testimonials = [
     role: "CEO, TechStart Inc.",
     company: "TechStart Inc.",
     image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
-    content: "CodeStreetHive transformed our digital presence completely. Their attention to detail and innovative approach exceeded our expectations. The team delivered a stunning website that perfectly captures our brand identity.",
+    content: "Reign of Vision transformed our digital presence completely. Their attention to detail and innovative approach exceeded our expectations. The team delivered a stunning website that perfectly captures our brand identity.",
     rating: 5,
     project: "E-commerce Platform"
   },
@@ -23,7 +23,7 @@ const testimonials = [
     role: "Founder, GreenTech Solutions",
     company: "GreenTech Solutions",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    content: "Working with CodeStreetHive was an absolute pleasure. They understood our vision from day one and brought it to life with exceptional skill. The mobile app they developed has been a game-changer for our business.",
+    content: "Working with Reign of Vision was an absolute pleasure. They understood our vision from day one and brought it to life with exceptional skill. The mobile app they developed has been a game-changer for our business.",
     rating: 5,
     project: "Mobile App Development"
   },
@@ -43,7 +43,7 @@ const testimonials = [
     role: "CTO, DataFlow Analytics",
     company: "DataFlow Analytics",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-    content: "CodeStreetHive delivered a complex data visualization platform that exceeded all our requirements. Their technical expertise and project management skills are top-notch. We couldn't be happier with the results.",
+    content: "Reign of Vision delivered a complex data visualization platform that exceeded all our requirements. Their technical expertise and project management skills are top-notch. We couldn't be happier with the results.",
     rating: 5,
     project: "Data Platform"
   },
@@ -99,7 +99,7 @@ export function Testimonials() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-white mb-6">
-            What Our <span className="text-brand-yellow">Clients Say</span>
+            What Our <span className="text-brand-violet">Clients Say</span>
           </h2>
           <p className="text-lg text-brand-white/70 max-w-3xl mx-auto">
             Don't just take our word for it. Here's what our clients have to say about working with us.
@@ -108,17 +108,17 @@ export function Testimonials() {
 
         {/* Main Testimonial Card */}
         <div className="max-w-4xl mx-auto mb-12">
-          <Card className="relative overflow-hidden bg-brand-dark border-2 border-brand-white/10 hover:border-brand-yellow/50 transition-all duration-300">
+          <Card className="relative overflow-hidden bg-brand-dark border-2 border-brand-white/10 hover:border-brand-violet/50 transition-all duration-300">
             <CardContent className="p-8 md:p-12">
               {/* Quote Icon */}
               <div className="absolute top-6 right-6 opacity-10">
-                <Quote className="w-16 h-16 text-brand-yellow" />
+                <Quote className="w-16 h-16 text-brand-violet" />
               </div>
 
               {/* Stars */}
               <div className="flex items-center justify-center mb-6">
                 {[...Array(currentTestimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-brand-yellow fill-current" />
+                  <Star key={i} className="w-5 h-5 text-brand-violet fill-current" />
                 ))}
               </div>
 
@@ -129,13 +129,13 @@ export function Testimonials() {
 
               {/* Author Info */}
               <div className="flex items-center justify-center space-x-4">
-                <Avatar className="w-16 h-16 border-2 border-brand-yellow/30">
+                <Avatar className="w-16 h-16 border-2 border-brand-violet/30">
                   <AvatarImage 
                     src={currentTestimonial.image} 
                     alt={currentTestimonial.name}
                     className="object-cover"
                   />
-                  <AvatarFallback className="bg-brand-yellow text-brand-dark font-semibold text-lg">
+                  <AvatarFallback className="bg-brand-violet text-brand-dark font-semibold text-lg">
                     {currentTestimonial.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
@@ -147,7 +147,7 @@ export function Testimonials() {
                   <div className="text-brand-white/70 text-sm">
                     {currentTestimonial.role}
                   </div>
-                  <div className="text-brand-yellow text-sm font-medium">
+                  <div className="text-brand-violet text-sm font-medium">
                     {currentTestimonial.company}
                   </div>
                 </div>
@@ -155,7 +155,7 @@ export function Testimonials() {
 
               {/* Project Badge */}
               <div className="text-center mt-6">
-                <span className="inline-flex items-center px-4 py-2 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow text-sm font-medium">
+                <span className="inline-flex items-center px-4 py-2 rounded-full bg-brand-violet/10 border border-brand-violet/20 text-brand-violet text-sm font-medium">
                   Project: {currentTestimonial.project}
                 </span>
               </div>
@@ -169,7 +169,7 @@ export function Testimonials() {
             variant="outline"
             size="icon"
             onClick={goToPrevious}
-            className="w-12 h-12 rounded-full border-2 border-brand-yellow/30 text-brand-yellow hover:bg-brand-yellow hover:text-brand-dark transition-all duration-200"
+            className="w-12 h-12 rounded-full border-2 border-brand-violet/30 text-brand-violet hover:bg-brand-violet hover:text-brand-dark transition-all duration-200"
           >
             <ChevronLeft className="w-5 h-5" />
           </Button>
@@ -178,7 +178,7 @@ export function Testimonials() {
             variant="outline"
             size="icon"
             onClick={goToNext}
-            className="w-12 h-12 rounded-full border-2 border-brand-yellow/30 text-brand-yellow hover:bg-brand-yellow hover:text-brand-dark transition-all duration-200"
+            className="w-12 h-12 rounded-full border-2 border-brand-violet/30 text-brand-violet hover:bg-brand-violet hover:text-brand-dark transition-all duration-200"
           >
             <ChevronRight className="w-5 h-5" />
           </Button>
@@ -192,7 +192,7 @@ export function Testimonials() {
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-200 ${
                 index === currentIndex
-                  ? "bg-brand-yellow scale-125"
+                  ? "bg-brand-violet scale-125"
                   : "bg-brand-white/30 hover:bg-brand-white/50"
               }`}
             />
@@ -206,8 +206,8 @@ export function Testimonials() {
               key={testimonial.id}
               className={`cursor-pointer transition-all duration-300 bg-brand-dark border-2 ${
                 index === currentIndex % 3
-                  ? "border-brand-yellow"
-                  : "border-brand-white/10 hover:border-brand-yellow/50"
+                  ? "border-brand-violet"
+                  : "border-brand-white/10 hover:border-brand-violet/50"
               }`}
               onClick={() => goToSlide(index)}
             >
@@ -219,7 +219,7 @@ export function Testimonials() {
                       alt={testimonial.name}
                       className="object-cover"
                     />
-                    <AvatarFallback className="bg-brand-yellow text-brand-dark font-semibold">
+                    <AvatarFallback className="bg-brand-violet text-brand-dark font-semibold">
                       {testimonial.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
@@ -239,7 +239,7 @@ export function Testimonials() {
                 
                 <div className="flex items-center mt-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-brand-yellow fill-current" />
+                    <Star key={i} className="w-4 h-4 text-brand-violet fill-current" />
                   ))}
                 </div>
               </CardContent>

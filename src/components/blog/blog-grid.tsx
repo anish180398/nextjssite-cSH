@@ -50,7 +50,7 @@ function BlogCard({ post }: { post: BlogPost }) {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-1">
               <User className="h-4 w-4" />
-              <span>{post.fields.author || "CodeStreetHive"}</span>
+              <span>{post.fields.author || "Reign of Vision"}</span>
             </div>
             <div className="flex items-center space-x-1">
               <Calendar className="h-4 w-4" />

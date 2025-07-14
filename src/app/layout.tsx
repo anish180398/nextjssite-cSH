@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "CodeStreetHive - Digital Agency & Web Development",
-    template: "%s | CodeStreetHive"
+    default: "Reign of Vision - Digital Agency & Web Development",
+    template: "%s | Reign of Vision"
   },
   description: "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions. We build digital experiences that drive results.",
   keywords: [
@@ -34,30 +34,30 @@ export const metadata: Metadata = {
     "React",
     "TypeScript"
   ],
-  authors: [{ name: "CodeStreetHive Team" }],
-  creator: "CodeStreetHive",
-  publisher: "CodeStreetHive",
-  metadataBase: new URL("https://codestreethive.com"),
+  authors: [{ name: "Reign of Vision Team" }],
+  creator: "Reign of Vision",
+  publisher: "Reign of Vision",
+  metadataBase: new URL("https://reignofvision.com"),
   openGraph: {
     type: "website",
-    url: "https://codestreethive.com",
-    title: "CodeStreetHive - Digital Agency & Web Development",
+    url: "https://reignofvision.com",
+    title: "Reign of Vision - Digital Agency & Web Development",
     description: "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions. We build digital experiences that drive results.",
-    siteName: "CodeStreetHive",
+    siteName: "Reign of Vision",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "CodeStreetHive - Digital Agency"
+        alt: "Reign of Vision - Digital Agency"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    site: "@codestreethive",
-    creator: "@codestreethive",
-    title: "CodeStreetHive - Digital Agency & Web Development",
+    site: "@Reign of Vision",
+    creator: "@Reign of Vision",
+    title: "Reign of Vision - Digital Agency & Web Development",
     description: "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions.",
     images: ["/og-image.jpg"]
   },
@@ -86,10 +86,10 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "https://codestreethive.com",
+    canonical: "https://reignofvision.com",
     languages: {
-      'en-US': 'https://codestreethive.com',
-      'es-ES': 'https://codestreethive.com/es',
+      'en-US': 'https://reignofvision.com',
+      'es-ES': 'https://reignofvision.com/es',
     },
   },
   icons: {
@@ -116,21 +116,21 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.ctfassets.net" />
         <link rel="dns-prefetch" href="https://cdn.contentful.com" />
-        <meta name="theme-color" content="#F7C948" />
+        <meta name="theme-color" content="#940DE7" />
         <meta name="color-scheme" content="dark light" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="CodeStreetHive" />
-        <meta name="application-name" content="CodeStreetHive" />
-        <meta name="msapplication-TileColor" content="#F7C948" />
+        <meta name="apple-mobile-web-app-title" content="Reign of Vision" />
+        <meta name="application-name" content="Reign of Vision" />
+        <meta name="msapplication-TileColor" content="#940DE7" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-brand-dark text-brand-white`}
         suppressHydrationWarning
       >
-        <ThemeProvider defaultTheme="dark" storageKey="codestreethive-theme">
+        <ThemeProvider defaultTheme="dark" storageKey="Reign of Vision-theme">
           <Header />
           <main className="flex-1">
             {children}
@@ -150,9 +150,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "CodeStreetHive",
-              "url": "https://codestreethive.com",
-              "logo": "https://codestreethive.com/logo.png",
+              "name": "Reign of Vision",
+              "url": "https://Reign of Vision.com",
+              "logo": "https://Reign of Vision.com/logo.png",
               "description": "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions.",
               "address": {
                 "@type": "PostalAddress",
@@ -164,16 +164,16 @@ export default function RootLayout({
                 "@type": "ContactPoint",
                 "telephone": "+1-234-567-8900",
                 "contactType": "customer service",
-                "email": "hello@codestreethive.com"
+                "email": "hello@Reign of Vision.com"
               },
               "sameAs": [
-                "https://twitter.com/codestreethive",
-                "https://github.com/codestreethive",
-                "https://linkedin.com/company/codestreethive"
+                "https://twitter.com/Reign of Vision",
+                "https://github.com/Reign of Vision",
+                "https://linkedin.com/company/Reign of Vision"
               ],
               "founder": {
                 "@type": "Person",
-                "name": "CodeStreetHive Team"
+                "name": "Reign of Vision Team"
               },
               "foundingDate": "2021",
               "numberOfEmployees": "10-50",
