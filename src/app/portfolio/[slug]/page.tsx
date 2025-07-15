@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Calendar, ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ArrowLeft, Calendar, ExternalLink, Github, ArrowRight, Home, ChevronRight } from "lucide-react";
 import { getPortfolioItemBySlug, getAllPortfolioItems } from "@/lib/contentful";
 import RichText from "@/components/ui/rich-text";
 import { Button } from "@/components/ui/button";
@@ -76,31 +76,32 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-brand-dark">
       {/* Breadcrumb Navigation */}
-      <nav className="bg-gray-50 py-4">
+      <nav className="bg-brand-dark  pt-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600 transition-colors">
+          <div className="flex items-center space-x-2 text-sm text-brand-white/70 pb-4">
+            <Link href="/" className="hover:text-brand-violet transition-colors flex items-center">
+              <Home className="h-4 w-4 mr-1" />
               Home
             </Link>
-            <span>/</span>
-            <Link href="/portfolio" className="hover:text-blue-600 transition-colors">
+            <ChevronRight className="h-4 w-4" />
+            <Link href="/portfolio" className="hover:text-brand-violet transition-colors">
               Portfolio
             </Link>
-            <span>/</span>
-            <span className="text-gray-900">{portfolioItem.fields.title}</span>
+            <ChevronRight className="h-4 w-4" />
+            <span className="text-brand-white">{portfolioItem.fields.title}</span>
           </div>
         </div>
       </nav>
 
       {/* Hero Section with Project Image */}
-      <section className="py-12 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <section className="py-12 bg-gradient-to-br from-brand-dark to-brand-violet/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <Link
               href="/portfolio"
-              className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8 group transition-colors"
+              className="inline-flex items-center text-brand-violet hover:text-brand-violet/80 mb-8 group transition-colors"
             >
               <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               Back to Portfolio
@@ -109,16 +110,16 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Project Info */}
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h1 className="text-4xl md:text-5xl font-bold text-brand-white mb-6">
                   {portfolioItem.fields.title}
                 </h1>
-                <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                <p className="text-xl text-brand-white/70 leading-relaxed mb-8">
                   {portfolioItem.fields.excerpt}
                 </p>
                 
                 {/* Project Meta Info */}
                 <div className="flex flex-wrap gap-6 mb-8">
-                  <div className="flex items-center text-gray-600">
+                  <div className="flex items-center text-brand-white/60">
                     <Calendar className="h-5 w-5 mr-2" />
                     <span>{formatDate(portfolioItem.sys.createdAt)}</span>
                   </div>
@@ -130,7 +131,7 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
                     {portfolioItem.fields.tags.map((tag, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full"
+                        className="px-3 py-1 bg-brand-violet/20 text-brand-violet border border-brand-violet/30 text-sm rounded-full"
                       >
                         {tag}
                       </span>
@@ -138,37 +139,14 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
                   </div>
                 )}
                 
-                {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button asChild>
-                    <a
-                      href="#"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2"
-                    >
-                      <ExternalLink className="h-5 w-5" />
-                      <span>View Live Site</span>
-                    </a>
-                  </Button>
-                  <Button variant="outline">
-                    <a
-                      href="#"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2"
-                    >
-                      <Github className="h-5 w-5" />
-                      <span>View Code</span>
-                    </a>
-                  </Button>
-                </div>
+              
+                
               </div>
 
               {/* Project Image */}
               <div className="relative">
                 {portfolioItem.fields.coverImage?.fields?.file?.url ? (
-                  <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
+                  <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl border border-brand-white/10">
                     <Image
                       src={`https:${portfolioItem.fields.coverImage.fields.file.url}`}
                       alt={portfolioItem.fields.title}
@@ -179,7 +157,7 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
                     />
                   </div>
                 ) : (
-                  <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl flex items-center justify-center shadow-2xl">
+                  <div className="aspect-video bg-gradient-to-br from-brand-violet/20 to-brand-violet/10 rounded-xl flex items-center justify-center shadow-2xl border border-brand-violet/30">
                     <div className="text-6xl">🚀</div>
                   </div>
                 )}
@@ -190,7 +168,7 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
       </section>
 
       {/* Project Details */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-brand-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -201,20 +179,20 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
                     <RichText document={portfolioItem.fields.body} />
                   ) : (
                     <div className="space-y-6">
-                      <h2 className="text-2xl font-semibold text-gray-900">
+                      <h2 className="text-2xl font-semibold text-brand-white">
                         Project Overview
                       </h2>
-                      <p className="text-gray-600 leading-relaxed">
+                      <p className="text-brand-white/70 leading-relaxed">
                         This project represents our commitment to delivering exceptional 
                         digital solutions that meet and exceed client expectations. We 
                         focused on creating a user-centric design that balances 
                         aesthetics with functionality.
                       </p>
                       
-                      <h3 className="text-xl font-semibold text-gray-900">
+                      <h3 className="text-xl font-semibold text-brand-white">
                         Key Features
                       </h3>
-                      <ul className="space-y-2 text-gray-600">
+                      <ul className="space-y-2 text-brand-white/70">
                         <li>• Responsive design that works on all devices</li>
                         <li>• Modern, intuitive user interface</li>
                         <li>• Optimized performance and fast loading times</li>
@@ -223,19 +201,19 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
                         <li>• Comprehensive testing and quality assurance</li>
                       </ul>
                       
-                      <h3 className="text-xl font-semibold text-gray-900">
+                      <h3 className="text-xl font-semibold text-brand-white">
                         Technologies Used
                       </h3>
-                      <p className="text-gray-600 leading-relaxed">
+                      <p className="text-brand-white/70 leading-relaxed">
                         We leveraged cutting-edge technologies and best practices to 
                         ensure the project meets modern web standards and provides 
                         an exceptional user experience.
                       </p>
                       
-                      <h3 className="text-xl font-semibold text-gray-900">
+                      <h3 className="text-xl font-semibold text-brand-white">
                         Results & Impact
                       </h3>
-                      <p className="text-gray-600 leading-relaxed">
+                      <p className="text-brand-white/70 leading-relaxed">
                         The successful implementation of this project resulted in 
                         improved user engagement, increased conversion rates, and 
                         enhanced overall business performance for our client.
@@ -247,39 +225,39 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
 
               {/* Project Sidebar */}
               <div className="lg:col-span-1">
-                <div className="bg-gray-50 rounded-xl p-6 sticky top-8">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <div className="bg-brand-violet/10 rounded-xl p-6 sticky top-8 border border-brand-violet/20">
+                  <h3 className="text-lg font-semibold text-brand-white mb-4">
                     Project Details
                   </h3>
                   
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-medium text-gray-900 mb-1">Category</h4>
-                      <p className="text-gray-600 text-sm">
+                      <h4 className="font-medium text-brand-white mb-1">Category</h4>
+                      <p className="text-brand-white/70 text-sm">
                         {portfolioItem.fields.tags?.[0] || "Web Development"}
                       </p>
                     </div>
                     
                     <div>
-                      <h4 className="font-medium text-gray-900 mb-1">Timeline</h4>
-                      <p className="text-gray-600 text-sm">3-6 months</p>
+                      <h4 className="font-medium text-brand-white mb-1">Timeline</h4>
+                      <p className="text-brand-white/70 text-sm">3-6 months</p>
                     </div>
                     
                     <div>
-                      <h4 className="font-medium text-gray-900 mb-1">Status</h4>
-                      <p className="text-green-600 text-sm font-medium">Completed</p>
+                      <h4 className="font-medium text-brand-white mb-1">Status</h4>
+                      <p className="text-brand-violet text-sm font-medium">Completed</p>
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-gray-200">
-                    <h4 className="font-medium text-gray-900 mb-4">
+                  <div className="mt-8 pt-6 border-t border-brand-white/10">
+                    <h4 className="font-medium text-brand-white mb-4">
                       Interested in a similar project?
                     </h4>
-                    <p className="text-gray-600 text-sm mb-4">
+                    <p className="text-brand-white/70 text-sm mb-4">
                       Let's discuss how we can help you achieve your goals.
                     </p>
                     
-                    <Button asChild className="w-full">
+                    <Button asChild className="w-full bg-brand-violet hover:bg-brand-violet/90 text-brand-dark">
                       <Link href="/contact">
                         Get In Touch
                       </Link>
@@ -293,20 +271,20 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
       </section>
 
       {/* Related Projects */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gradient-to-br from-brand-dark to-brand-violet/5 border-t border-brand-white/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                More Projects
+              <h2 className="text-3xl font-bold text-brand-white mb-4">
+                More <span className="text-brand-violet">Projects</span>
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-brand-white/70">
                 Explore other projects in our portfolio
               </p>
             </div>
             
             <div className="text-center">
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="border-brand-violet text-brand-violet hover:bg-brand-violet hover:text-brand-dark">
                 <Link href="/portfolio" className="flex items-center space-x-2">
                   <span>View All Projects</span>
                   <ArrowRight className="h-5 w-5" />
@@ -318,16 +296,16 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
+      <section className="py-20 bg-gradient-to-br from-brand-violet/20 to-brand-dark border-t border-brand-violet/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center text-white">
+          <div className="max-w-3xl mx-auto text-center text-brand-white">
             <h2 className="text-3xl font-bold mb-4">
-              Ready to start your project?
+              Ready to start your <span className="text-brand-violet">project?</span>
             </h2>
-            <p className="text-xl opacity-90 mb-8">
+            <p className="text-xl text-brand-white/70 mb-8">
               Let's create something amazing together. Contact us to discuss your ideas.
             </p>
-            <Button asChild size="lg" variant="secondary">
+            <Button asChild size="lg" className="bg-brand-violet hover:bg-brand-violet/90 text-brand-dark">
               <Link href="/contact" className="flex items-center space-x-2">
                 <span>Start Your Project</span>
                 <ArrowRight className="h-5 w-5" />

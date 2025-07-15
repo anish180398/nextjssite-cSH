@@ -12,69 +12,20 @@ export const metadata: Metadata = {
   }
 };
 
-// Static team members data
-const teamMembers = [
-  {
-    id: "1",
-    name: "Alex Johnson",
-    role: "Founder & Lead Developer",
-    bio: "Full-stack developer with 8+ years of experience building scalable web applications. Passionate about clean code and user experience.",
-    avatar: null
-  },
-  {
-    id: "2",
-    name: "Sarah Chen",
-    role: "UI/UX Designer",
-    bio: "Creative designer with a keen eye for detail and user-centered design. Specializes in creating intuitive and beautiful digital experiences.",
-    avatar: null
-  },
-  {
-    id: "3",
-    name: "Mike Rodriguez",
-    role: "Digital Strategist",
-    bio: "Data-driven marketer who helps businesses grow through strategic digital initiatives and performance optimization.",
-    avatar: null
-  }
-];
 
-function TeamGrid() {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {teamMembers.map((member) => (
-        <div key={member.id} className="text-center">
-          <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200">
-            <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <span className="text-white font-bold text-2xl">
-                {member.name.charAt(0)}
-              </span>
-            </div>
-          </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">
-            {member.name}
-          </h3>
-          <p className="text-blue-600 font-medium mb-3">
-            {member.role}
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            {member.bio}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
-}
+
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-brand-dark">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
+      <section className="bg-gradient-to-br from-brand-dark to-brand-violet/10 py-40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Building Digital Experiences That Matter
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-white mb-6">
+              Building Digital Experiences That <span className="text-brand-violet">Matter</span>
             </h1>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-brand-white/80 leading-relaxed">
               We're a passionate team of developers, designers, and digital strategists 
               dedicated to creating exceptional web experiences that drive real business results.
             </p>
@@ -83,15 +34,15 @@ export default function AboutPage() {
       </section>
 
       {/* Story Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-brand-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Our Story
+                <h2 className="text-3xl font-bold text-brand-white mb-6">
+                  Our <span className="text-brand-violet">Story</span>
                 </h2>
-                <div className="space-y-4 text-gray-600 leading-relaxed">
+                <div className="space-y-4 text-brand-white/70 leading-relaxed">
                   <p>
                     Reign of Vision was founded in 2021 with a simple mission: to help businesses 
                     thrive in the digital age through exceptional web development and design. 
@@ -111,7 +62,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="relative">
-                <div className="aspect-square rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+                <div className="aspect-square rounded-xl bg-gradient-to-br from-brand-violet/20 to-brand-violet/10 border border-brand-violet/30 flex items-center justify-center">
                   <div className="text-6xl">🚀</div>
                 </div>
               </div>
@@ -121,14 +72,14 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-brand-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Our Values
+              <h2 className="text-3xl font-bold text-brand-white mb-4">
+                Our <span className="text-brand-violet">Values</span>
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-brand-white/70">
                 The principles that guide everything we do
               </p>
             </div>
@@ -156,14 +107,14 @@ export default function AboutPage() {
                   description: "We never compromise on quality and attention to detail in our work."
                 }
               ].map((value, index) => (
-                <div key={index} className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-xl mb-4">
-                    <value.icon className="h-8 w-8 text-blue-600" />
+                <div key={index} className="text-center bg-brand-violet/5 p-6 rounded-xl border border-brand-violet/20 hover:bg-brand-violet/10 transition-colors">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-violet/20 rounded-xl mb-4">
+                    <value.icon className="h-8 w-8 text-brand-violet" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-brand-white mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-brand-white/70 text-sm leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -173,37 +124,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Meet Our Team
-              </h2>
-              <p className="text-lg text-gray-600">
-                The talented people behind Reign of Vision
-              </p>
-            </div>
-            
-            <TeamGrid />
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
+      <section className="py-20 bg-brand-violet/10 border-t border-brand-violet/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Work Together?
+            <h2 className="text-3xl font-bold text-brand-white mb-4">
+              Ready to Work <span className="text-brand-violet">Together?</span>
             </h2>
-            <p className="text-xl text-blue-100 mb-8">
+            <p className="text-xl text-brand-white/70 mb-8">
               Let's discuss your project and see how we can help you achieve your goals.
             </p>
             <a
               href="/contact"
-              className="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center px-8 py-3 bg-brand-violet text-brand-white font-semibold rounded-lg hover:bg-brand-violet/90 transition-colors"
             >
               Get In Touch
             </a>

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Calendar, Clock, User, Share2, Twitter, Facebook, Linkedin, ArrowRight } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, User, Share2, Twitter, Facebook, Linkedin, ArrowRight, Home, ChevronRight } from "lucide-react";
 import { getBlogPostBySlug, getAllBlogPosts } from "@/lib/contentful";
 import RichText from "@/components/ui/rich-text";
 import { Button } from "@/components/ui/button";
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       openGraph: {
         title: `${blogPost.fields.title} - Reign of Vision Blog`,
         description: blogPost.fields.excerpt,
-        url: `https://Reign of Vision.com/blog/${blogPost.fields.slug}`,
+        url: `https://reignofvision.com/blog/${blogPost.fields.slug}`,
         type: "article",
         publishedTime: blogPost.fields.publishedDate || blogPost.sys.createdAt,
         images: imageUrl ? [imageUrl] : undefined,
@@ -125,41 +125,42 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     ? `${getReadingTime(JSON.stringify(blogPost.fields.body))} min read`
     : "5 min read";
 
-  const currentUrl = `https://Reign of Vision.com/blog/${blogPost.fields.slug}`;
+  const currentUrl = `https://reignofvision.com/blog/${blogPost.fields.slug}`;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-brand-dark">
       {/* Breadcrumb Navigation */}
-      <nav className="bg-gray-50 py-4">
+      <nav className="bg-brand-dark border-b border-brand-white/10 pt-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600 transition-colors">
+          <div className="flex items-center space-x-2 text-sm text-brand-white/70 pb-4">
+            <Link href="/" className="hover:text-brand-violet transition-colors flex items-center">
+              <Home className="h-4 w-4 mr-1" />
               Home
             </Link>
-            <span>/</span>
-            <Link href="/blog" className="hover:text-blue-600 transition-colors">
+            <ChevronRight className="h-4 w-4" />
+            <Link href="/blog" className="hover:text-brand-violet transition-colors">
               Blog
             </Link>
-            <span>/</span>
-            <span className="text-gray-900 truncate">{blogPost.fields.title}</span>
+            <ChevronRight className="h-4 w-4" />
+            <span className="text-brand-white truncate">{blogPost.fields.title}</span>
           </div>
         </div>
       </nav>
 
       {/* Article Header */}
-      <article className="py-12 bg-white">
+      <article className="py-12 bg-gradient-to-br from-brand-dark to-brand-violet/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <Link
               href="/blog"
-              className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8 group transition-colors"
+              className="inline-flex items-center text-brand-violet hover:text-brand-violet/80 mb-8 group transition-colors"
             >
               <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               Back to Blog
             </Link>
             
             {/* Article Meta */}
-            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 mb-6">
+            <div className="flex flex-wrap items-center gap-6 text-sm text-brand-white/60 mb-6">
               <div className="flex items-center space-x-1">
                 <User className="h-4 w-4" />
                 <span>{blogPost.fields.author || "Reign of Vision"}</span>
@@ -175,12 +176,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-white mb-6 leading-tight">
               {blogPost.fields.title}
             </h1>
 
             {/* Excerpt */}
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
+            <p className="text-xl text-brand-white/70 leading-relaxed mb-8">
               {blogPost.fields.excerpt}
             </p>
 
@@ -190,7 +191,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {blogPost.fields.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full"
+                    className="px-3 py-1 bg-brand-violet/20 text-brand-violet border border-brand-violet/30 text-sm rounded-full"
                   >
                     {tag}
                   </span>
@@ -198,20 +199,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             )}
 
-            {/* Share Buttons */}
-            <div className="border-t border-b border-gray-200 py-4 mb-8">
-              <ShareButtons title={blogPost.fields.title} url={currentUrl} />
-            </div>
-          </div>
-        </div>
-      </article>
-
-      {/* Featured Image */}
-      {blogPost.fields.coverImage?.fields?.file?.url && (
-        <section className="mb-12">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg">
+            {/* Cover Image */}
+            {blogPost.fields.coverImage?.fields?.file?.url && (
+              <div className="relative aspect-video rounded-xl overflow-hidden mb-8 border border-brand-white/10">
                 <Image
                   src={`https:${blogPost.fields.coverImage.fields.file.url}`}
                   alt={blogPost.fields.title}
@@ -221,13 +211,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   priority
                 />
               </div>
-            </div>
+            )}
           </div>
-        </section>
-      )}
+        </div>
+      </article>
 
       {/* Article Content */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-brand-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
@@ -238,110 +228,44 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <RichText document={blogPost.fields.body} />
                   ) : (
                     <div className="space-y-6">
-                      <p className="text-gray-600 leading-relaxed">
-                        This is a sample blog post that demonstrates the structure and layout 
-                        of our blog articles. The content would typically be rich text from 
-                        Contentful, including headings, paragraphs, images, and other formatting.
+                      <p className="text-brand-white/80 leading-relaxed">
+                        This is a sample blog post content. In a real implementation, this would be populated with rich text content from your CMS.
                       </p>
-                      
-                      <h2 className="text-2xl font-semibold text-gray-900">
-                        Key Insights
-                      </h2>
-                      <p className="text-gray-600 leading-relaxed">
-                        Our blog posts provide valuable insights into the latest trends, 
-                        best practices, and innovative solutions in web development and 
-                        digital strategy. Each article is carefully crafted to provide 
-                        actionable advice and practical knowledge.
-                      </p>
-                      
-                      <h3 className="text-xl font-semibold text-gray-900">
-                        What You'll Learn
-                      </h3>
-                      <ul className="space-y-2 text-gray-600 list-disc list-inside">
-                        <li>Industry best practices and proven methodologies</li>
-                        <li>Cutting-edge technologies and tools</li>
-                        <li>Real-world case studies and examples</li>
-                        <li>Expert tips and tricks from our experienced team</li>
-                        <li>Future trends and predictions</li>
-                      </ul>
-                      
-                      <h3 className="text-xl font-semibold text-gray-900">
-                        Conclusion
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        We hope this article has provided you with valuable insights and 
-                        actionable strategies. Stay tuned for more expert content and 
-                        feel free to reach out if you have any questions or need help 
-                        with your digital projects.
+                      <p className="text-brand-white/80 leading-relaxed">
+                        The blog post content would include detailed information about the topic, images, code examples, and other relevant content that provides value to your readers.
                       </p>
                     </div>
                   )}
-                </div>
-
-                {/* Bottom Share Buttons */}
-                <div className="mt-12 pt-8 border-t border-gray-200">
-                  <ShareButtons title={blogPost.fields.title} url={currentUrl} />
                 </div>
               </div>
 
               {/* Sidebar */}
               <div className="lg:col-span-1">
-                <div className="space-y-8">
-                  {/* Author Info */}
-                  <div className="bg-gray-50 rounded-xl p-6">
-                    <h3 className="font-semibold text-gray-900 mb-4">
-                      About the Author
-                    </h3>
-                    <div className="flex items-center space-x-3 mb-3">
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <User className="h-6 w-6 text-blue-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-900">
-                          {blogPost.fields.author || "Reign of Vision Team"}
-                        </h4>
-                        <p className="text-sm text-gray-600">Expert Developer</p>
-                      </div>
-                    </div>
-                    <p className="text-sm text-gray-600">
-                      Our team of experienced developers and designers are passionate 
-                      about creating innovative digital solutions and sharing knowledge 
-                      with the community.
-                    </p>
-                  </div>
-
-                  {/* Newsletter Signup */}
-                  <div className="bg-blue-50 rounded-xl p-6">
-                    <h3 className="font-semibold text-gray-900 mb-3">
-                      Stay Updated
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Get notified when we publish new articles and insights.
-                    </p>
-                    <div className="space-y-3">
-                      <input
-                        type="email"
-                        placeholder="Your email"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      />
-                      <Button size="sm" className="w-full">
-                        Subscribe
+                <div className="sticky top-8 space-y-6">
+                  {/* Share Section */}
+                  <div className="bg-brand-violet/10 rounded-xl p-6 border border-brand-violet/20">
+                    <h3 className="text-lg font-semibold text-brand-white mb-4">Share this article</h3>
+                    <div className="flex space-x-3">
+                      <Button size="sm" variant="outline" className="border-brand-violet/30 text-brand-violet hover:bg-brand-violet hover:text-brand-dark">
+                        <Twitter className="h-4 w-4" />
+                      </Button>
+                      <Button size="sm" variant="outline" className="border-brand-violet/30 text-brand-violet hover:bg-brand-violet hover:text-brand-dark">
+                        <Facebook className="h-4 w-4" />
+                      </Button>
+                      <Button size="sm" variant="outline" className="border-brand-violet/30 text-brand-violet hover:bg-brand-violet hover:text-brand-dark">
+                        <Linkedin className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
 
-                  {/* Contact CTA */}
-                  <div className="bg-gradient-to-br from-blue-600 to-purple-700 text-white rounded-xl p-6">
-                    <h3 className="font-semibold mb-3">
-                      Need Help With Your Project?
-                    </h3>
-                    <p className="text-sm opacity-90 mb-4">
-                      Let's discuss how we can help you achieve your digital goals.
+                  {/* Author Info */}
+                  <div className="bg-brand-violet/10 rounded-xl p-6 border border-brand-violet/20">
+                    <h3 className="text-lg font-semibold text-brand-white mb-2">About the Author</h3>
+                    <p className="text-brand-white/70 text-sm mb-4">
+                      {blogPost.fields.author || "Reign of Vision"} is a passionate developer and writer, sharing insights about web development and digital innovation.
                     </p>
-                    <Button asChild size="sm" variant="secondary" className="w-full">
-                      <Link href="/contact">
-                        Get In Touch
-                      </Link>
+                    <Button asChild size="sm" variant="outline" className="border-brand-violet/30 text-brand-violet hover:bg-brand-violet hover:text-brand-dark">
+                      <Link href="/about">Learn More</Link>
                     </Button>
                   </div>
                 </div>
@@ -351,21 +275,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </section>
 
-      {/* Related Posts */}
-      <section className="py-20 bg-gray-50">
+      {/* Related Articles */}
+      <section className="py-20 bg-gradient-to-br from-brand-dark to-brand-violet/5 border-t border-brand-white/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                More Articles
+              <h2 className="text-3xl font-bold text-brand-white mb-4">
+                Related <span className="text-brand-violet">Articles</span>
               </h2>
-              <p className="text-lg text-gray-600">
-                Explore more insights and expert advice
+              <p className="text-lg text-brand-white/70">
+                Continue exploring our latest insights
               </p>
             </div>
             
             <div className="text-center">
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="border-brand-violet text-brand-violet hover:bg-brand-violet hover:text-brand-dark">
                 <Link href="/blog" className="flex items-center space-x-2">
                   <span>View All Articles</span>
                   <ArrowRight className="h-5 w-5" />
@@ -377,19 +301,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
+      <section className="py-20 bg-gradient-to-br from-brand-violet/20 to-brand-dark border-t border-brand-violet/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center text-white">
+          <div className="max-w-3xl mx-auto text-center text-brand-white">
             <h2 className="text-3xl font-bold mb-4">
-              Ready to Transform Your Digital Presence?
+              Ready to <span className="text-brand-violet">get started?</span>
             </h2>
-            <p className="text-xl opacity-90 mb-8">
-              Let's work together to create something exceptional. 
-              Contact us to start your project.
+            <p className="text-xl text-brand-white/70 mb-8">
+              Let's work together to bring your vision to life with our expert team.
             </p>
-            <Button asChild size="lg" variant="secondary">
+            <Button asChild size="lg" className="bg-brand-violet hover:bg-brand-violet/90 text-brand-dark">
               <Link href="/contact" className="flex items-center space-x-2">
-                <span>Start Your Project</span>
+                <span>Contact Us</span>
                 <ArrowRight className="h-5 w-5" />
               </Link>
             </Button>

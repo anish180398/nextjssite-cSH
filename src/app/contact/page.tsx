@@ -8,21 +8,21 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Reign of Vision - Let's Build Something Amazing",
     description: "Ready to start your next digital project? Contact our team of experts for web development, design, and digital strategy services.",
-    url: "https://Reign of Vision.com/contact",
+    url: "https://reignofvision.com/contact",
   }
 };
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-brand-dark">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-20">
+      <section className="bg-gradient-to-br from-brand-dark to-brand-violet/10 text-brand-white py-40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Let's Build Something Amazing Together
+              Let's Build Something <span className="text-brand-violet">Amazing</span> Together
             </h1>
-            <p className="text-xl opacity-90 leading-relaxed">
+            <p className="text-xl text-brand-white/80 leading-relaxed">
               Ready to transform your digital presence? We're here to help you 
               every step of the way. Get in touch and let's discuss your project.
             </p>
@@ -35,9 +35,9 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-                Send us a message
+            <div className="bg-brand-dark rounded-xl shadow-sm border border-brand-white/10 p-8">
+              <h2 className="text-2xl font-semibold text-brand-white mb-6">
+                Send us a <span className="text-brand-violet">message</span>
               </h2>
               <ContactForm />
             </div>
@@ -45,10 +45,10 @@ export default function ContactPage() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-                  Get in touch
+                <h2 className="text-2xl font-semibold text-brand-white mb-6">
+                  Get in <span className="text-brand-violet">touch</span>
                 </h2>
-                <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                <p className="text-brand-white/70 text-lg leading-relaxed mb-8">
                   Have a project in mind? We'd love to hear about it. Send us a message 
                   and we'll get back to you within 24 hours.
                 </p>
@@ -58,62 +58,62 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <Mail className="h-6 w-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-brand-violet/20 rounded-lg flex items-center justify-center">
+                      <Mail className="h-6 w-6 text-brand-violet" />
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                    <h3 className="text-lg font-semibold text-brand-white mb-1">
                       Email us
                     </h3>
-                    <p className="text-gray-600 mb-2">
+                    <p className="text-brand-white/70 mb-2">
                       Send us an email and we'll respond within 24 hours.
                     </p>
                     <a
-                      href="mailto:hello@Reign of Vision.com"
-                      className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                      href="mailto:hello@reignofvision.com"
+                      className="text-brand-violet hover:text-brand-violet/80 font-medium transition-colors"
                     >
-                      hello@Reign of Vision.com
+                      hello@reignofvision.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                      <Phone className="h-6 w-6 text-green-600" />
+                    <div className="w-12 h-12 bg-brand-violet/20 rounded-lg flex items-center justify-center">
+                      <Phone className="h-6 w-6 text-brand-violet" />
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                    <h3 className="text-lg font-semibold text-brand-white mb-1">
                       Call us
                     </h3>
-                    <p className="text-gray-600 mb-2">
+                    <p className="text-brand-white/70 mb-2">
                       Prefer to talk? Give us a call during business hours.
                     </p>
                     <a
                       href="tel:+1234567890"
-                      className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                      className="text-brand-violet hover:text-brand-violet/80 font-medium transition-colors"
                     >
-                      +1 (234) 567-8900
+                      +91 9514015234
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                      <MapPin className="h-6 w-6 text-purple-600" />
+                    <div className="w-12 h-12 bg-brand-violet/20 rounded-lg flex items-center justify-center">
+                      <MapPin className="h-6 w-6 text-brand-violet" />
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                    <h3 className="text-lg font-semibold text-brand-white mb-1">
                       Visit us
                     </h3>
-                    <p className="text-gray-600 mb-2">
+                    <p className="text-brand-white/70 mb-2">
                       We're based in the heart of San Francisco.
                     </p>
-                    <address className="text-gray-700 not-italic">
+                    <address className="text-brand-white/80 not-italic">
                       San Francisco, CA<br />
                       United States
                     </address>
@@ -122,15 +122,15 @@ export default function ContactPage() {
 
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                      <Clock className="h-6 w-6 text-orange-600" />
+                    <div className="w-12 h-12 bg-brand-violet/20 rounded-lg flex items-center justify-center">
+                      <Clock className="h-6 w-6 text-brand-violet" />
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                    <h3 className="text-lg font-semibold text-brand-white mb-1">
                       Business hours
                     </h3>
-                    <div className="text-gray-600 space-y-1">
+                    <div className="text-brand-white/70 space-y-1">
                       <p>Monday - Friday: 9:00 AM - 6:00 PM PST</p>
                       <p>Saturday: 10:00 AM - 4:00 PM PST</p>
                       <p>Sunday: Closed</p>
@@ -144,14 +144,14 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-brand-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Frequently Asked Questions
+              <h2 className="text-3xl font-bold text-brand-white mb-4">
+                Frequently Asked <span className="text-brand-violet">Questions</span>
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-brand-white/70">
                 Quick answers to common questions about our services and process.
               </p>
             </div>
@@ -175,11 +175,11 @@ export default function ContactPage() {
                   answer: "Yes! We offer various support and maintenance packages to keep your website secure, updated, and performing optimally. We're here to help you succeed long-term."
                 }
               ].map((faq, index) => (
-                <div key={index} className="border-b border-gray-200 pb-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div key={index} className="border-b border-brand-white/10 pb-6 bg-brand-violet/5 p-6 rounded-xl hover:bg-brand-violet/10 transition-colors">
+                  <h3 className="text-lg font-semibold text-brand-white mb-2">
                     {faq.question}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-brand-white/70 leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>

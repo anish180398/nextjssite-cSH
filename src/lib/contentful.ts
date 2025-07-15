@@ -73,32 +73,90 @@ export interface Testimonial {
   };
 }
 
-// Data fetching functions
-export async function getAllBlogPosts(): Promise<BlogPost[]> {
+// Helper function to check available content types
+export async function getContentTypes() {
   try {
-    const response = await client.getEntries({
-      content_type: 'blog',
-      order: ['-fields.publishedDate'],
-    });
-    return response.items as unknown as BlogPost[];
+    const response = await client.getContentTypes();
+    return response.items.map(item => ({
+      id: item.sys.id,
+      name: item.name,
+      displayField: item.displayField
+    }));
   } catch (error) {
-    console.error('Error fetching blog posts:', error);
+    console.error('Error fetching content types:', error);
     return [];
   }
 }
 
-export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
-  try {
-    const response = await client.getEntries({
-      content_type: 'blog',
-      'fields.slug': slug,
-      limit: 1,
-    });
-    return (response.items[0] as unknown as BlogPost) || null;
-  } catch (error) {
-    console.error('Error fetching blog post:', error);
-    return null;
+// Data fetching functions
+export async function getAllBlogPosts(): Promise<BlogPost[]> {
+  // Try multiple possible content type names
+  const possibleContentTypes = ['blogs', 'blogPost', 'blog', 'post', 'article'];
+  
+  for (const contentType of possibleContentTypes) {
+    try {
+      console.log(`🔍 Trying content type: ${contentType}`);
+      
+      // Try different ordering options
+      const orderOptions: string[][] = [
+        ['-fields.publishedDate'],
+        ['-sys.updatedAt'], 
+        ['-sys.createdAt']
+      ];
+      
+      for (const order of orderOptions) {
+        try {
+          const response = await client.getEntries({
+            content_type: contentType,
+            order: order as any,
+          });
+          
+          if (response.items.length > 0) {
+            console.log(`✅ Found ${response.items.length} blog posts using content type: ${contentType} with order: ${order.join(', ')}`);
+            return response.items as unknown as BlogPost[];
+          } else {
+            console.log(`⚠️ Content type '${contentType}' exists but has no entries`);
+          }
+        } catch (orderError: any) {
+          console.log(`❌ Order ${order.join(', ')} failed for content type '${contentType}':`, orderError.message);
+          continue;
+        }
+      }
+    } catch (error: any) {
+      console.error(`❌ Content type '${contentType}' error:`, {
+        message: error.message,
+        status: error.status,
+        statusText: error.statusText,
+      });
+      continue;
+    }
   }
+  
+  console.error('No blog posts found with any of the attempted content types and orders');
+  return [];
+}
+
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  const possibleContentTypes = ['blogPost', 'blog', 'blogs', 'post', 'article'];
+  
+  for (const contentType of possibleContentTypes) {
+    try {
+      const response = await client.getEntries({
+        content_type: contentType,
+        'fields.slug': slug,
+        limit: 1,
+      });
+      
+      if (response.items.length > 0) {
+        return (response.items[0] as unknown as BlogPost) || null;
+      }
+    } catch (error) {
+      continue;
+    }
+  }
+  
+  console.error(`Blog post with slug '${slug}' not found`);
+  return null;
 }
 
 export async function getAllPortfolioItems(): Promise<PortfolioItem[]> {

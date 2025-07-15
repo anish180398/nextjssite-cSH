@@ -16,6 +16,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+// Service interface
+interface Service {
+  id: string;
+  title: string;
+  slug: string;
+  icon: string;
+  description: string;
+  features: string[];
+  popular?: boolean;
+  price?: string;
+}
+
 // Icon mapping for service icons
 const iconMap: { [key: string]: LucideIcon } = {
   code: Code,
@@ -26,7 +38,7 @@ const iconMap: { [key: string]: LucideIcon } = {
   "bar-chart": BarChart,
 };
 
-const services = [
+const services: Service[] = [
   {
     id: "1",
     title: "Branding and Strategy", 
@@ -34,6 +46,7 @@ const services = [
     icon: "code",
     description: "Empower your projects with Reign of Vision's cutting-edge tools. Experience enhanced efficiency in construction management with our sophisticated automated solutions.",
     features: ["React & Next.js", "Node.js Backend", "Database Design", "API Integration"],
+    price: "Starting $2,500",
   },
   {
     id: "2",
@@ -42,6 +55,8 @@ const services = [
     icon: "smartphone",
     description: "Minimize complexity, maximize productivity. Reign of Vision's robust features are engineered to streamline your construction process, delivering results that stand out for their excellence.",
     features: ["iOS & Android", "React Native", "App Store Optimization", "Push Notifications"],
+    popular: true,
+    price: "Starting $5,000",
   },
   {
     id: "3",
@@ -50,6 +65,7 @@ const services = [
     icon: "palette", 
     description: "Transform your business with our digital transformation services. We help you leverage technology to drive growth, efficiency, and innovation.",
     features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
+    price: "Starting $3,500",
   },
   {
     id: "4",
@@ -58,6 +74,7 @@ const services = [
     icon: "search",
     description: "Improve your search rankings and drive organic traffic to your website.",
     features: ["SEO Optimization", "Social Media", "Content Strategy", "Analytics"],
+    price: "Starting $1,500",
   }
 ];
 

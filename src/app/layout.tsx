@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { ThemeProvider } from "@/components/providers/theme-provider";
+// Theme will be handled by Zustand store
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import "./globals.css";
@@ -116,27 +116,25 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.ctfassets.net" />
         <link rel="dns-prefetch" href="https://cdn.contentful.com" />
-        <meta name="theme-color" content="#940DE7" />
+        <meta name="theme-color" content="#731bdd" />
         <meta name="color-scheme" content="dark light" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Reign of Vision" />
         <meta name="application-name" content="Reign of Vision" />
-        <meta name="msapplication-TileColor" content="#940DE7" />
+        <meta name="msapplication-TileColor" content="#731bdd" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-brand-dark text-brand-white`}
         suppressHydrationWarning
       >
-        <ThemeProvider defaultTheme="dark" storageKey="Reign of Vision-theme">
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
+        <Header />
+        <main className="flex-1">
+          {children}
+        </main>
+        <Footer />
         
         {/* Google Analytics */}
         {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_GA_ID && (

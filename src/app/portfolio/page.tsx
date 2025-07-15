@@ -165,7 +165,7 @@ function PortfolioGridSkeleton() {
       {/* Grid Skeleton */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[...Array(6)].map((_, i) => (
-          <div key={i} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+          <div key={i} className="bg-brand-dark rounded-xl shadow-sm border border-brand-white/10 overflow-hidden">
             <div className="skeleton aspect-video"></div>
             <div className="p-6">
               <div className="skeleton h-6 w-3/4 mb-3 rounded-lg"></div>
@@ -197,23 +197,23 @@ async function PortfolioSection() {
 
 export default function PortfolioPage() {
   return (
-    <div className="min-h-screen bg-brand-white dark:bg-brand-dark">
+    <div className="min-h-screen bg-brand-dark">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br text-white py-20">
+      <section className="bg-gradient-to-br from-brand-dark to-brand-violet/10 text-brand-white py-40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Where Ideas Evolved into Reality
+              Where Ideas Evolved into <span className="text-brand-violet">Reality</span>
             </h1>
-            <p className="text-xl opacity-90 leading-relaxed">
-            Join the journey with us like our other partners
+            <p className="text-xl text-brand-white/80 leading-relaxed">
+              Join the journey with us like our other partners
             </p>
           </div>
         </div>
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-20 bg-brand-white dark:bg-brand-dark">
+      <section className="py-20 bg-brand-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <Suspense fallback={<PortfolioGridSkeleton />}>
@@ -224,16 +224,16 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-brand-violet/10 border-t border-brand-violet/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Ready to start your project?
+            <h2 className="text-3xl font-bold text-brand-white mb-4">
+              Ready to start your <span className="text-brand-violet">project?</span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+            <p className="text-xl text-brand-white/70 mb-8">
               Let's create something amazing together. Contact us to discuss your ideas.
             </p>
-            <Button asChild size="lg" className="bg-brand-violet hover:bg-brand-primary/80">
+            <Button asChild size="lg" className="bg-brand-violet hover:bg-brand-violet/90 text-brand-white">
               <Link href="/contact" className="flex items-center space-x-2">
                 <span>Get Started</span>
                 <ArrowRight className="h-5 w-5" />

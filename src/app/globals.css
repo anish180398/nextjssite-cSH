@@ -2,9 +2,9 @@
 
 @theme {
   --color-brand-dark: #000000;
-  --color-brand-violet: #940DE7;
+  --color-brand-violet: #18a60f;
   --color-brand-white: #EAEAEA;
-  --color-brand-orange: #6a23c4;
+  --color-brand-orange: #13b409;
 }
 
 :root {
@@ -14,19 +14,19 @@
   --card-foreground: #0D0D0D;
   --popover: #ffffff;
   --popover-foreground: #0D0D0D;
-  --primary: #940DE7;
-  --primary-foreground: #0D0D0D;
+  --primary: #731bdd;
+  --primary-foreground: #EAEAEA;
   --secondary: #EAEAEA;
   --secondary-foreground: #0D0D0D;
   --muted: #EAEAEA;
   --muted-foreground: #0D0D0D;
-  --accent: #940DE7;
-  --accent-foreground: #0D0D0D;
+  --accent: #731bdd;
+  --accent-foreground: #EAEAEA;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --border: #EAEAEA;
   --input: #EAEAEA;
-  --ring: #940DE7;
+  --ring: #731bdd;
   --radius: 0.5rem;
 }
 
@@ -61,19 +61,19 @@
   --card-foreground: #EAEAEA;
   --popover: #0D0D0D;
   --popover-foreground: #EAEAEA;
-  --primary: #940DE7;
+  --primary: #731bdd;
   --primary-foreground: #0D0D0D;
   --secondary: #1a1a1a;
   --secondary-foreground: #EAEAEA;
   --muted: #1a1a1a;
   --muted-foreground: #EAEAEA;
-  --accent: #940DE7;
+  --accent: #731bdd;
   --accent-foreground: #0D0D0D;
   --destructive: #7f1d1d;
   --destructive-foreground: #EAEAEA;
   --border: #1a1a1a;
   --input: #1a1a1a;
-  --ring: #940DE7;
+  --ring: #731bdd;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -84,19 +84,19 @@
     --card-foreground: #EAEAEA;
     --popover: #0D0D0D;
     --popover-foreground: #EAEAEA;
-    --primary: #940DE7;
+    --primary: #731bdd;
     --primary-foreground: #0D0D0D;
     --secondary: #1a1a1a;
     --secondary-foreground: #EAEAEA;
     --muted: #1a1a1a;
     --muted-foreground: #EAEAEA;
-    --accent: #940DE7;
+    --accent: #731bdd;
     --accent-foreground: #0D0D0D;
     --destructive: #7f1d1d;
     --destructive-foreground: #EAEAEA;
     --border: #1a1a1a;
     --input: #1a1a1a;
-    --ring: #940DE7;
+    --ring: #731bdd;
   }
 }
 
@@ -142,7 +142,7 @@ body {
 
 /* Grid pattern background */
 .bg-grid-pattern {
-  background-image: radial-gradient(circle, #940DE7 1px, transparent 1px);
+  background-image: radial-gradient(circle, #731bdd 1px, transparent 1px);
 }
 
 /* Smooth scrolling */

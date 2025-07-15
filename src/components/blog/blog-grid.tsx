@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Calendar, Clock, User, ArrowRight, Search } from "lucide-react";
 import { BlogPost } from "@/lib/contentful";
-import TagFilter, { useTagFilter, extractTags } from "@/components/ui/tag-filter";
+import { TagFilter, useTagFilter, extractTags } from "@/components/ui/tag-filter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatDate, getReadingTime } from "@/lib/utils";
@@ -15,81 +15,89 @@ function BlogCard({ post }: { post: BlogPost }) {
     ? `${getReadingTime(JSON.stringify(post.fields.body))} min read`
     : "5 min read";
 
+  // Truncate excerpt to a reasonable length
+  const truncatedExcerpt = post.fields.excerpt && post.fields.excerpt.length > 120 
+    ? `${post.fields.excerpt.substring(0, 120)}...`
+    : post.fields.excerpt || "Click to read more about this article...";
+
   return (
-    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
-      <div className="relative aspect-video overflow-hidden">
-        {post.fields.coverImage?.fields?.file?.url ? (
-          <Image
-            src={`https:${post.fields.coverImage.fields.file.url}`}
-            alt={post.fields.title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-            <div className="text-4xl">✍️</div>
-          </div>
-        )}
-        <div className="absolute inset-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-      </div>
-      
-      <CardHeader>
-        <CardTitle className="text-xl group-hover:text-blue-600 transition-colors line-clamp-2">
-          {post.fields.title}
-        </CardTitle>
-      </CardHeader>
-      
-      <CardContent className="flex flex-col h-full">
-        <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3 flex-grow">
-          {post.fields.excerpt}
-        </p>
-        
-        {/* Meta Information */}
-        <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-1">
-              <User className="h-4 w-4" />
-              <span>{post.fields.author || "Reign of Vision"}</span>
+    <Link href={`/blog/${post.fields.slug}`} className="block group">
+      <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-brand-dark border-brand-white/10 hover:border-brand-violet/50 cursor-pointer">
+        <div className="relative aspect-video overflow-hidden">
+          {post.fields.coverImage?.fields?.file?.url ? (
+            <Image
+              src={`https:${post.fields.coverImage.fields.file.url}`}
+              alt={post.fields.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-brand-violet/20 to-brand-violet/10 flex items-center justify-center">
+              <div className="text-4xl">✍️</div>
             </div>
-            <div className="flex items-center space-x-1">
-              <Calendar className="h-4 w-4" />
-              <span>{formatDate(post.fields.publishedDate || post.sys.createdAt)}</span>
-            </div>
-          </div>
-          <div className="flex items-center space-x-1">
-            <Clock className="h-4 w-4" />
-            <span>{readingTime}</span>
-          </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
         
-        {/* Tags */}
-        {post.fields.tags && post.fields.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
-            {post.fields.tags.slice(0, 3).map((tag, index) => (
-              <span
-                key={index}
-                className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
-            {post.fields.tags.length > 3 && (
-              <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-                +{post.fields.tags.length - 3} more
-              </span>
-            )}
-          </div>
-        )}
+        <CardHeader className="pb-2">
+          <CardTitle className="text-xl text-brand-white group-hover:text-brand-violet transition-colors line-clamp-2 leading-tight">
+            {post.fields.title}
+          </CardTitle>
+        </CardHeader>
         
-        <Button asChild variant="outline" size="sm" className="w-full group mt-auto">
-          <Link href={`/blog/${post.fields.slug}`} className="flex items-center justify-center space-x-2">
-            <span>Read More</span>
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </Button>
-      </CardContent>
-    </Card>
+        <CardContent className="flex flex-col h-full pt-0">
+          <p className="text-brand-white/70 mb-4 leading-relaxed text-sm flex-grow">
+            {truncatedExcerpt}
+          </p>
+          
+          {/* Meta Information */}
+          <div className="flex items-center justify-between text-xs text-brand-white/60 mb-4">
+            <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-1">
+                <User className="h-3 w-3" />
+                <span>{post.fields.author || "Reign of Vision"}</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <Calendar className="h-3 w-3" />
+                <span>{formatDate(post.fields.publishedDate || post.sys.createdAt)}</span>
+              </div>
+            </div>
+            <div className="flex items-center space-x-1">
+              <Clock className="h-3 w-3" />
+              <span>{readingTime}</span>
+            </div>
+          </div>
+          
+          {/* Tags */}
+          {post.fields.tags && post.fields.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {post.fields.tags.slice(0, 2).map((tag, index) => (
+                <span
+                  key={index}
+                  className="px-2 py-1 bg-brand-violet/20 text-brand-violet text-xs rounded-full border border-brand-violet/30"
+                >
+                  {tag}
+                </span>
+              ))}
+              {post.fields.tags.length > 2 && (
+                <span className="px-2 py-1 bg-brand-white/10 text-brand-white/60 text-xs rounded-full">
+                  +{post.fields.tags.length - 2}
+                </span>
+              )}
+            </div>
+          )}
+          
+          {/* Read More Button */}
+          <div className="mt-auto">
+            <div className="flex items-center justify-between text-brand-violet group-hover:text-brand-white transition-colors">
+              <span className="text-sm font-medium">Read More</span>
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
 
@@ -121,13 +129,13 @@ export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
       <div className="mb-8 space-y-4">
         {/* Search Bar */}
         <div className="relative max-w-md mx-auto">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-brand-white/50" />
           <input
             type="text"
             placeholder="Search blog posts..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 border border-brand-white/20 rounded-lg bg-brand-dark/50 text-brand-white placeholder-brand-white/50 focus:ring-2 focus:ring-brand-violet focus:border-brand-violet"
           />
         </div>
 
@@ -148,7 +156,7 @@ export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
 
       {filteredPosts.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-600 text-lg">
+          <p className="text-brand-white/70 text-lg">
             {searchQuery ? 
               `No blog posts found for "${searchQuery}". Try a different search term.` :
               `No blog posts found for "${selectedTag}". Try selecting a different tag.`

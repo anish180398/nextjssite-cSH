@@ -225,38 +225,38 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const relatedServices = services.filter(s => s.id !== service.id).slice(0, 3);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-brand-dark">
       {/* Breadcrumbs */}
-      <section className="bg-gray-50 py-4">
+      <section className="bg-brand-dark  pt-32">
         <div className="container mx-auto px-4">
-          <nav className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600 flex items-center">
+          <nav className="flex items-center space-x-2 text-sm text-brand-white/70">
+            <Link href="/" className="hover:text-brand-violet flex items-center transition-colors">
               <Home className="h-4 w-4 mr-1" />
               Home
             </Link>
             <ChevronRight className="h-4 w-4" />
-            <Link href="/services" className="hover:text-blue-600">
+            <Link href="/services" className="hover:text-brand-violet transition-colors">
               Services
             </Link>
             <ChevronRight className="h-4 w-4" />
-            <span className="text-gray-900">{service.title}</span>
+            <span className="text-brand-white">{service.title}</span>
           </nav>
         </div>
       </section>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+      <section className="bg-gradient-to-br from-brand-dark to-brand-violet/10 py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-6">
-              <div className="p-4 bg-blue-600 rounded-2xl">
-                <IconComponent className="h-12 w-12 text-white" />
+              <div className="p-4 bg-brand-violet/20 rounded-2xl border border-brand-violet/30">
+                <IconComponent className="h-12 w-12 text-brand-violet" />
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-white mb-6">
               {service.title}
             </h1>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-brand-white/70 leading-relaxed">
               {service.fullDescription}
             </p>
           </div>
@@ -264,19 +264,19 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* Main Content */}
-      <section className="py-20">
+      <section className="py-20 bg-brand-dark">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2">
               {/* Features */}
               <div className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">What We Offer</h2>
+                <h2 className="text-3xl font-bold text-brand-white mb-6">What We Offer</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {service.features.map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                    <div key={index} className="flex items-center space-x-3 bg-brand-violet/10 p-4 rounded-lg border border-brand-violet/20">
+                      <CheckCircle className="h-5 w-5 text-brand-violet flex-shrink-0" />
+                      <span className="text-brand-white/90">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -284,14 +284,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               {/* Key Benefits */}
               <div className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Key Benefits</h2>
+                <h2 className="text-3xl font-bold text-brand-white mb-6">Key Benefits</h2>
                 <div className="space-y-4">
                   {service.benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-blue-600 text-sm font-semibold">{index + 1}</span>
+                    <div key={index} className="flex items-start space-x-3 bg-brand-violet/10 p-4 rounded-lg border border-brand-violet/20">
+                      <div className="w-6 h-6 bg-brand-violet/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 border border-brand-violet/30">
+                        <span className="text-brand-violet text-sm font-semibold">{index + 1}</span>
                       </div>
-                      <p className="text-gray-700">{benefit}</p>
+                      <p className="text-brand-white/90">{benefit}</p>
                     </div>
                   ))}
                 </div>
@@ -299,10 +299,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               {/* Technologies */}
               <div className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Technologies We Use</h2>
+                <h2 className="text-3xl font-bold text-brand-white mb-6">Technologies We Use</h2>
                 <div className="flex flex-wrap gap-3">
                   {service.technologies.map((tech, index) => (
-                    <Badge key={index} variant="secondary" className="px-3 py-1">
+                    <Badge key={index} className="px-3 py-1 bg-brand-violet/20 text-brand-violet border border-brand-violet/30 hover:bg-brand-violet/30 transition-colors">
                       {tech}
                     </Badge>
                   ))}
@@ -312,18 +312,18 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <Card className="sticky top-8">
+              <Card className="sticky top-8 bg-brand-dark border-brand-white/10">
                 <CardHeader>
-                  <CardTitle>Ready to Get Started?</CardTitle>
+                  <CardTitle className="text-brand-white">Ready to Get Started?</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-gray-600">
+                  <p className="text-brand-white/70">
                     Let's discuss your project and see how we can help you achieve your goals.
                   </p>
-                  <Button asChild className="w-full">
+                  <Button asChild className="w-full bg-brand-violet hover:bg-brand-violet/90 text-brand-dark">
                     <Link href="/contact">Get a Quote</Link>
                   </Button>
-                  <Button asChild variant="outline" className="w-full">
+                  <Button asChild variant="outline" className="w-full border-brand-violet text-brand-violet hover:bg-brand-violet hover:text-brand-dark">
                     <Link href="/portfolio">View Our Work</Link>
                   </Button>
                 </CardContent>
@@ -335,28 +335,28 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       {/* Related Services */}
       {relatedServices.length > 0 && (
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-gradient-to-br from-brand-dark to-brand-violet/5 border-t border-brand-white/10">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Related Services</h2>
-              <p className="text-lg text-gray-600">Explore our other services that might interest you</p>
+              <h2 className="text-3xl font-bold text-brand-white mb-4">Related Services</h2>
+              <p className="text-lg text-brand-white/70">Explore our other services that might interest you</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {relatedServices.map((relatedService) => {
                 const RelatedIconComponent = iconMap[relatedService.icon as keyof typeof iconMap] || Code;
                 return (
-                  <Card key={relatedService.id} className="group hover:shadow-lg transition-all duration-300">
+                  <Card key={relatedService.id} className="group hover:shadow-xl transition-all duration-300 bg-brand-dark border-brand-white/10 hover:border-brand-violet/50">
                     <CardHeader>
                       <div className="flex items-center space-x-3 mb-4">
-                        <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
-                          <RelatedIconComponent className="h-6 w-6 text-blue-600" />
+                        <div className="p-3 bg-brand-violet/20 rounded-lg group-hover:bg-brand-violet/30 transition-colors border border-brand-violet/30">
+                          <RelatedIconComponent className="h-6 w-6 text-brand-violet" />
                         </div>
-                        <CardTitle className="text-xl">{relatedService.title}</CardTitle>
+                        <CardTitle className="text-xl text-brand-white group-hover:text-brand-violet transition-colors">{relatedService.title}</CardTitle>
                       </div>
-                      <p className="text-gray-600">{relatedService.description}</p>
+                      <p className="text-brand-white/70">{relatedService.description}</p>
                     </CardHeader>
                     <CardContent>
-                      <Button asChild variant="outline" className="w-full group">
+                      <Button asChild variant="outline" className="w-full group border-brand-violet text-brand-violet hover:bg-brand-violet hover:text-brand-dark">
                         <Link href={`/services/${relatedService.slug}`} className="flex items-center justify-center space-x-2">
                           <span>Learn More</span>
                           <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -372,19 +372,19 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       )}
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
+      <section className="py-20 bg-gradient-to-br from-brand-violet/20 to-brand-dark border-t border-brand-violet/20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Transform Your Business?
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-4">
+            Ready to Transform Your <span className="text-brand-violet">Business?</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-brand-white/70 mb-8 max-w-2xl mx-auto">
             Let's work together to bring your vision to life with our {service.title.toLowerCase()} expertise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary">
+            <Button asChild size="lg" className="bg-brand-violet hover:bg-brand-violet/90 text-brand-dark">
               <Link href="/contact">Start Your Project</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-blue-600">
+            <Button asChild size="lg" variant="outline" className="border-brand-violet text-brand-violet hover:bg-brand-violet hover:text-brand-dark">
               <Link href="/services">View All Services</Link>
             </Button>
           </div>
