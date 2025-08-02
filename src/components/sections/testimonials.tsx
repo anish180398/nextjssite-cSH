@@ -199,53 +199,7 @@ export function Testimonials() {
           ))}
         </div>
 
-        {/* All Testimonials Grid (Hidden on mobile, shown on larger screens) */}
-        <div className="hidden lg:grid lg:grid-cols-3 gap-6">
-          {testimonials.slice(0, 3).map((testimonial, index) => (
-            <Card
-              key={testimonial.id}
-              className={`cursor-pointer transition-all duration-300 bg-brand-dark border-2 ${
-                index === currentIndex % 3
-                  ? "border-brand-violet"
-                  : "border-brand-white/10 hover:border-brand-violet/50"
-              }`}
-              onClick={() => goToSlide(index)}
-            >
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-3 mb-4">
-                  <Avatar className="w-12 h-12">
-                    <AvatarImage 
-                      src={testimonial.image} 
-                      alt={testimonial.name}
-                      className="object-cover"
-                    />
-                    <AvatarFallback className="bg-brand-violet text-brand-dark font-semibold">
-                      {testimonial.name.split(' ').map(n => n[0]).join('')}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-semibold text-brand-white text-sm">
-                      {testimonial.name}
-                    </div>
-                    <div className="text-brand-white/70 text-xs">
-                      {testimonial.company}
-                    </div>
-                  </div>
-                </div>
-                
-                <p className="text-brand-white/80 text-sm line-clamp-3">
-                  "{testimonial.content}"
-                </p>
-                
-                <div className="flex items-center mt-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-brand-violet fill-current" />
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+       
       </div>
     </section>
   );

@@ -8,12 +8,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Reign of Vision - Our Story & Team",
     description: "Meet the talented team behind Reign of Vision and discover our mission to transform businesses through innovative digital solutions.",
-    url: "https://Reign of Vision.com/about",
+    url: "https://reignofvision.com/about",
   }
 };
-
-
-
 
 export default function AboutPage() {
   return (
@@ -123,7 +120,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
 
       {/* CTA Section */}
       <section className="py-20 bg-brand-violet/10 border-t border-brand-violet/20">

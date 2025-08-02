@@ -149,8 +149,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Reign of Vision",
-              "url": "https://Reign of Vision.com",
-              "logo": "https://Reign of Vision.com/logo.png",
+              "url": "https://reignofvision.com",
+              "logo": "https://reignofvision.com/logo.png",
               "description": "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions.",
               "address": {
                 "@type": "PostalAddress",
@@ -162,12 +162,12 @@ export default function RootLayout({
                 "@type": "ContactPoint",
                 "telephone": "+1-234-567-8900",
                 "contactType": "customer service",
-                "email": "hello@Reign of Vision.com"
+                "email": "hello@reignofvision.com"
               },
               "sameAs": [
-                "https://twitter.com/Reign of Vision",
-                "https://github.com/Reign of Vision",
-                "https://linkedin.com/company/Reign of Vision"
+                "https://twitter.com/Reignofvision",
+                "https://github.com/Reignofvision",
+                "https://linkedin.com/company/Reignofvision"
               ],
               "founder": {
                 "@type": "Person",

@@ -109,47 +109,59 @@ export function PortfolioShowcase() {
         </div>
 
         {/* Specializations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-20">
-          {specializations.map((spec, index) => {
-            const IconComponent = spec.icon;
-            return (
-              <Card
-                key={index}
-                className="group hover:shadow-xl transition-all duration-300 bg-brand-dark  hover:-translate-y-1"
-              >
-                <CardContent className="p-6 text-center">
-                  {/* Icon */}
-                  <div className="mb-4">
-                    <div className="w-16 h-16 bg-brand-orange/10 rounded-xl flex items-center justify-center mx-auto group-hover:bg-brand-orange/20 transition-colors duration-300">
-                      <IconComponent className="w-8 h-8 text-brand-orange" />
-                    </div>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-20">
+  {specializations.map((spec, index) => {
+    const IconComponent = spec.icon;
+    return (
+      <Card
+        key={index}
+        className="group relative overflow-hidden hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-brand-dark via-brand-dark/95 to-brand-dark/90  hover:border-brand-orange/30 hover:-translate-y-2 rounded-2xl"
+      >
+        {/* Animated border glow */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-brand-orange/20 via-brand-violet/20 to-brand-orange/20 opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500" />
+        
+        <CardContent className="relative p-8 text-center">
+          {/* Icon with enhanced styling */}
+          <div className="mb-6">
+            <div className="relative">
+              <div className="w-20 h-20 bg-gradient-to-br from-brand-orange/20 to-brand-violet/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:from-brand-orange/30 group-hover:to-brand-violet/20 transition-all duration-300 shadow-lg">
+                <IconComponent className="w-10 h-10 text-brand-orange group-hover:text-brand-white transition-colors duration-300" />
+              </div>
+              {/* Icon glow effect */}
+              <div className="absolute inset-0 w-20 h-20 bg-brand-orange/20 rounded-2xl blur-md opacity-0 group-hover:opacity-50 transition-opacity duration-300 mx-auto" />
+            </div>
+          </div>
 
-                  {/* Content */}
-                  <h3 className="text-xl font-bold text-brand-white mb-2 group-hover:text-brand-orange transition-colors duration-200">
-                    {spec.title}
-                  </h3>
-                  
-                  <p className="text-brand-white/70 text-md mb-4">
-                    {spec.description}
-                  </p>
+          {/* Enhanced title */}
+          <h3 className="text-2xl font-bold text-brand-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-brand-orange group-hover:to-brand-violet group-hover:bg-clip-text transition-all duration-300">
+            {spec.title}
+          </h3>
+          
+          {/* Description with better spacing */}
+          <p className="text-brand-white/80 text-base leading-relaxed mb-6 group-hover:text-brand-white/90 transition-colors duration-300">
+            {spec.description}
+          </p>
 
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-1 justify-center">
-                    {spec.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-2 py-1 text-sm font-medium text-brand-violet"
-                      >
-                        #{tech}
-                      </span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+          {/* Enhanced technologies section */}
+          <div className="space-y-3">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent via-brand-orange/50 to-transparent mx-auto" />
+            <div className="flex flex-wrap gap-2 justify-center">
+              {spec.technologies.map((tech, techIndex) => (
+                <span
+                  key={techIndex}
+                  className="px-3 py-1.5 text-sm font-medium text-brand-violet bg-brand-white/5 rounded-full border border-brand-violet/20 hover:bg-brand-violet/10 hover:border-brand-violet/40 hover:text-brand-white transition-all duration-200 backdrop-blur-sm"
+                >
+                  #{tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  })}
+</div>
+
 
         {/* Featured Projects Section */}
         <div className="mb-16">

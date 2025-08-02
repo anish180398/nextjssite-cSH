@@ -12,7 +12,7 @@ export const metadata = {
     title: "Reign of Vision - Digital Innovation Agency",
     description: "Transform your digital dreams into reality with cutting-edge web development, innovative design, and strategic digital marketing.",
     type: "website",
-    url: "https://Reign of Vision.com",
+    url: "https://reignofvision.com",
   },
   twitter: {
     card: "summary_large_image",
