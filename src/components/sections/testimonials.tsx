@@ -94,113 +94,198 @@ export function Testimonials() {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className="py-24 bg-brand-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-white mb-6">
-            What Our <span className="text-brand-violet">Clients Say</span>
-          </h2>
-          <p className="text-lg text-brand-white/70 max-w-3xl mx-auto">
+    <section className="relative py-24 bg-gradient-to-br from-brand-dark via-slate-900 to-brand-dark overflow-hidden">
+      {/* Enhanced 3D Background Elements */}
+      <div className="absolute inset-0">
+        {/* Floating testimonial elements */}
+        <div className="absolute top-20 left-10 w-28 h-28 bg-gradient-to-br from-brand-violet/15 to-brand-orange/10 rounded-full animate-float blur-lg opacity-60"></div>
+        <div className="absolute top-60 right-16 w-20 h-20 bg-gradient-to-br from-brand-orange/20 to-brand-violet/10 rounded-2xl rotate-45 animate-float animation-delay-2000 blur-sm opacity-50"></div>
+        <div className="absolute bottom-40 left-1/4 w-36 h-36 bg-gradient-to-br from-brand-violet/10 to-brand-orange/15 rounded-3xl rotate-12 animate-float animation-delay-4000 blur-xl opacity-40"></div>
+        
+        {/* Quote patterns */}
+        <div className="absolute top-32 right-1/4 opacity-5">
+          <Quote className="w-32 h-32 text-brand-violet transform rotate-12" />
+        </div>
+        <div className="absolute bottom-32 left-1/4 opacity-5">
+          <Quote className="w-24 h-24 text-brand-orange transform -rotate-12" />
+        </div>
+        
+        {/* Dynamic gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-conic from-brand-violet/5 via-transparent via-brand-orange/5 to-brand-violet/5 animate-spin-slow"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-radial from-brand-violet/8 via-brand-violet/3 to-transparent blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/3 w-[600px] h-[600px] bg-gradient-radial from-brand-orange/8 via-brand-orange/3 to-transparent blur-3xl"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Enhanced Header */}
+        <div className="text-center mb-20">
+          <div className="relative">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-white mb-6 leading-tight">
+              <span className="drop-shadow-2xl">What Our </span>
+              <span className="bg-gradient-to-r from-brand-violet via-brand-orange to-brand-violet bg-clip-text text-transparent drop-shadow-2xl animate-gradient-x">Clients Say</span>
+            </h2>
+            
+            {/* 3D text shadow effect */}
+            <div className="absolute inset-0 text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-violet/10 blur-xl transform translate-x-3 translate-y-3 -z-10">
+              What Our Clients Say
+            </div>
+          </div>
+          
+          <p className="text-lg text-brand-white/80 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
             Don't just take our word for it. Here's what our clients have to say about working with us.
           </p>
         </div>
 
-        {/* Main Testimonial Card */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <Card className="relative overflow-hidden bg-brand-dark border-2 border-brand-white/10 hover:border-brand-violet/50 transition-all duration-300">
-            <CardContent className="p-8 md:p-12">
-              {/* Quote Icon */}
-              <div className="absolute top-6 right-6 opacity-10">
-                <Quote className="w-16 h-16 text-brand-violet" />
-              </div>
-
-              {/* Stars */}
-              <div className="flex items-center justify-center mb-6">
-                {[...Array(currentTestimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-brand-violet fill-current" />
-                ))}
-              </div>
-
-              {/* Testimonial Content */}
-              <blockquote className="text-xl md:text-2xl text-brand-white text-center leading-relaxed mb-8 font-medium">
-                "{currentTestimonial.content}"
-              </blockquote>
-
-              {/* Author Info */}
-              <div className="flex items-center justify-center space-x-4">
-                <Avatar className="w-16 h-16 border-2 border-brand-violet/30">
-                  <AvatarImage 
-                    src={currentTestimonial.image} 
-                    alt={currentTestimonial.name}
-                    className="object-cover"
-                  />
-                  <AvatarFallback className="bg-brand-violet text-brand-dark font-semibold text-lg">
-                    {currentTestimonial.name.split(' ').map(n => n[0]).join('')}
-                  </AvatarFallback>
-                </Avatar>
-                
-                <div className="text-center">
-                  <div className="font-bold text-brand-white text-lg">
-                    {currentTestimonial.name}
-                  </div>
-                  <div className="text-brand-white/70 text-sm">
-                    {currentTestimonial.role}
-                  </div>
-                  <div className="text-brand-violet text-sm font-medium">
-                    {currentTestimonial.company}
+        {/* Enhanced Main Testimonial Card */}
+        <div className="max-w-5xl mx-auto mb-16">
+          <div className="relative perspective-1000">
+            {/* 3D Card container */}
+            <Card className="group relative overflow-hidden bg-gradient-to-br from-brand-dark/90 via-slate-800/60 to-brand-dark/90 border-2 border-brand-white/10 hover:border-brand-violet/50 transition-all duration-700 rounded-3xl backdrop-blur-xl shadow-2xl shadow-brand-violet/10 hover:shadow-brand-violet/20 transform-gpu hover:scale-[1.02]">
+              {/* Enhanced background effects */}
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-violet/5 via-transparent to-brand-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-brand-violet/10 via-transparent to-brand-orange/10 opacity-0 group-hover:opacity-40 blur-2xl transition-all duration-500" />
+              
+              {/* 3D depth shadow */}
+              <div className="absolute inset-0 bg-brand-dark/40 rounded-3xl transform translate-x-6 translate-y-6 blur-xl -z-10 opacity-60"></div>
+              
+              <CardContent className="relative p-10 md:p-16 z-10">
+                {/* Enhanced Quote Icon */}
+                <div className="absolute top-8 right-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                  <div className="relative">
+                    <Quote className="w-20 h-20 text-brand-violet drop-shadow-2xl" />
+                    <div className="absolute inset-0 w-20 h-20 bg-brand-violet/20 rounded-full blur-xl"></div>
                   </div>
                 </div>
-              </div>
 
-              {/* Project Badge */}
-              <div className="text-center mt-6">
-                <span className="inline-flex items-center px-4 py-2 rounded-full bg-brand-violet/10 border border-brand-violet/20 text-brand-violet text-sm font-medium">
-                  Project: {currentTestimonial.project}
-                </span>
-              </div>
-            </CardContent>
-          </Card>
+                {/* Enhanced Stars */}
+                <div className="flex items-center justify-center mb-8">
+                  <div className="flex items-center gap-1 p-3 bg-gradient-to-r from-brand-violet/20 to-brand-orange/10 rounded-full backdrop-blur-sm border border-brand-violet/20">
+                    {[...Array(currentTestimonial.rating)].map((_, i) => (
+                      <div key={i} className="relative">
+                        <Star className="w-6 h-6 text-brand-violet fill-current drop-shadow-lg" />
+                        <div className="absolute inset-0 w-6 h-6 bg-brand-violet/30 rounded-full blur-sm opacity-50"></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Enhanced Testimonial Content */}
+                <blockquote className="text-xl md:text-2xl lg:text-3xl text-brand-white text-center leading-relaxed mb-12 font-medium drop-shadow-xl">
+                  <span className="text-brand-violet text-4xl font-serif">"</span>
+                  {currentTestimonial.content}
+                  <span className="text-brand-violet text-4xl font-serif">"</span>
+                </blockquote>
+
+                {/* Enhanced Author Info */}
+                <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 mb-8">
+                  <div className="relative group/avatar">
+                   
+                    
+                    {/* Avatar glow effect */}
+                    <div className="absolute inset-0 w-20 h-20 bg-brand-violet/30 rounded-full blur-lg opacity-0 group-hover/avatar:opacity-60 transition-opacity duration-300"></div>
+                    
+                    {/* 3D shadow for avatar */}
+                    <div className="absolute inset-0 w-20 h-20 bg-brand-dark/60 rounded-full transform translate-x-2 translate-y-2 blur-md -z-10"></div>
+                  </div>
+                  
+                  <div className="text-center md:text-left">
+                    <div className="font-bold text-brand-white text-xl mb-1 drop-shadow-lg">
+                      {currentTestimonial.name}
+                    </div>
+                    <div className="text-brand-white/80 text-base mb-1 drop-shadow-sm">
+                      {currentTestimonial.role}
+                    </div>
+                    <div className="bg-gradient-to-r from-brand-violet to-brand-orange bg-clip-text text-transparent text-base font-semibold drop-shadow-lg">
+                      {currentTestimonial.company}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Enhanced Project Badge */}
+                <div className="text-center">
+                  <span className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-brand-violet/20 to-brand-orange/10 border border-brand-violet/30 text-brand-violet text-base font-semibold backdrop-blur-sm shadow-lg shadow-brand-violet/20 hover:shadow-brand-violet/40 transition-all duration-300 hover:scale-105 transform-gpu">
+                    <div className="w-2 h-2 bg-brand-violet rounded-full mr-3 animate-pulse"></div>
+                    Project: {currentTestimonial.project}
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
-        {/* Navigation Controls */}
-        <div className="flex items-center justify-center space-x-4 mb-8">
+        {/* Enhanced Navigation Controls */}
+        <div className="flex items-center justify-center space-x-6 mb-12">
           <Button
             variant="outline"
             size="icon"
             onClick={goToPrevious}
-            className="w-12 h-12 rounded-full border-2 border-brand-violet/30 text-brand-violet hover:bg-brand-violet hover:text-brand-dark transition-all duration-200"
+            className="group w-16 h-16 rounded-full border-2 border-brand-violet/40 bg-gradient-to-r from-brand-dark/80 to-brand-dark/60 text-brand-violet hover:bg-gradient-to-r hover:from-brand-violet hover:to-brand-violet hover:text-brand-white transition-all duration-300 backdrop-blur-sm shadow-xl shadow-brand-violet/20 hover:shadow-brand-violet/40 hover:scale-110 transform-gpu"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-6 h-6 drop-shadow-lg group-hover:-translate-x-1 transition-transform duration-300" />
           </Button>
+
+          <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-brand-violet/20 to-brand-orange/10 border border-brand-violet/20 backdrop-blur-sm">
+            <div className="text-brand-white font-semibold text-sm drop-shadow-lg">
+              {currentIndex + 1} / {testimonials.length}
+            </div>
+          </div>
 
           <Button
             variant="outline"
             size="icon"
             onClick={goToNext}
-            className="w-12 h-12 rounded-full border-2 border-brand-violet/30 text-brand-violet hover:bg-brand-violet hover:text-brand-dark transition-all duration-200"
+            className="group w-16 h-16 rounded-full border-2 border-brand-violet/40 bg-gradient-to-r from-brand-dark/80 to-brand-dark/60 text-brand-violet hover:bg-gradient-to-r hover:from-brand-violet hover:to-brand-violet hover:text-brand-white transition-all duration-300 backdrop-blur-sm shadow-xl shadow-brand-violet/20 hover:shadow-brand-violet/40 hover:scale-110 transform-gpu"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-6 h-6 drop-shadow-lg group-hover:translate-x-1 transition-transform duration-300" />
           </Button>
         </div>
 
-        {/* Dots Indicator */}
-        <div className="flex items-center justify-center space-x-2 mb-12">
+        {/* Enhanced Dots Indicator */}
+        <div className="flex items-center justify-center space-x-4 mb-16">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-200 ${
+              className={`transition-all duration-300 transform hover:scale-125 ${
                 index === currentIndex
-                  ? "bg-brand-violet scale-125"
-                  : "bg-brand-white/30 hover:bg-brand-white/50"
+                  ? "w-12 h-4 bg-gradient-to-r from-brand-violet to-brand-orange rounded-full shadow-lg shadow-brand-violet/50"
+                  : "w-4 h-4 bg-brand-white/30 hover:bg-brand-white/50 rounded-full shadow-md hover:shadow-brand-white/30"
               }`}
             />
           ))}
         </div>
 
-       
+        {/* Additional Client Logos Section */}
+        <div className="text-center">
+          <div className="relative p-8 rounded-3xl bg-gradient-to-br from-brand-dark/60 via-slate-800/40 to-brand-dark/60 border border-brand-white/10 backdrop-blur-xl shadow-xl shadow-brand-violet/5">
+            {/* Background effects */}
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-violet/5 via-transparent to-brand-orange/5 rounded-3xl blur-xl"></div>
+            
+            <div className="relative z-10">
+              <h3 className="text-xl font-bold text-brand-white mb-4 drop-shadow-lg">
+                Trusted by <span className="bg-gradient-to-r from-brand-violet to-brand-orange bg-clip-text text-transparent">Leading Companies</span>
+              </h3>
+              
+              <p className="text-brand-white/70 mb-6 drop-shadow-sm">
+                Join our growing list of satisfied clients who have transformed their digital presence with us.
+              </p>
+              
+              <div className="flex items-center justify-center">
+                <a
+                  href="/testimonials"
+                  className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-brand-violet/20 to-brand-orange/10 text-brand-white font-semibold rounded-xl border border-brand-violet/30 hover:from-brand-violet/30 hover:to-brand-orange/20 hover:border-brand-violet/50 transition-all duration-300 hover:scale-105 backdrop-blur-sm shadow-lg shadow-brand-violet/20 hover:shadow-brand-violet/40 transform-gpu"
+                >
+                  <span className="drop-shadow-lg">View All Testimonials</span>
+                  <ChevronRight className="ml-2 w-4 h-4 drop-shadow-lg" />
+                </a>
+              </div>
+            </div>
+            
+            {/* 3D depth shadow */}
+            <div className="absolute inset-0 bg-brand-dark/40 rounded-3xl transform translate-x-4 translate-y-4 blur-lg -z-10"></div>
+          </div>
+        </div>
       </div>
     </section>
   );
-} 
+}
