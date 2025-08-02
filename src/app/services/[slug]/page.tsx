@@ -394,7 +394,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             {/* Enhanced Sidebar */}
             <div className="lg:col-span-1">
               <div className="sticky top-8">
-                <Card className="relative bg-gradient-to-br from-brand-dark/90 via-slate-800/60 to-brand-dark/90 border border-brand-white/10 backdrop-blur-xl shadow-2xl shadow-brand-violet/10 rounded-3xl overflow-hidden">
+                <Card className="relative bg-gradient-to-br from-brand-dark/90 via-slate-800/60 to-brand-dark/90 border border-brand-white/10 backdrop-blur-xl shadow-2xl shadow-brand-violet/10 rounded-3xl overflow-hidden p-5">
                   <div className="absolute inset-0 bg-gradient-to-r from-brand-violet/10 via-transparent to-brand-orange/10 rounded-3xl blur-2xl"></div>
                   <div className="absolute inset-0 bg-brand-dark/40 rounded-3xl transform translate-x-3 translate-y-3 blur-lg -z-10"></div>
                   
@@ -453,7 +453,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 return (
                   <Card 
                     key={relatedService.id} 
-                    className="group relative overflow-hidden hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-brand-dark/90 via-slate-800/50 to-brand-dark/90 border border-brand-white/10 hover:border-brand-violet/40 hover:-translate-y-3 rounded-3xl backdrop-blur-sm shadow-xl shadow-brand-dark/30 hover:shadow-brand-violet/20 transform-gpu"
+                    className="group relative overflow-hidden hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-brand-dark/90 via-slate-800/50 to-brand-dark/90 border border-brand-white/10 hover:border-brand-violet/40 hover:-translate-y-3 rounded-3xl backdrop-blur-sm shadow-xl shadow-brand-dark/30 hover:shadow-brand-violet/20 transform-gpu p-5"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-brand-violet/5 via-transparent to-brand-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-brand-violet/10 via-transparent to-brand-orange/10 opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500" />
