@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 import { 
   getAllBlogPosts, 
   getAllPortfolioItems,
+  getAllProjects,
 } from '@/lib/contentful'
 
 // Static services data
@@ -15,7 +16,7 @@ const services = [
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://Reign of Vision.com'
+  const baseUrl = 'https://reignofvision.com'
   
   // Static pages
   const staticPages = [
@@ -44,6 +45,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/projects`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
@@ -55,13 +62,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
   ]
 
   try {
     // Fetch dynamic content
-    const [blogPosts, portfolioItems] = await Promise.all([
+    const [blogPosts, portfolioItems, projectItems] = await Promise.all([
       getAllBlogPosts(),
       getAllPortfolioItems(),
+      getAllProjects(),
     ])
 
     // Service pages
@@ -88,11 +108,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     }))
 
+    // Project pages (external links, but still indexed)
+    const projectPages = projectItems.map((item) => ({
+      url: `${baseUrl}/projects`,
+      lastModified: new Date(item.sys.updatedAt),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }))
+
     return [
       ...staticPages,
       ...servicePages,
       ...blogPages,
       ...portfolioPages,
+      ...projectPages,
     ]
   } catch (error) {
     console.error('Error generating sitemap:', error)
