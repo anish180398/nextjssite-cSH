@@ -73,6 +73,21 @@ export interface Testimonial {
   };
 }
 
+export interface Project {
+  sys: {
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+  fields: {
+    title: string;
+    slug: string; // This will be the external link
+    excerpt: string;
+    coverImage: ContentfulAsset;
+    tags: string[];
+  };
+}
+
 // Helper function to check available content types
 export async function getContentTypes() {
   try {
@@ -195,6 +210,19 @@ export async function getAllTestimonials(): Promise<Testimonial[]> {
     return response.items as unknown as Testimonial[];
   } catch (error) {
     console.error('Error fetching testimonials:', error);
+    return [];
+  }
+}
+
+export async function getAllProjects(): Promise<Project[]> {
+  try {
+    const response = await client.getEntries({
+      content_type: 'projects',
+      order: ['-sys.createdAt'],
+    });
+    return response.items as unknown as Project[];
+  } catch (error) {
+    console.error('Error fetching projects:', error);
     return [];
   }
 }

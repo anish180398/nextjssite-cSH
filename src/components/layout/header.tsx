@@ -13,10 +13,11 @@ import Logo from "@/assets/images/logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Portfolio", href: "/portfolio" },
+  { name: "Projects", href: "/projects" },
   { name: "Blog", href: "/blog" },
+  { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -199,11 +200,11 @@ export default function Header() {
                   <div className="pt-4 border-t border-brand-white/10">
                     <Button
                       onClick={handleContactClick}
-                      className="group w-full bg-gradient-to-r from-brand-violet via-brand-violet to-brand-violet/90 hover:from-brand-violet/90 hover:to-brand-orange text-brand-white font-semibold py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-brand-violet/40 shadow-lg shadow-brand-violet/30 transform-gpu"
+                      className="group w-full bg-gradient-to-r from-brand-violet via-brand-violet to-brand-violet/90 hover:from-brand-violet/90 hover:to-brand-orange text-brand-white font-semibold py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-brand-violet/40 shadow-lg shadow-brand-violet/30 transform-gpu cursor-pointer"
                     >
                       <div className="flex items-center justify-center gap-2">
-                        <Sparkles className="w-5 h-5 group-hover:animate-spin transition-transform duration-300" />
-                        <span className="drop-shadow-lg">Get Started</span>
+                        <Sparkles className="w-5 h-5 group-hover:animate-spin transition-transform duration-300 cursor-pointer" />
+                        <span className="drop-shadow-lg cursor-pointer">Get Started</span>
                       </div>
                       
                       {/* Button glow effect */}
