@@ -30,7 +30,7 @@ export default function ProjectStats() {
           {isLoading ? (
             <div className="h-8 w-12 bg-gradient-to-r from-brand-violet/30 to-brand-orange/20 rounded animate-pulse"></div>
           ) : (
-            `${projectCount}+`
+            `${projectCount}`
           )}
         </div>
         <div className="text-sm text-brand-white/60 drop-shadow-sm">Products Built</div>
@@ -41,7 +41,7 @@ export default function ProjectStats() {
       </div>
       <div className="text-center group">
         <div className="text-3xl font-bold bg-gradient-to-r from-brand-violet to-brand-orange bg-clip-text text-transparent drop-shadow-xl mb-2">100%</div>
-        <div className="text-sm text-brand-white/60 drop-shadow-sm">Open Source</div>
+        <div className="text-sm text-brand-white/60 drop-shadow-sm">User Satisfaction</div>
       </div>
     </div>
   );

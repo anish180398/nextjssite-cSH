@@ -5,15 +5,7 @@ import {
   getAllProjects,
 } from '@/lib/contentful'
 
-// Static services data
-const services = [
-  { slug: 'web-development' },
-  { slug: 'mobile-app-development' },
-  { slug: 'ui-ux-design' },
-  { slug: 'seo-digital-marketing' },
-  { slug: 'digital-strategy-consulting' },
-  { slug: 'ecommerce-solutions' },
-]
+
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://reignofvision.com'
@@ -84,13 +76,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       getAllProjects(),
     ])
 
-    // Service pages
-    const servicePages = services.map((service) => ({
-      url: `${baseUrl}/services/${service.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    }))
+    // Note: Service slug pages are dynamic and not pre-generated
+    // Only the main services page is included in sitemap
 
     // Blog pages
     const blogPages = blogPosts.map((post) => ({
@@ -118,7 +105,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return [
       ...staticPages,
-      ...servicePages,
       ...blogPages,
       ...portfolioPages,
       ...projectPages,
