@@ -1,25 +1,33 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Ubuntu, Ubuntu_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { MotionConfig } from "motion/react";
 // Theme will be handled by Zustand store
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import IntroLoader from "@/components/sections/intro-loader";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const ubuntu = Ubuntu({
+  variable: "--font-ubuntu",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const ubuntuMono = Ubuntu_Mono({
+  variable: "--font-ubuntu-mono",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
+
+// Applied to <html> before hydration so the persisted/system theme renders
+// with zero flash-of-wrong-theme (mirrors the Zustand store's own logic).
+const noFlashThemeScript = `(function(){try{var s=localStorage.getItem('reign-of-vision-theme');var t='dark';if(s){var parsed=JSON.parse(s).state;if(parsed&&parsed.theme)t=parsed.theme;}if(t==='system'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(t);root.setAttribute('data-theme',t);}catch(e){document.documentElement.classList.add('dark');}})();`;
 
 export const metadata: Metadata = {
   title: {
-    default: "Reign of Vision - Digital Agency & Web Development",
-    template: "%s | Reign of Vision"
+    default: "Kryttr - Digital Agency & Web Development",
+    template: "%s | Kryttr"
   },
   description: "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions. We build digital experiences that drive results.",
   keywords: [
@@ -34,30 +42,30 @@ export const metadata: Metadata = {
     "React",
     "TypeScript"
   ],
-  authors: [{ name: "Reign of Vision Team" }],
-  creator: "Reign of Vision",
-  publisher: "Reign of Vision",
+  authors: [{ name: "Kryttr Team" }],
+  creator: "Kryttr",
+  publisher: "Kryttr",
   metadataBase: new URL("https://reignofvision.com"),
   openGraph: {
     type: "website",
     url: "https://reignofvision.com",
-    title: "Reign of Vision - Digital Agency & Web Development",
+    title: "Kryttr - Digital Agency & Web Development",
     description: "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions. We build digital experiences that drive results.",
-    siteName: "Reign of Vision",
+    siteName: "Kryttr",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Reign of Vision - Digital Agency"
+        alt: "Kryttr - Digital Agency"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    site: "@Reign of Vision",
-    creator: "@Reign of Vision",
-    title: "Reign of Vision - Digital Agency & Web Development",
+    site: "@Kryttr",
+    creator: "@Kryttr",
+    title: "Kryttr - Digital Agency & Web Development",
     description: "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions.",
     images: ["/og-image.jpg"]
   },
@@ -110,31 +118,40 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html
+      lang="en"
+      className={`${ubuntu.variable} ${ubuntuMono.variable} dark scroll-smooth`}
+      suppressHydrationWarning
+    >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: noFlashThemeScript }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.ctfassets.net" />
         <link rel="dns-prefetch" href="https://cdn.contentful.com" />
-        <meta name="theme-color" content="#731bdd" />
+        <meta name="theme-color" content="#C6FF3D" />
         <meta name="color-scheme" content="dark light" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Reign of Vision" />
-        <meta name="application-name" content="Reign of Vision" />
-        <meta name="msapplication-TileColor" content="#731bdd" />
+        <meta name="apple-mobile-web-app-title" content="Kryttr" />
+        <meta name="application-name" content="Kryttr" />
+        <meta name="msapplication-TileColor" content="#C6FF3D" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-brand-dark text-brand-white`}
+        className="antialiased min-h-screen flex flex-col bg-brand-dark text-brand-white"
         suppressHydrationWarning
       >
-        <Header />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <div className="grain-overlay" aria-hidden="true" />
+        <MotionConfig reducedMotion="user">
+          <Header />
+          <IntroLoader />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </MotionConfig>
         
         {/* Google Analytics */}
         {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_GA_ID && (
@@ -148,21 +165,21 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Reign of Vision",
+              "name": "Kryttr",
               "url": "https://reignofvision.com",
               "logo": "https://reignofvision.com/logo.png",
               "description": "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions.",
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "San Francisco",
-                "addressRegion": "CA",
-                "addressCountry": "US"
+                "addressLocality": "Chennai",
+                "addressRegion": "Tamil Nadu",
+                "addressCountry": "IN"
               },
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+1-234-567-8900",
+                "telephone": "+91-9514015234",
                 "contactType": "customer service",
-                "email": "hello@reignofvision.com"
+                "email": "anish@kryttr.com"
               },
               "sameAs": [
                 "https://twitter.com/Reignofvision",
@@ -171,7 +188,7 @@ export default function RootLayout({
               ],
               "founder": {
                 "@type": "Person",
-                "name": "Reign of Vision Team"
+                "name": "Kryttr Team"
               },
               "foundingDate": "2021",
               "numberOfEmployees": "10-50",

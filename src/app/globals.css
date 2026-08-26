@@ -1,33 +1,55 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-@theme {
-  --color-brand-dark: #000000;
-  --color-brand-violet: #18a60f;
-  --color-brand-white: #EAEAEA;
-  --color-brand-orange: #13b409;
-}
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #0D0D0D;
-  --card: #ffffff;
-  --card-foreground: #0D0D0D;
-  --popover: #ffffff;
-  --popover-foreground: #0D0D0D;
-  --primary: #731bdd;
-  --primary-foreground: #EAEAEA;
-  --secondary: #EAEAEA;
-  --secondary-foreground: #0D0D0D;
-  --muted: #EAEAEA;
-  --muted-foreground: #0D0D0D;
-  --accent: #731bdd;
-  --accent-foreground: #EAEAEA;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: #EAEAEA;
-  --input: #EAEAEA;
-  --ring: #731bdd;
+  /* Engineered Editorial — light (warm paper canvas, vivid lime accent
+     matched to the logo's actual hue, not the earlier muted olive) */
+  --background: #F5F4EF;
+  --foreground: #0B0B0C;
+  --card: #FFFFFF;
+  --card-foreground: #0B0B0C;
+  --popover: #FFFFFF;
+  --popover-foreground: #0B0B0C;
+  --primary: #F11601;
+  --primary-foreground: #F5F4EF;
+  --secondary: #ECEAE2;
+  --secondary-foreground: #0B0B0C;
+  --muted: #ECEAE2;
+  --muted-foreground: #57564F;
+  --accent: #F11601;
+  --accent-foreground: #F5F4EF;
+  --destructive: #B3261E;
+  --destructive-foreground: #FFFFFF;
+  --border: #DEDCD2;
+  --input: #DEDCD2;
+  --ring: #F11601;
   --radius: 0.5rem;
+  --chart-1: #F11601;
+  --chart-2: #1E8F82;
+  --chart-3: #C97A12;
+  --chart-4: #45589E;
+  --chart-5: #706F68;
+  --chart-background: transparent;
+  --chart-foreground: var(--foreground);
+  --chart-foreground-muted: var(--muted-foreground);
+  --chart-label: var(--muted-foreground);
+  --sidebar-foreground: #0B0B0C;
+  --sidebar-primary: #F11601;
+  --sidebar-primary-foreground: #F5F4EF;
+  --sidebar-accent: #DEDCD2;
+  --sidebar-accent-foreground: #0B0B0C;
+  --sidebar-border: #DEDCD2;
+  --sidebar-ring: #F11601;
+  /* Legacy brand-* aliases: kept so not-yet-migrated components stay theme-
+     reactive. Values follow each className's original role (surface/ink/
+     accent), not its literal name — see /memories/session/plan.md. */
+  --brand-dark: #F5F4EF;
+  --brand-white: #0B0B0C;
+  --brand-violet: #F11601;
+  --brand-orange: #F11601;
 }
 
 @theme inline {
@@ -50,63 +72,94 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-ubuntu);
+  --font-mono: var(--font-ubuntu-mono);
+  --font-display: var(--font-ubuntu);
+  --font-heading: var(--font-ubuntu);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-white: var(--brand-white);
+  --color-brand-violet: var(--brand-violet);
+  --color-brand-orange: var(--brand-orange);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 .dark {
-  --background: #0D0D0D;
-  --foreground: #EAEAEA;
-  --card: #0D0D0D;
-  --card-foreground: #EAEAEA;
-  --popover: #0D0D0D;
-  --popover-foreground: #EAEAEA;
-  --primary: #731bdd;
-  --primary-foreground: #0D0D0D;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #EAEAEA;
-  --muted: #1a1a1a;
-  --muted-foreground: #EAEAEA;
-  --accent: #731bdd;
-  --accent-foreground: #0D0D0D;
-  --destructive: #7f1d1d;
-  --destructive-foreground: #EAEAEA;
-  --border: #1a1a1a;
-  --input: #1a1a1a;
-  --ring: #731bdd;
+  /* Engineered Editorial — dark (near-black canvas, signature lime accent) */
+  --background: #0A0A0C;
+  --foreground: #F2F1ED;
+  --card: #131315;
+  --card-foreground: #F2F1ED;
+  --popover: #131315;
+  --popover-foreground: #F2F1ED;
+  --primary: #F11601;
+  --primary-foreground: #F2F1ED;
+  --secondary: #1C1C1F;
+  --secondary-foreground: #F2F1ED;
+  --muted: #1C1C1F;
+  --muted-foreground: #A3A29B;
+  --accent: #F11601;
+  --accent-foreground: #F2F1ED;
+  --destructive: #7F1D1D;
+  --destructive-foreground: #F2F1ED;
+  --border: #232326;
+  --input: #232326;
+  --ring: #F11601;
+  --chart-1: #F11601;
+  --chart-2: #37D6C4;
+  --chart-3: #FFB020;
+  --chart-4: #6C8EF5;
+  --chart-5: #8A8A85;
+  --chart-background: transparent;
+  --chart-foreground: var(--foreground);
+  --chart-foreground-muted: var(--muted-foreground);
+  --chart-label: var(--muted-foreground);
+  --sidebar-foreground: #F2F1ED;
+  --sidebar-primary: #F11601;
+  --sidebar-primary-foreground: #F2F1ED;
+  --sidebar-accent: #1C1C1F;
+  --sidebar-accent-foreground: #F2F1ED;
+  --sidebar-border: #232326;
+  --sidebar-ring: #F11601;
+  --brand-dark: #0A0A0C;
+  --brand-white: #F2F1ED;
+  --brand-violet: #F11601;
+  --brand-orange: #F11601;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0D0D0D;
-    --foreground: #EAEAEA;
-    --card: #0D0D0D;
-    --card-foreground: #EAEAEA;
-    --popover: #0D0D0D;
-    --popover-foreground: #EAEAEA;
-    --primary: #731bdd;
-    --primary-foreground: #0D0D0D;
-    --secondary: #1a1a1a;
-    --secondary-foreground: #EAEAEA;
-    --muted: #1a1a1a;
-    --muted-foreground: #EAEAEA;
-    --accent: #731bdd;
-    --accent-foreground: #0D0D0D;
-    --destructive: #7f1d1d;
-    --destructive-foreground: #EAEAEA;
-    --border: #1a1a1a;
-    --input: #1a1a1a;
-    --ring: #731bdd;
+/* Respect OS-level reduced motion for every plain-CSS animation/transition in
+   this file (JS-driven Motion/anime.js animations are gated separately via
+   usePrefersReducedMotion, see src/lib/motion.ts). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-* {
-  border-color: hsl(var(--border));
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   font-feature-settings: "rlig" 1, "calt" 1;
   line-height: 1.6;
@@ -130,19 +183,6 @@ body {
 
 .animate-blob {
   animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
-/* Grid pattern background */
-.bg-grid-pattern {
-  background-image: radial-gradient(circle, #731bdd 1px, transparent 1px);
 }
 
 /* Smooth scrolling */
@@ -280,7 +320,7 @@ body {
 
 /* Skeleton loading animation */
 .skeleton {
-  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background: linear-gradient(90deg, var(--muted) 25%, var(--border) 50%, var(--muted) 75%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
 }
@@ -299,7 +339,7 @@ body {
   .no-print {
     display: none !important;
   }
-  
+
   body {
     background: white !important;
     color: black !important;
@@ -387,42 +427,22 @@ body {
   background-size: 50px 50px;
 }
 
-/* Animation utilities for projects page */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+/* Sitewide tactile grain — fixed, pointer-events-none, mounted once in
+   layout.tsx. Subtle fractal noise via inline SVG, not an image request. */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.dark .grain-overlay {
+  opacity: 0.05;
 }
 
-@keyframes slide-in-from-bottom-8 {
-  from {
-    opacity: 0;
-    transform: translateY(2rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-in {
-  animation-fill-mode: both;
-}
-
-.fade-in {
-  animation-name: fade-in;
-}
-
-.slide-in-from-bottom-8 {
-  animation-name: slide-in-from-bottom-8;
-}
-
-.duration-700 {
-  animation-duration: 700ms;
-}
+/* animate-in/fade-in/slide-in-from-* utilities now come from tw-animate-css */
 
 /* Backdrop blur utilities */
 .backdrop-blur-sm {
@@ -435,4 +455,16 @@ body {
 
 .backdrop-blur-2xl {
   backdrop-filter: blur(40px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }

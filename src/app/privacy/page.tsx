@@ -4,7 +4,7 @@ import { ArrowLeft, Shield, Eye, Lock, Users } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Learn how Reign of Vision protects your privacy and handles your personal information.",
+  description: "Learn how Kryttr protects your privacy and handles your personal information.",
 };
 
 export default function PrivacyPage() {
@@ -55,7 +55,7 @@ export default function PrivacyPage() {
                   Introduction
                 </h2>
                 <p className="text-brand-white/80 leading-relaxed mb-4">
-                  At Reign of Vision, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+                  At Kryttr, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
                 </p>
                 <p className="text-brand-white/80 leading-relaxed">
                   By accessing or using our services, you agree to the terms of this Privacy Policy. If you do not agree with the terms of this policy, please do not access or use our services.
@@ -220,8 +220,8 @@ export default function PrivacyPage() {
                   </p>
                   <ul className="text-brand-white/80 space-y-2">
                     <li>• Email: privacy@reignofvision.com</li>
-                    <li>• Phone: +1 (555) 123-4567</li>
-                    <li>• Address: 123 Business Ave, Suite 100, San Francisco, CA 94105</li>
+                    <li>• Phone: +91 9514015234</li>
+                    <li>• Address: Chennai, Tamil Nadu, India</li>
                   </ul>
                 </div>
               </div>

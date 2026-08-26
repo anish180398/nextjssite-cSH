@@ -4,7 +4,7 @@ import { ArrowLeft, FileText, Scale, AlertTriangle, CheckCircle } from "lucide-r
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Read the terms and conditions for using Reign of Vision's services.",
+  description: "Read the terms and conditions for using Kryttr's services.",
 };
 
 export default function TermsPage() {
@@ -55,7 +55,7 @@ export default function TermsPage() {
                   Introduction
                 </h2>
                 <p className="text-brand-white/80 leading-relaxed mb-4">
-                  Welcome to Reign of Vision. These Terms of Service ("Terms") govern your use of our website and services. By accessing or using our services, you agree to be bound by these Terms.
+                  Welcome to Kryttr. These Terms of Service ("Terms") govern your use of our website and services. By accessing or using our services, you agree to be bound by these Terms.
                 </p>
                 <p className="text-brand-white/80 leading-relaxed">
                   If you do not agree to these Terms, please do not use our services. We reserve the right to modify these Terms at any time, and your continued use of our services constitutes acceptance of any changes.
@@ -72,7 +72,7 @@ export default function TermsPage() {
                 <div className="bg-brand-violet/10 p-6 rounded-lg border border-brand-violet/20 mb-6">
                   <h3 className="text-xl font-semibold text-brand-white mb-3">Service Offerings</h3>
                   <p className="text-brand-white/80 leading-relaxed mb-4">
-                    Reign of Vision provides digital services including but not limited to:
+                    Kryttr provides digital services including but not limited to:
                   </p>
                   <ul className="text-brand-white/80 space-y-2">
                     <li>• Web development and design</li>
@@ -219,7 +219,7 @@ export default function TermsPage() {
                 
                 <div className="bg-red-500/10 p-6 rounded-lg border border-red-500/20">
                   <p className="text-brand-white/80 leading-relaxed mb-4">
-                    IN NO EVENT SHALL REIGN OF VISION BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES.
+                    IN NO EVENT SHALL Kryttr BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES.
                   </p>
                   <p className="text-brand-white/80 leading-relaxed">
                     OUR TOTAL LIABILITY TO YOU FOR ANY CLAIM ARISING OUT OF OR RELATING TO THESE TERMS OR OUR SERVICES SHALL NOT EXCEED THE AMOUNT YOU PAID US FOR THE SERVICES IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM.
@@ -258,12 +258,13 @@ export default function TermsPage() {
               <div className="mb-12">
                 <h2 className="text-3xl font-bold text-brand-white mb-6">Governing Law</h2>
                 
+                {/* NOTE: directional fix only (India, matching footer contact info) — have counsel confirm the governing-law/arbitration clause before relying on it. */}
                 <div className="bg-brand-violet/10 p-6 rounded-lg border border-brand-violet/20">
                   <p className="text-brand-white/80 leading-relaxed mb-4">
-                    These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law principles.
+                    These Terms shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law principles.
                   </p>
                   <p className="text-brand-white/80 leading-relaxed">
-                    Any disputes arising under these Terms shall be resolved through binding arbitration in San Francisco, California, in accordance with the rules of the American Arbitration Association.
+                    Any disputes arising under these Terms shall be resolved through binding arbitration in Chennai, Tamil Nadu, India, in accordance with the Arbitration and Conciliation Act, 1996.
                   </p>
                 </div>
               </div>
@@ -277,8 +278,8 @@ export default function TermsPage() {
                   </p>
                   <ul className="text-brand-white/80 space-y-2">
                     <li>• Email: legal@reignofvision.com</li>
-                    <li>• Phone: +1 (555) 123-4567</li>
-                    <li>• Address: 123 Business Ave, Suite 100, San Francisco, CA 94105</li>
+                    <li>• Phone: +91 9514015234</li>
+                    <li>• Address: Chennai, Tamil Nadu, India</li>
                   </ul>
                 </div>
               </div>

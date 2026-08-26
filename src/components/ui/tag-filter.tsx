@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface TagFilterProps {
@@ -40,8 +40,8 @@ export function TagFilter({
             className={cn(
               "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border",
               selectedTag === tag
-                ? "bg-brand-violet text-brand-dark border-brand-violet shadow-md"
-                : "bg-white dark:bg-brand-dark text-brand-dark dark:text-brand-white border-brand-white/20 dark:border-brand-white/10 hover:border-brand-violet hover:text-brand-violet"
+                ? "bg-primary text-primary-foreground border-primary shadow-md"
+                : "bg-card text-foreground border-border hover:border-primary hover:text-primary"
             )}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -55,15 +55,15 @@ export function TagFilter({
       <div className="md:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full px-4 py-3 bg-white dark:bg-brand-dark border border-brand-white/20 dark:border-brand-white/10 rounded-lg shadow-sm text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-brand-violet focus:border-brand-violet"
+          className="w-full px-4 py-3 bg-card border border-border rounded-lg shadow-sm text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary"
         >
-          <span className="text-brand-dark dark:text-brand-white font-medium">
+          <span className="text-foreground font-medium">
             Filter: {selectedTag}
           </span>
           <motion.svg
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.2 }}
-            className="w-5 h-5 text-brand-dark/60 dark:text-brand-white/60"
+            className="w-5 h-5 text-muted-foreground"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -84,7 +84,7 @@ export function TagFilter({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-brand-dark border border-brand-white/20 dark:border-brand-white/10 rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto"
+              className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto"
             >
               {sortedTags.map((tag) => (
                 <button
@@ -93,8 +93,8 @@ export function TagFilter({
                   className={cn(
                     "w-full px-4 py-3 text-left text-sm transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg",
                     selectedTag === tag
-                      ? "bg-brand-violet/10 text-brand-violet font-medium"
-                      : "text-brand-dark dark:text-brand-white hover:bg-brand-violet/5"
+                      ? "bg-primary/10 text-primary font-medium"
+                      : "text-foreground hover:bg-primary/5"
                   )}
                 >
                   {tag}
@@ -112,7 +112,7 @@ export function TagFilter({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="md:hidden fixed inset-0 bg-black bg-opacity-25 z-40"
+            className="md:hidden fixed inset-0 bg-background/50 z-40"
             onClick={() => setIsOpen(false)}
           />
         )}

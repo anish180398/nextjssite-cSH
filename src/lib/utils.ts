@@ -1,8 +1,8 @@
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+  return twMerge(clsx(inputs))
 }
 
 export function formatDate(date: string): string {
@@ -21,10 +21,10 @@ export function getReadingTime(text: string): number {
 
 export function generateExcerpt(text: string, maxLength: number = 160): string {
   if (text.length <= maxLength) return text;
-  
+
   const truncated = text.substring(0, maxLength);
   const lastSpaceIndex = truncated.lastIndexOf(' ');
-  
+
   return truncated.substring(0, lastSpaceIndex) + '...';
 }
 
@@ -35,4 +35,4 @@ export function slugify(text: string): string {
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .trim();
-} 
+}

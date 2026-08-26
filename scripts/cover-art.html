@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  html, body { margin: 0; padding: 0; background: #0A0A0C; }
+  .stage { width: 1200px; height: 630px; position: relative; overflow: hidden; background: #0A0A0C; }
+  svg { display: block; }
+  .wordmark {
+    position: absolute; left: 56px; bottom: 40px;
+    font-family: 'Ubuntu', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700; letter-spacing: 0.08em; font-size: 15px;
+    color: rgba(242,241,237,0.38); text-transform: uppercase;
+  }
+  .kicker {
+    position: absolute; left: 56px; top: 44px;
+    font-family: 'Ubuntu', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500; letter-spacing: 0.14em; font-size: 13px;
+    color: rgba(242,241,237,0.42); text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg width="1200" height="630" viewBox="0 0 1200 630">
+    <defs>
+      <radialGradient id="breachGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#F11601" stop-opacity="0.35" />
+        <stop offset="100%" stop-color="#F11601" stop-opacity="0" />
+      </radialGradient>
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise" />
+        <feColorMatrix in="noise" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.02 0" />
+      </filter>
+    </defs>
+
+    <rect width="1200" height="630" fill="#0A0A0C" />
+
+    <!-- faint engineering grid -->
+    <g stroke="rgba(242,241,237,0.045)" stroke-width="1">
+      <line x1="0" y1="105" x2="1200" y2="105" />
+      <line x1="0" y1="525" x2="1200" y2="525" />
+      <line x1="150" y1="0" x2="150" y2="630" />
+      <line x1="1050" y1="0" x2="1050" y2="630" />
+    </g>
+
+    <!-- breach glow, centered on the gap -->
+    <circle cx="905" cy="315" r="230" fill="url(#breachGlow)" />
+
+    <!-- nested trust-boundary frames -->
+    <rect x="150" y="90" width="900" height="450" rx="34" fill="none" stroke="rgba(242,241,237,0.14)" stroke-width="2" />
+    <rect x="230" y="148" width="740" height="334" rx="28" fill="none" stroke="rgba(242,241,237,0.22)" stroke-width="2" />
+
+    <!-- innermost boundary, drawn with a deliberate gap on the right edge (the breach) -->
+    <path d="M 460 210 H 780 A 24 24 0 0 1 804 234 V 300"
+          fill="none" stroke="#F11601" stroke-width="3" stroke-linecap="round" />
+    <path d="M 804 340 V 396 A 24 24 0 0 1 780 420 H 460 A 24 24 0 0 1 436 396 V 234 A 24 24 0 0 1 460 210"
+          fill="none" stroke="#F11601" stroke-width="3" stroke-linecap="round" />
+
+    <!-- the escape path: a line breaking out through the gap and through the outer frames -->
+    <path d="M 804 320 C 860 320, 880 300, 905 280 C 935 256, 960 240, 1010 232"
+          fill="none" stroke="#F11601" stroke-width="3" stroke-linecap="round" />
+    <circle cx="1010" cy="232" r="6" fill="#F11601" />
+    <circle cx="1010" cy="232" r="13" fill="none" stroke="#F11601" stroke-opacity="0.4" stroke-width="2" />
+
+    <!-- scattered small nodes suggesting a system/network -->
+    <g fill="rgba(242,241,237,0.5)">
+      <circle cx="300" cy="150" r="3" />
+      <circle cx="330" cy="150" r="3" />
+      <circle cx="880" cy="470" r="3" />
+      <circle cx="910" cy="470" r="3" />
+      <circle cx="940" cy="470" r="3" />
+    </g>
+
+    <rect width="1200" height="630" filter="url(#grain)" opacity="0.5" />
+  </svg>
+  <div class="kicker">Engineering &middot; Security</div>
+  <div class="wordmark">Kryttr</div>
+</div>
+</body>
+</html>

@@ -2,10 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { getAllProjects } from "@/lib/contentful";
+import { useCountUp, usePrefersReducedMotion } from "@/lib/motion";
+import { StatRing } from "@/components/charts/stat-ring";
 
 export default function ProjectStats() {
   const [projectCount, setProjectCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const animatedProjectCount = useCountUp(projectCount, !prefersReducedMotion && !isLoading);
 
   useEffect(() => {
     const fetchProjectCount = async () => {
@@ -24,25 +28,25 @@ export default function ProjectStats() {
   }, []);
 
   return (
-    <div className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-brand-white/10 max-w-2xl mx-auto">
-      <div className="text-center group">
-        <div className="text-3xl font-bold bg-gradient-to-r from-brand-violet to-brand-orange bg-clip-text text-transparent drop-shadow-xl mb-2">
+    <div className="mt-8 grid grid-cols-3 items-center gap-6 border-t border-border pt-8 sm:grid-cols-1 sm:mt-0 sm:border-t-0 sm:pt-0 sm:gap-8">
+      <div>
+        <div className="font-display text-3xl font-semibold text-foreground">
           {isLoading ? (
-            <div className="h-8 w-12 bg-gradient-to-r from-brand-violet/30 to-brand-orange/20 rounded animate-pulse"></div>
+            <div className="h-8 w-12 animate-pulse rounded bg-muted" />
           ) : (
-            `${projectCount}`
+            animatedProjectCount
           )}
         </div>
-        <div className="text-sm text-brand-white/60 drop-shadow-sm">Products Built</div>
+        <div className="mt-1 text-sm text-muted-foreground">Products Built</div>
       </div>
-      <div className="text-center group">
-        <div className="text-3xl font-bold bg-gradient-to-r from-brand-orange to-brand-violet bg-clip-text text-transparent drop-shadow-xl mb-2">15+</div>
-        <div className="text-sm text-brand-white/60 drop-shadow-sm">Technologies Used</div>
+      <div className="flex justify-start">
+        <StatRing value={100} label="User Satisfaction" size={112} />
       </div>
-      <div className="text-center group">
-        <div className="text-3xl font-bold bg-gradient-to-r from-brand-violet to-brand-orange bg-clip-text text-transparent drop-shadow-xl mb-2">100%</div>
-        <div className="text-sm text-brand-white/60 drop-shadow-sm">User Satisfaction</div>
+      <div>
+        <div className="font-display text-3xl font-semibold text-foreground">15+</div>
+        <div className="mt-1 text-sm text-muted-foreground">Technologies Used</div>
       </div>
     </div>
   );
 }
+

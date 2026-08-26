@@ -3,17 +3,48 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, ChevronDown, LayoutGrid, Braces, Building2 } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import ParticleButton from "@/components/kokonutui/particle-button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import ContactPopup from "@/components/ui/contact-popup";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { duration, easing } from "@/lib/motion";
 import Image from "next/image";
-import Logo from "@/assets/images/logo.png";
+import Logo from "@/assets/images/Logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
+  {
+    name: "Services",
+    href: "/services",
+    children: [
+      {
+        name: "All Services",
+        href: "/services",
+        description: "Everything we build",
+        icon: LayoutGrid,
+      },
+      {
+        name: "Technologies",
+        href: "/technologies",
+        description: "The stack we build with",
+        icon: Braces,
+      },
+      {
+        name: "Industries",
+        href: "/industries",
+        description: "Verticals we specialize in",
+        icon: Building2,
+      },
+    ],
+  },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Projects", href: "/projects" },
   { name: "Blog", href: "/blog" },
@@ -28,200 +59,195 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close the mobile menu on route change.
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   const handleContactClick = () => {
     setIsContactPopupOpen(true);
-    setIsOpen(false); // Close mobile menu if open
+    setIsOpen(false);
   };
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform-gpu ${
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
           isScrolled
-            ? "bg-gradient-to-r from-brand-dark/95 via-slate-900/90 to-brand-dark/95 backdrop-blur-xl shadow-2xl shadow-brand-violet/10 border-b border-gradient-to-r border-brand-violet/20"
-            : "bg-transparent"
-        }`}
-      >
-        {/* Enhanced background effects for scrolled state */}
-        {isScrolled && (
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-violet/5 via-transparent to-brand-orange/5 backdrop-blur-xl"></div>
+            ? "bg-background/80 backdrop-blur-xl border-b border-border"
+            : "bg-transparent border-b border-transparent"
         )}
-        
-        <nav className="relative z-10 mx-auto max-w-7xl p-4 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
-            {/* Enhanced Logo */}
-            <div className="flex-shrink-0">
-              <Link
-                href="/"
-                className="group flex items-center gap-3 text-2xl font-bold transition-all duration-300 hover:scale-105 transform-gpu"
+      >
+        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-20 items-center justify-between py-3">
+            <Link href="/" className="flex items-center gap-1 shrink-0">
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ duration: duration.fast }}
+                className="flex h-16 w-16 items-center justify-center rounded-lg"
               >
-                <div className="relative">
-                  <div className="w-14 h-14 bg-gradient-to-br from-brand-violet/20 to-brand-orange/10 rounded-2xl flex items-center justify-center group-hover:from-brand-violet/30 group-hover:to-brand-orange/20 transition-all duration-300 shadow-lg shadow-brand-violet/20 group-hover:shadow-brand-violet/40">
-                    <Image
-                      src={Logo}
-                      alt="Reign of Vision"
-                      width={32}
-                      height={32}
-                      className="drop-shadow-lg"
-                    />
-                  </div>
-                  
-                  {/* Logo glow effect */}
-                  <div className="absolute inset-0 w-14 h-14 bg-brand-violet/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                  
-                  {/* 3D shadow */}
-                  <div className="absolute inset-0 w-14 h-14 bg-brand-dark/40 rounded-2xl transform translate-x-2 translate-y-2 blur-md -z-10"></div>
-                </div>
-                
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-brand-white via-brand-white to-brand-violet bg-clip-text text-transparent group-hover:from-brand-violet group-hover:to-brand-orange transition-all duration-300 drop-shadow-xl">
-                  Reign of Vision
-                </h1>
-              </Link>
-            </div>
+                <Image src={Logo} alt="Kryttr" width={56} height={48} />
+              </motion.span>
+              <span className="font-display text-xl font-semibold tracking-tight text-foreground">
+                Kryttr
+              </span>
+            </Link>
 
-            {/* Enhanced Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="flex items-center space-x-2 bg-gradient-to-r from-brand-dark/60 to-brand-dark/40 backdrop-blur-xl rounded-2xl border border-brand-white/10 px-6 py-3 shadow-xl shadow-brand-dark/30">
-                {navigation.map((item) => (
+            {/* Desktop nav */}
+            <div className="hidden md:flex items-center gap-1 rounded-full border border-border bg-card/60 px-1.5 py-1.5">
+              {navigation.map((item) => {
+                const active = item.children
+                  ? item.children.some((child) => pathname.startsWith(child.href))
+                  : pathname === item.href;
+
+                if (item.children) {
+                  return (
+                    <DropdownMenu key={item.name}>
+                      <DropdownMenuTrigger asChild>
+                        <button
+                          className={cn(
+                            "relative flex items-center gap-1 rounded-full px-4 py-1.5 text-sm font-medium transition-colors",
+                            active ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+                          )}
+                        >
+                          {active && (
+                            <motion.span
+                              layoutId="nav-active-pill"
+                              className="absolute inset-0 rounded-full bg-primary"
+                              transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                            />
+                          )}
+                          <span className="relative z-10">{item.name}</span>
+                          <ChevronDown className="relative z-10 h-3.5 w-3.5" />
+                        </button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="start" sideOffset={12} className="w-72 rounded-2xl p-2">
+                        {item.children.map((child) => (
+                          <DropdownMenuItem key={child.name} asChild className="rounded-xl p-0">
+                            <Link href={child.href} className="flex items-center gap-3 px-3 py-2.5">
+                              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                                <child.icon className="h-4.5 w-4.5 text-primary" />
+                              </span>
+                              <span className="flex flex-col">
+                                <span className="text-sm font-medium text-foreground">{child.name}</span>
+                                <span className="text-xs text-muted-foreground">{child.description}</span>
+                              </span>
+                            </Link>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  );
+                }
+
+                return (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-xl group transform-gpu hover:scale-105 ${
-                      pathname === item.href
-                        ? "text-brand-white bg-gradient-to-r from-brand-violet/30 to-brand-orange/20 shadow-lg shadow-brand-violet/30"
-                        : "text-brand-white/80 hover:text-brand-white hover:bg-gradient-to-r hover:from-brand-white/10 hover:to-brand-white/5"
-                    }`}
-                  >
-                    <span className="relative z-10 drop-shadow-lg">{item.name}</span>
-                    
-                    {/* Active indicator */}
-                    {pathname === item.href && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-brand-violet/20 to-brand-orange/10 rounded-xl blur-sm opacity-60"></div>
+                    className={cn(
+                      "relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors",
+                      active ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
                     )}
-                    
-                    {/* Hover glow effect */}
-                    <div className="absolute inset-0 bg-brand-white/10 rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-sm"></div>
+                  >
+                    {active && (
+                      <motion.span
+                        layoutId="nav-active-pill"
+                        className="absolute inset-0 rounded-full bg-primary"
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <span className="relative z-10">{item.name}</span>
                   </Link>
-                ))}
-              </div>
+                );
+              })}
             </div>
 
-            {/* Enhanced Theme Toggle & CTA */}
-            <div className="hidden md:flex items-center space-x-4">
-              <div className="p-2 bg-gradient-to-r from-brand-dark/60 to-brand-dark/40 backdrop-blur-xl rounded-xl border border-brand-white/10 shadow-lg shadow-brand-dark/20">
-                <ThemeToggle />
-              </div>
-              
-              <Button
-                onClick={handleContactClick}
-                className="group bg-gradient-to-r from-brand-violet via-brand-violet to-brand-violet/90 hover:from-brand-violet/90 hover:to-brand-orange text-brand-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-brand-violet/50 transform-gpu shadow-xl shadow-brand-violet/30 border border-brand-violet/20"
-              >
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 group-hover:animate-spin transition-transform duration-300" />
-                  <span className="drop-shadow-lg">Get Started</span>
-                </div>
-                
-                {/* Button glow effect */}
-                <div className="absolute inset-0 bg-brand-violet/30 rounded-xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-300"></div>
-              </Button>
+            <div className="hidden md:flex items-center gap-3">
+              <ThemeToggle />
+              <ParticleButton onClick={handleContactClick} size="sm">
+                Get Started
+              </ParticleButton>
             </div>
 
-            {/* Enhanced Mobile menu button */}
-            <div className="md:hidden flex items-center space-x-3">
-              <div className="p-2 bg-gradient-to-r from-brand-dark/60 to-brand-dark/40 backdrop-blur-xl rounded-xl border border-brand-white/10 shadow-lg shadow-brand-dark/20">
-                <ThemeToggle />
-              </div>
-              
+            {/* Mobile controls */}
+            <div className="flex md:hidden items-center gap-2">
+              <ThemeToggle />
               <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="group p-3 bg-gradient-to-r from-brand-dark/80 to-brand-dark/60 backdrop-blur-xl rounded-xl border border-brand-white/20 text-brand-white hover:border-brand-violet/40 hover:bg-gradient-to-r hover:from-brand-violet/20 hover:to-brand-orange/10 transition-all duration-300 shadow-lg shadow-brand-dark/30 hover:shadow-brand-violet/30 transform hover:scale-110 transform-gpu"
-                aria-expanded="false"
+                onClick={() => setIsOpen((v) => !v)}
+                aria-expanded={isOpen}
+                aria-label="Toggle navigation menu"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-foreground"
               >
-                <span className="sr-only">Open main menu</span>
-                <div className="relative">
-                  {isOpen ? (
-                    <X className="block h-6 w-6 drop-shadow-lg group-hover:rotate-90 transition-transform duration-300" aria-hidden="true" />
-                  ) : (
-                    <Menu className="block h-6 w-6 drop-shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
-                  )}
-                  
-                  {/* Icon glow effect */}
-                  <div className="absolute inset-0 w-6 h-6 bg-brand-violet/30 rounded blur-sm opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-                </div>
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
             </div>
           </div>
 
-          {/* Enhanced Mobile Navigation */}
-          {isOpen && (
-            <div className="md:hidden mt-4 transform-gpu animate-in slide-in-from-top duration-300">
-              <div className="relative bg-gradient-to-br from-brand-dark/95 via-slate-800/90 to-brand-dark/95 backdrop-blur-xl border border-brand-white/10 rounded-2xl shadow-2xl shadow-brand-violet/20 overflow-hidden">
-                {/* Background effects */}
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-violet/5 via-transparent to-brand-orange/5"></div>
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-gradient-radial from-brand-violet/10 to-transparent blur-2xl"></div>
-                
-                <div className="relative z-10 px-6 py-6 space-y-2">
-                  {navigation.map((item, index) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className={`group block px-4 py-3 text-base font-semibold transition-all duration-300 rounded-xl transform-gpu hover:scale-105 ${
-                        pathname === item.href
-                          ? "text-brand-white bg-gradient-to-r from-brand-violet/30 to-brand-orange/20 shadow-lg shadow-brand-violet/30"
-                          : "text-brand-white/80 hover:text-brand-white hover:bg-gradient-to-r hover:from-brand-white/10 hover:to-brand-white/5"
-                      }`}
-                      onClick={() => setIsOpen(false)}
-                      style={{
-                        animationDelay: `${index * 50}ms`
-                      }}
-                    >
-                      <div className="relative">
-                        <span className="drop-shadow-lg">{item.name}</span>
-                        
-                        {/* Active indicator */}
-                        {pathname === item.href && (
-                          <div className="absolute inset-0 bg-gradient-to-r from-brand-violet/20 to-brand-orange/10 rounded-xl blur-sm opacity-60"></div>
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: duration.base, ease: easing.out }}
+                className="md:hidden overflow-hidden"
+              >
+                <div className="flex flex-col gap-1 rounded-2xl border border-border bg-card/95 backdrop-blur-xl p-3 mb-4">
+                  {navigation.map((item) => (
+                    <div key={item.name}>
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className={cn(
+                          "block rounded-lg px-4 py-2.5 text-sm font-medium transition-colors",
+                          pathname === item.href
+                            ? "bg-primary text-primary-foreground"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
                         )}
-                        
-                        {/* Hover effect */}
-                        <div className="absolute inset-0 bg-brand-white/10 rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-sm"></div>
-                      </div>
-                    </Link>
+                      >
+                        {item.name}
+                      </Link>
+                      {item.children && (
+                        <div className="ml-4 flex flex-col gap-1 border-l border-border pl-3">
+                          {item.children
+                            .filter((child) => child.href !== item.href)
+                            .map((child) => (
+                              <Link
+                                key={child.name}
+                                href={child.href}
+                                onClick={() => setIsOpen(false)}
+                                className={cn(
+                                  "rounded-lg px-4 py-2 text-sm transition-colors",
+                                  pathname === child.href
+                                    ? "bg-primary text-primary-foreground"
+                                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                                )}
+                              >
+                                {child.name}
+                              </Link>
+                            ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
-                  
-                  <div className="pt-4 border-t border-brand-white/10">
-                    <Button
-                      onClick={handleContactClick}
-                      className="group w-full bg-gradient-to-r from-brand-violet via-brand-violet to-brand-violet/90 hover:from-brand-violet/90 hover:to-brand-orange text-brand-white font-semibold py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-brand-violet/40 shadow-lg shadow-brand-violet/30 transform-gpu cursor-pointer"
-                    >
-                      <div className="flex items-center justify-center gap-2">
-                        <Sparkles className="w-5 h-5 group-hover:animate-spin transition-transform duration-300 cursor-pointer" />
-                        <span className="drop-shadow-lg cursor-pointer">Get Started</span>
-                      </div>
-                      
-                      {/* Button glow effect */}
-                      <div className="absolute inset-0 bg-brand-violet/30 rounded-xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-300"></div>
-                    </Button>
-                  </div>
+                  <ParticleButton onClick={handleContactClick} className="mt-2 w-full">
+                    Get Started
+                  </ParticleButton>
                 </div>
-                
-                {/* 3D depth shadow */}
-                <div className="absolute inset-0 bg-brand-dark/40 rounded-2xl transform translate-x-2 translate-y-2 blur-lg -z-10"></div>
-              </div>
-            </div>
-          )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
       </header>
 
-      {/* Contact Popup */}
       <ContactPopup
         isOpen={isContactPopupOpen}
         onClose={() => setIsContactPopupOpen(false)}
@@ -229,3 +255,4 @@ export default function Header() {
     </>
   );
 }
+

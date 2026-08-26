@@ -1,4 +1,4 @@
-# Reign of Vision Agency Website
+# Kryttr Agency Website
 
 A production-ready Next.js 15 agency website built with TypeScript, Tailwind CSS, and Contentful CMS integration. Features modern design, SEO optimization, and exceptional performance.
 
@@ -62,7 +62,7 @@ CONTENTFUL_ACCESS_TOKEN=your_contentful_access_token
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 # Site Configuration
-NEXT_PUBLIC_SITE_URL=https://Reign of Vision.com
+NEXT_PUBLIC_SITE_URL=https://Kryttr.com
 ```
 
 ### 3. Contentful Setup
@@ -245,8 +245,8 @@ This project is licensed under the MIT License.
 
 ## 🆘 Support
 
-For support, email hello@Reign of Vision.com or create an issue in this repository.
+For support, email hello@Kryttr.com or create an issue in this repository.
 
 ---
 
-Built with ❤️ by Reign of Vision
+Built with ❤️ by Kryttr

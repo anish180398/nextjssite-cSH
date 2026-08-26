@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { X, Send, User, Mail, Building, Phone, MessageSquare, CheckCircle } from "lucide-react";
+import { Send, User, Mail, Building, Phone, MessageSquare, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ContactFormData } from "@/lib/email";
 
 interface ContactPopupProps {
@@ -51,7 +52,6 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
 
       if (response.ok) {
         setIsSuccess(true);
-        // Reset form after 3 seconds
         setTimeout(() => {
           setIsSuccess(false);
           setFormData({
@@ -75,198 +75,158 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      {/* Backdrop */}
-      <div 
-        className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
-        onClick={onClose}
-      />
-      
-      {/* Modal */}
-      <div className="flex min-h-full items-center justify-center p-4">
-        <div className="relative w-full max-w-md mx-auto bg-brand-dark border border-brand-white/10 rounded-xl shadow-2xl">
-          {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-brand-white/10">
-            <div>
-              <h2 className="text-2xl font-bold text-brand-white">
-                Get in <span className="text-brand-violet">Touch</span>
-              </h2>
-              <p className="text-brand-white/70 text-sm mt-1">
-                Let's discuss your project
-              </p>
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent className="sm:max-w-md p-6">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-display font-semibold">
+            Get in <span className="text-primary">Touch</span>
+          </DialogTitle>
+          <DialogDescription>Let&apos;s discuss your project</DialogDescription>
+        </DialogHeader>
+
+        {isSuccess ? (
+          <div className="py-4 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/15">
+              <CheckCircle className="h-8 w-8 text-primary" />
             </div>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-brand-white/10 rounded-lg transition-colors"
-            >
-              <X className="h-5 w-5 text-brand-white/70" />
-            </button>
+            <h3 className="mb-2 text-xl font-bold text-foreground">Message Sent!</h3>
+            <p className="text-muted-foreground">
+              Thank you for reaching out. We&apos;ll get back to you soon.
+            </p>
           </div>
-
-          {/* Success State */}
-          {isSuccess && (
-            <div className="p-6 text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-green-500/20 rounded-full flex items-center justify-center">
-                <CheckCircle className="h-8 w-8 text-green-400" />
-              </div>
-              <h3 className="text-xl font-bold text-brand-white mb-2">
-                Message Sent!
-              </h3>
-              <p className="text-brand-white/70">
-                Thank you for reaching out. We'll get back to you soon.
-              </p>
-            </div>
-          )}
-
-          {/* Form */}
-          {!isSuccess && (
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
-              {/* Name */}
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-brand-white mb-2">
-                  Name *
-                </label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-brand-white/50" />
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full pl-10 pr-4 py-2 bg-brand-dark border border-brand-white/20 rounded-lg text-brand-white placeholder-brand-white/50 focus:ring-2 focus:ring-brand-violet focus:border-brand-violet"
-                    placeholder="Your name"
-                  />
-                </div>
-              </div>
-
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-brand-white mb-2">
-                  Email *
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-brand-white/50" />
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full pl-10 pr-4 py-2 bg-brand-dark border border-brand-white/20 rounded-lg text-brand-white placeholder-brand-white/50 focus:ring-2 focus:ring-brand-violet focus:border-brand-violet"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
-
-              {/* Company */}
-              <div>
-                <label htmlFor="company" className="block text-sm font-medium text-brand-white mb-2">
-                  Company
-                </label>
-                <div className="relative">
-                  <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-brand-white/50" />
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-2 bg-brand-dark border border-brand-white/20 rounded-lg text-brand-white placeholder-brand-white/50 focus:ring-2 focus:ring-brand-violet focus:border-brand-violet"
-                    placeholder="Your company"
-                  />
-                </div>
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-brand-white mb-2">
-                  Phone
-                </label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-brand-white/50" />
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-2 bg-brand-dark border border-brand-white/20 rounded-lg text-brand-white placeholder-brand-white/50 focus:ring-2 focus:ring-brand-violet focus:border-brand-violet"
-                    placeholder="Your phone number"
-                  />
-                </div>
-              </div>
-
-              {/* Subject */}
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-brand-white mb-2">
-                  Subject
-                </label>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-4 pt-2">
+            <div>
+              <label htmlFor="popup-name" className="mb-2 block text-sm font-medium text-foreground">
+                Name *
+              </label>
+              <div className="relative">
+                <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <input
                   type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
+                  id="popup-name"
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 bg-brand-dark border border-brand-white/20 rounded-lg text-brand-white placeholder-brand-white/50 focus:ring-2 focus:ring-brand-violet focus:border-brand-violet"
-                  placeholder="What's this about?"
+                  required
+                  className="w-full rounded-lg border border-input bg-background py-2 pl-10 pr-4 text-foreground placeholder-muted-foreground outline-none focus:border-ring focus:ring-2 focus:ring-ring"
+                  placeholder="Your name"
                 />
               </div>
+            </div>
 
-              {/* Message */}
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-brand-white mb-2">
-                  Message *
-                </label>
-                <div className="relative">
-                  <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-brand-white/50" />
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={4}
-                    className="w-full pl-10 pr-4 py-2 bg-brand-dark border border-brand-white/20 rounded-lg text-brand-white placeholder-brand-white/50 focus:ring-2 focus:ring-brand-violet focus:border-brand-violet resize-none"
-                    placeholder="Tell us about your project..."
-                  />
-                </div>
+            <div>
+              <label htmlFor="popup-email" className="mb-2 block text-sm font-medium text-foreground">
+                Email *
+              </label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="email"
+                  id="popup-email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full rounded-lg border border-input bg-background py-2 pl-10 pr-4 text-foreground placeholder-muted-foreground outline-none focus:border-ring focus:ring-2 focus:ring-ring"
+                  placeholder="your@email.com"
+                />
               </div>
+            </div>
 
-              {/* Error Message */}
-              {error && (
-                <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
-                  <p className="text-red-400 text-sm">{error}</p>
+            <div>
+              <label htmlFor="popup-company" className="mb-2 block text-sm font-medium text-foreground">
+                Company
+              </label>
+              <div className="relative">
+                <Building className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="text"
+                  id="popup-company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="w-full rounded-lg border border-input bg-background py-2 pl-10 pr-4 text-foreground placeholder-muted-foreground outline-none focus:border-ring focus:ring-2 focus:ring-ring"
+                  placeholder="Your company"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="popup-phone" className="mb-2 block text-sm font-medium text-foreground">
+                Phone
+              </label>
+              <div className="relative">
+                <Phone className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="tel"
+                  id="popup-phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full rounded-lg border border-input bg-background py-2 pl-10 pr-4 text-foreground placeholder-muted-foreground outline-none focus:border-ring focus:ring-2 focus:ring-ring"
+                  placeholder="Your phone number"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="popup-subject" className="mb-2 block text-sm font-medium text-foreground">
+                Subject
+              </label>
+              <input
+                type="text"
+                id="popup-subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="w-full rounded-lg border border-input bg-background px-4 py-2 text-foreground placeholder-muted-foreground outline-none focus:border-ring focus:ring-2 focus:ring-ring"
+                placeholder="What's this about?"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="popup-message" className="mb-2 block text-sm font-medium text-foreground">
+                Message *
+              </label>
+              <div className="relative">
+                <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <textarea
+                  id="popup-message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={4}
+                  className="w-full resize-none rounded-lg border border-input bg-background py-2 pl-10 pr-4 text-foreground placeholder-muted-foreground outline-none focus:border-ring focus:ring-2 focus:ring-ring"
+                  placeholder="Tell us about your project..."
+                />
+              </div>
+            </div>
+
+            {error && (
+              <div className="rounded-lg border border-destructive/20 bg-destructive/10 p-3">
+                <p className="text-sm text-destructive">{error}</p>
+              </div>
+            )}
+
+            <Button type="submit" disabled={isSubmitting} className="w-full">
+              {isSubmitting ? (
+                <div className="flex items-center justify-center gap-2">
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground/30 border-t-primary-foreground" />
+                  <span>Sending...</span>
+                </div>
+              ) : (
+                <div className="flex items-center justify-center gap-2">
+                  <Send className="h-4 w-4" />
+                  <span>Send Message</span>
                 </div>
               )}
-
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-brand-violet hover:bg-brand-violet/90 text-brand-dark font-semibold py-3 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <div className="w-4 h-4 border-2 border-brand-dark/30 border-t-brand-dark rounded-full animate-spin" />
-                    <span>Sending...</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-center space-x-2">
-                    <Send className="h-4 w-4" />
-                    <span>Send Message</span>
-                  </div>
-                )}
-              </Button>
-            </form>
-          )}
-        </div>
-      </div>
-    </div>
+            </Button>
+          </form>
+        )}
+      </DialogContent>
+    </Dialog>
   );
-} 
+}

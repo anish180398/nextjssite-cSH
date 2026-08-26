@@ -52,7 +52,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<boolean> 
         <div class="container">
           <div class="header">
             <h1>🎯 New Contact Form Submission</h1>
-            <p>Reign of Vision - Digital Agency</p>
+            <p>Kryttr - Digital Agency</p>
           </div>
           <div class="content">
             <div class="field">
@@ -107,7 +107,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<boolean> 
   `;
 
   const textContent = `
-    New Contact Form Submission - Reign of Vision
+    New Contact Form Submission - Kryttr
     
     Form Type: ${formType || 'Contact Form'}
     Name: ${name}
@@ -192,7 +192,7 @@ export async function sendNewsletterEmail(data: NewsletterFormData): Promise<boo
         <div class="container">
           <div class="header">
             <h1>📧 New Newsletter Subscription</h1>
-            <p>Reign of Vision - Digital Agency</p>
+            <p>Kryttr - Digital Agency</p>
           </div>
           <div class="content">
             <div class="field">
@@ -210,7 +210,7 @@ export async function sendNewsletterEmail(data: NewsletterFormData): Promise<boo
   `;
 
   const textContent = `
-    New Newsletter Subscription - Reign of Vision
+    New Newsletter Subscription - Kryttr
     
     Email: ${email}
     Subscribed: ${new Date().toLocaleString()}
