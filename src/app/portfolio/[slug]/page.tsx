@@ -7,6 +7,8 @@ import { getPortfolioItemBySlug, getAllPortfolioItems } from "@/lib/contentful";
 import RichText from "@/components/ui/rich-text";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList, SITE_URL } from "@/lib/seo/schema";
 
 interface PortfolioPageProps {
   params: Promise<{
@@ -45,10 +47,13 @@ export async function generateMetadata({ params }: PortfolioPageProps): Promise<
     return {
       title: portfolioItem.fields.title,
       description: portfolioItem.fields.excerpt,
+      alternates: {
+        canonical: `${SITE_URL}/portfolio/${portfolioItem.fields.slug}`,
+      },
       openGraph: {
         title: portfolioItem.fields.title,
         description: portfolioItem.fields.excerpt,
-        url: `https://reignofvision.com/portfolio/${portfolioItem.fields.slug}`,
+        url: `https://kryttr.com/portfolio/${portfolioItem.fields.slug}`,
         type: "article",
         images: imageUrl ? [imageUrl] : undefined,
       },
@@ -86,6 +91,26 @@ export default async function PortfolioItemPage({ params }: PortfolioPageProps) 
 
   return (
     <div className="min-h-screen bg-background pt-24">
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Home", path: "/" },
+          { name: "Portfolio", path: "/portfolio" },
+          { name: portfolioItem.fields.title, path: `/portfolio/${portfolioItem.fields.slug}` },
+        ])}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: portfolioItem.fields.title,
+          description: portfolioItem.fields.excerpt,
+          url: `${SITE_URL}/portfolio/${portfolioItem.fields.slug}`,
+          image: portfolioItem.fields.coverImage?.fields?.file?.url
+            ? `https:${portfolioItem.fields.coverImage.fields.file.url}`
+            : undefined,
+          keywords: portfolioItem.fields.tags?.join(", "),
+        }}
+      />
       {/* Breadcrumbs */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center gap-2 py-6 text-sm text-muted-foreground">

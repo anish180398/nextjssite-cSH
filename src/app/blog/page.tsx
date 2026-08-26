@@ -4,14 +4,19 @@ import { getAllBlogPosts } from "@/lib/contentful";
 import { Button } from "@/components/ui/button";
 import BlogGrid from "@/components/blog/blog-grid";
 import NewsletterSignup from "@/components/ui/newsletter-signup";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "Stay updated with the latest insights, trends, and best practices in web development, design, and digital strategy from the Kryttr team.",
+  alternates: {
+    canonical: "https://kryttr.com/blog",
+  },
   openGraph: {
     title: "Blog - Kryttr Digital Agency",
     description: "Expert insights on web development, design trends, and digital strategy to help your business thrive online.",
-    url: "https://reignofvision.com/blog",
+    url: "https://kryttr.com/blog",
   }
 };
 
@@ -70,6 +75,7 @@ async function BlogSection() {
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-background pt-24">
+      <JsonLd data={breadcrumbList([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }])} />
       {/* Hero */}
       <section className="py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">

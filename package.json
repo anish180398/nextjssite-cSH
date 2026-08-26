@@ -2,6 +2,9 @@
   "name": "nextjssite",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=24.20.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -48,5 +51,9 @@
     "postcss": "^8.5.5",
     "tailwindcss": "^4.1.10",
     "typescript": "^5"
+  },
+  "allowScripts": {
+    "sharp@0.34.5": true,
+    "sharp@0.35.4": true
   }
 }

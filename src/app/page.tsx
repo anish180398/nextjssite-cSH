@@ -9,11 +9,14 @@ export const metadata = {
   title: "Kryttr - Digital Innovation Agency",
   description: "Transform your digital dreams into reality with cutting-edge web development, innovative design, and strategic digital marketing.",
   keywords: ["web development", "digital marketing", "UI/UX design", "mobile apps", "SEO"],
+  alternates: {
+    canonical: "https://kryttr.com",
+  },
   openGraph: {
     title: "Kryttr - Digital Innovation Agency",
     description: "Transform your digital dreams into reality with cutting-edge web development, innovative design, and strategic digital marketing.",
     type: "website",
-    url: "https://reignofvision.com",
+    url: "https://kryttr.com",
   },
   twitter: {
     card: "summary_large_image",

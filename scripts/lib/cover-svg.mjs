@@ -7,6 +7,13 @@ const BG = "#0A0A0C";
 const ACCENT = "#F11601";
 const FG = "#F2F1ED";
 
+function escapeXml(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 function seedFromString(str) {
   let h = 2166136261;
   for (let i = 0; i < str.length; i++) {
@@ -140,7 +147,7 @@ export function generateCoverSvg({ slug, kicker, motif }) {
   ${nodesLayer(rng)}
   ${motifFn(rng)}
   <rect width="1200" height="630" filter="url(#grain)" />
-  <text x="64" y="72" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="2" fill="${FG}" opacity="0.55">${kicker.toUpperCase()}</text>
+  <text x="64" y="72" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="2" fill="${FG}" opacity="0.55">${escapeXml(kicker.toUpperCase())}</text>
   <text x="64" y="580" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="1" fill="${FG}" opacity="0.65">Kryttr</text>
 </svg>`;
 }

@@ -1,14 +1,19 @@
 import { Metadata } from "next";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import ContactForm from "@/components/ui/contact-form";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList, faqPage } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description: "Get in touch with Kryttr for your next digital project. We're here to help bring your vision to life with expert web development and design services.",
+  alternates: {
+    canonical: "https://kryttr.com/contact",
+  },
   openGraph: {
     title: "Contact Kryttr - Let's Build Something Amazing",
     description: "Ready to start your next digital project? Contact our team of experts for web development, design, and digital strategy services.",
-    url: "https://reignofvision.com/contact",
+    url: "https://kryttr.com/contact",
   }
 };
 
@@ -65,6 +70,8 @@ const faqs = [
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background pt-24">
+      <JsonLd data={breadcrumbList([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])} />
+      <JsonLd data={faqPage(faqs)} />
       {/* Hero */}
       <section className="py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">

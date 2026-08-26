@@ -6,6 +6,9 @@ import { MotionConfig } from "motion/react";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import IntroLoader from "@/components/sections/intro-loader";
+import { JsonLd } from "@/components/seo/json-ld";
+import { ORGANIZATION_ID, WEBSITE_ID, SITE_URL } from "@/lib/seo/schema";
+import { services } from "@/lib/data/services";
 import "./globals.css";
 
 const ubuntu = Ubuntu({
@@ -45,16 +48,16 @@ export const metadata: Metadata = {
   authors: [{ name: "Kryttr Team" }],
   creator: "Kryttr",
   publisher: "Kryttr",
-  metadataBase: new URL("https://reignofvision.com"),
+  metadataBase: new URL("https://kryttr.com"),
   openGraph: {
     type: "website",
-    url: "https://reignofvision.com",
+    url: "https://kryttr.com",
     title: "Kryttr - Digital Agency & Web Development",
     description: "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions. We build digital experiences that drive results.",
     siteName: "Kryttr",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Kryttr - Digital Agency"
@@ -67,7 +70,7 @@ export const metadata: Metadata = {
     creator: "@Kryttr",
     title: "Kryttr - Digital Agency & Web Development",
     description: "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions.",
-    images: ["/og-image.jpg"]
+    images: ["/og-image.png"]
   },
   robots: {
     index: true,
@@ -80,11 +83,8 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    yahoo: "your-yahoo-verification-code",
-  },
+  // Add real verification codes here once Search Console / Bing Webmaster /
+  // Yandex are set up — omitted rather than shipping placeholder values.
   category: "Technology",
   classification: "Business",
   referrer: "origin-when-cross-origin",
@@ -94,20 +94,17 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "https://reignofvision.com",
-    languages: {
-      'en-US': 'https://reignofvision.com',
-      'es-ES': 'https://reignofvision.com/es',
-    },
+    canonical: "https://kryttr.com",
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
     apple: "/apple-touch-icon.png",
-    other: {
-      rel: "apple-touch-icon-precomposed",
-      url: "/apple-touch-icon-precomposed.png",
-    },
   },
   manifest: "/site.webmanifest",
 };
@@ -129,15 +126,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.ctfassets.net" />
         <link rel="dns-prefetch" href="https://cdn.contentful.com" />
-        <meta name="theme-color" content="#C6FF3D" />
+        <meta name="theme-color" content="#F11601" />
         <meta name="color-scheme" content="dark light" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Kryttr" />
         <meta name="application-name" content="Kryttr" />
-        <meta name="msapplication-TileColor" content="#C6FF3D" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta name="msapplication-TileColor" content="#F11601" />
       </head>
       <body
         className="antialiased min-h-screen flex flex-col bg-brand-dark text-brand-white"
@@ -159,50 +155,73 @@ export default function RootLayout({
         )}
         
         {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Kryttr",
-              "url": "https://reignofvision.com",
-              "logo": "https://reignofvision.com/logo.png",
-              "description": "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions.",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Chennai",
-                "addressRegion": "Tamil Nadu",
-                "addressCountry": "IN"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+91-9514015234",
-                "contactType": "customer service",
-                "email": "anish@kryttr.com"
-              },
-              "sameAs": [
-                "https://twitter.com/Reignofvision",
-                "https://github.com/Reignofvision",
-                "https://linkedin.com/company/Reignofvision"
-              ],
-              "founder": {
-                "@type": "Person",
-                "name": "Kryttr Team"
-              },
-              "foundingDate": "2021",
-              "numberOfEmployees": "10-50",
-              "industry": "Technology",
-              "serviceArea": {
-                "@type": "Place",
-                "name": "Worldwide"
-              },
-              "offers": {
-                "@type": "Service",
-                "serviceType": "Web Development",
-                "description": "Custom web development and digital solutions"
-              }
-            })
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": ORGANIZATION_ID,
+            name: "Kryttr",
+            url: SITE_URL,
+            logo: {
+              "@type": "ImageObject",
+              url: `${SITE_URL}/icon-512.png`,
+              width: 512,
+              height: 512,
+            },
+            image: `${SITE_URL}/og-image.png`,
+            description:
+              "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions.",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Chennai",
+              addressRegion: "Tamil Nadu",
+              addressCountry: "IN",
+            },
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+91-9514015234",
+              contactType: "customer service",
+              email: "anish@kryttr.com",
+            },
+            sameAs: [
+              "https://twitter.com/kryttr",
+              "https://github.com/kryttr",
+              "https://linkedin.com/company/kryttr",
+            ],
+            foundingDate: "2021",
+            numberOfEmployees: "10-50",
+            slogan: "Digital experiences that drive results",
+            areaServed: {
+              "@type": "Place",
+              name: "Worldwide",
+            },
+            knowsAbout: services.map((service) => service.title),
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: "Services",
+              itemListElement: services.map((service) => ({
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: service.title,
+                  description: service.description,
+                  url: `${SITE_URL}/services/${service.slug}`,
+                },
+              })),
+            },
+          }}
+        />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": WEBSITE_ID,
+            name: "Kryttr",
+            url: SITE_URL,
+            description:
+              "Transform your business with cutting-edge web development, innovative design, and strategic digital solutions.",
+            publisher: { "@id": ORGANIZATION_ID },
+            inLanguage: "en-US",
           }}
         />
       </body>

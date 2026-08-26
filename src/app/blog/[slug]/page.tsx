@@ -7,6 +7,8 @@ import { getBlogPostBySlug, getAllBlogPosts } from "@/lib/contentful";
 import RichText from "@/components/ui/rich-text";
 import { Button } from "@/components/ui/button";
 import { formatDate, getReadingTime } from "@/lib/utils";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList, organizationRef, SITE_URL } from "@/lib/seo/schema";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -46,10 +48,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       title: blogPost.fields.title,
       description: blogPost.fields.excerpt,
       authors: [{ name: blogPost.fields.author || "Kryttr" }],
+      alternates: {
+        canonical: `${SITE_URL}/blog/${blogPost.fields.slug}`,
+      },
       openGraph: {
         title: blogPost.fields.title,
         description: blogPost.fields.excerpt,
-        url: `https://reignofvision.com/blog/${blogPost.fields.slug}`,
+        url: `https://kryttr.com/blog/${blogPost.fields.slug}`,
         type: "article",
         publishedTime: blogPost.fields.publishedDate || blogPost.sys.createdAt,
         images: imageUrl ? [imageUrl] : undefined,
@@ -121,10 +126,39 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     ? `${getReadingTime(JSON.stringify(blogPost.fields.body))} min read`
     : "5 min read";
 
-  const currentUrl = `https://reignofvision.com/blog/${blogPost.fields.slug}`;
+  const currentUrl = `https://kryttr.com/blog/${blogPost.fields.slug}`;
+  const blogImageUrl = blogPost.fields.coverImage?.fields?.file?.url
+    ? `https:${blogPost.fields.coverImage.fields.file.url}`
+    : undefined;
 
   return (
     <div className="min-h-screen bg-background pt-24">
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: blogPost.fields.title, path: `/blog/${blogPost.fields.slug}` },
+        ])}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: blogPost.fields.title,
+          description: blogPost.fields.excerpt,
+          image: blogImageUrl,
+          url: currentUrl,
+          datePublished: blogPost.fields.publishedDate || blogPost.sys.createdAt,
+          dateModified: blogPost.sys.updatedAt || blogPost.fields.publishedDate,
+          author: {
+            "@type": "Organization",
+            name: blogPost.fields.author || "Kryttr",
+          },
+          publisher: organizationRef(),
+          mainEntityOfPage: { "@type": "WebPage", "@id": currentUrl },
+          keywords: blogPost.fields.tags?.join(", "),
+        }}
+      />
       {/* Breadcrumbs */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center gap-2 py-6 text-sm text-muted-foreground">

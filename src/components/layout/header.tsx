@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, LayoutGrid, Braces, Building2 } from "lucide-react";
+import { Menu, X, ChevronDown, LayoutGrid, Braces, Building2, Globe2 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import ParticleButton from "@/components/kokonutui/particle-button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
@@ -42,6 +42,12 @@ const navigation = [
         href: "/industries",
         description: "Verticals we specialize in",
         icon: Building2,
+      },
+      {
+        name: "Operated Countries",
+        href: "/countries",
+        description: "Where we work with clients",
+        icon: Globe2,
       },
     ],
   },

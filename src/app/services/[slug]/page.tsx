@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, ChevronRight, Home } from "lucide-react";
 import { services, serviceIconMap } from "@/lib/data/services";
 import { ServiceTableOfContents } from "@/components/services/service-toc";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList, organizationRef, SITE_URL } from "@/lib/seo/schema";
 
 export async function generateStaticParams() {
   return services.map((service) => ({
@@ -23,6 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: service.title,
     description: service.description,
+    alternates: {
+      canonical: `${SITE_URL}/services/${service.slug}`,
+    },
     openGraph: {
       title: service.title,
       description: service.description,
@@ -55,6 +60,25 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className="min-h-screen bg-background pt-24">
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: service.title, path: `/services/${service.slug}` },
+        ])}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: service.title,
+          description: service.fullDescription,
+          serviceType: service.title,
+          provider: organizationRef(),
+          areaServed: { "@type": "Place", name: "Worldwide" },
+          url: `${SITE_URL}/services/${service.slug}`,
+        }}
+      />
       {/* Breadcrumbs */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center gap-2 py-6 text-sm text-muted-foreground">

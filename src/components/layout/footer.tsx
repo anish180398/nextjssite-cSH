@@ -17,6 +17,7 @@ const footerNavigation = {
   explore: [
     { name: "Technologies", href: "/technologies" },
     { name: "Industries", href: "/industries" },
+    { name: "Operated Countries", href: "/countries" },
     { name: "Projects", href: "/projects" },
   ],
   support: [
@@ -28,17 +29,17 @@ const footerNavigation = {
   social: [
     {
       name: "Twitter",
-      href: "https://twitter.com/reignofvision",
+      href: "https://twitter.com/kryttr",
       icon: Twitter,
     },
     {
       name: "GitHub",
-      href: "https://github.com/reignofvision",
+      href: "https://github.com/kryttr",
       icon: Github,
     },
     {
       name: "LinkedIn",
-      href: "https://linkedin.com/company/reignofvision",
+      href: "https://linkedin.com/company/kryttr",
       icon: Linkedin,
     },
   ],

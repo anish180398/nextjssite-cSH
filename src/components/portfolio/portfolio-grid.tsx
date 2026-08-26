@@ -101,7 +101,7 @@ export default function PortfolioGrid({ items }: { items: PortfolioItem[] }) {
 
       {filteredItems.length > 0 && (
         <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          {filteredItems.length} {filteredItems.length === 1 ? "Project" : "Projects"}
+          And many more
           {selectedTag !== "All" && <span className="text-primary"> in {selectedTag}</span>}
         </div>
       )}

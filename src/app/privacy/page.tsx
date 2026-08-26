@@ -1,15 +1,21 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Shield, Eye, Lock, Users } from "lucide-react";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Learn how Kryttr protects your privacy and handles your personal information.",
+  alternates: {
+    canonical: "https://kryttr.com/privacy",
+  },
 };
 
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-brand-dark text-brand-white">
+      <JsonLd data={breadcrumbList([{ name: "Home", path: "/" }, { name: "Privacy Policy", path: "/privacy" }])} />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-brand-dark to-brand-violet/10 py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -219,7 +225,7 @@ export default function PrivacyPage() {
                     If you have any questions about this Privacy Policy or our data practices, please contact us:
                   </p>
                   <ul className="text-brand-white/80 space-y-2">
-                    <li>• Email: privacy@reignofvision.com</li>
+                    <li>• Email: privacy@kryttr.com</li>
                     <li>• Phone: +91 9514015234</li>
                     <li>• Address: Chennai, Tamil Nadu, India</li>
                   </ul>

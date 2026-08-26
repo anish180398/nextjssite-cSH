@@ -2,10 +2,15 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { industries, industryIconMap } from "@/lib/data/industries";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList, itemList } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
-  title: "Industries | Kryttr",
+  title: "Industries",
   description: "The industries Kryttr builds for — e-commerce, fintech, healthcare, real estate, food delivery, and enterprise.",
+  alternates: {
+    canonical: "https://kryttr.com/industries",
+  },
   openGraph: {
     title: "Industries | Kryttr",
     description: "The industries Kryttr builds for.",
@@ -16,6 +21,13 @@ export const metadata: Metadata = {
 export default function IndustriesPage() {
   return (
     <div className="min-h-screen bg-background pt-24">
+      <JsonLd data={breadcrumbList([{ name: "Home", path: "/" }, { name: "Industries", path: "/industries" }])} />
+      <JsonLd
+        data={itemList(
+          "Industries",
+          industries.map((i) => ({ name: i.name, path: `/industries/${i.slug}`, description: i.description }))
+        )}
+      />
       {/* Hero */}
       <section className="py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">

@@ -6,14 +6,19 @@ import { getAllProjects } from "@/lib/contentful";
 import { Button } from "@/components/ui/button";
 import ProjectsGrid from "@/components/projects/projects-grid";
 import ProjectStats from "@/components/projects/project-stats";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Our Products",
   description: "Explore our collection of innovative digital products and solutions built for public users. Discover tools and applications that showcase our technical expertise and creativity.",
+  alternates: {
+    canonical: "https://kryttr.com/projects",
+  },
   openGraph: {
     title: "Products - Kryttr Digital Agency",
     description: "Discover the innovative digital products and solutions we've built for public users across various domains.",
-    url: "https://reignofvision.com/projects",
+    url: "https://kryttr.com/projects",
   }
 };
 
@@ -69,6 +74,7 @@ async function ProjectsSection() {
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-background pt-24">
+      <JsonLd data={breadcrumbList([{ name: "Home", path: "/" }, { name: "Products", path: "/projects" }])} />
       {/* Hero */}
       <section className="py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">

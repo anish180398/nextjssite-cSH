@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Don't leak framework info in response headers.
+  poweredByHeader: false,
   images: {
     remotePatterns: [
       {

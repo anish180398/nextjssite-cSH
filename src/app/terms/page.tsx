@@ -1,15 +1,21 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, FileText, Scale, AlertTriangle, CheckCircle } from "lucide-react";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Read the terms and conditions for using Kryttr's services.",
+  alternates: {
+    canonical: "https://kryttr.com/terms",
+  },
 };
 
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-brand-dark text-brand-white">
+      <JsonLd data={breadcrumbList([{ name: "Home", path: "/" }, { name: "Terms of Service", path: "/terms" }])} />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-brand-dark to-brand-violet/10 py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -277,7 +283,7 @@ export default function TermsPage() {
                     If you have any questions about these Terms of Service, please contact us:
                   </p>
                   <ul className="text-brand-white/80 space-y-2">
-                    <li>• Email: legal@reignofvision.com</li>
+                    <li>• Email: legal@kryttr.com</li>
                     <li>• Phone: +91 9514015234</li>
                     <li>• Address: Chennai, Tamil Nadu, India</li>
                   </ul>

@@ -2,14 +2,19 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Target, Users, Lightbulb, Award, ArrowRight } from "lucide-react";
 import { AboutStats } from "@/components/sections/about-stats";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "About Us",
   description: "Learn about Kryttr - a passionate team of developers, designers, and digital strategists dedicated to building exceptional web experiences that drive business results.",
+  alternates: {
+    canonical: "https://kryttr.com/about",
+  },
   openGraph: {
     title: "About Kryttr - Our Story & Team",
     description: "Meet the talented team behind Kryttr and discover our mission to transform businesses through innovative digital solutions.",
-    url: "https://reignofvision.com/about",
+    url: "https://kryttr.com/about",
   }
 };
 
@@ -39,6 +44,7 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background pt-24">
+      <JsonLd data={breadcrumbList([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])} />
       {/* Hero */}
       <section className="py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">

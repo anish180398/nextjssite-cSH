@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, ChevronRight, Home } from "lucide-react";
 import { technologies, technologyIconMap } from "@/lib/data/technologies";
 import { services } from "@/lib/data/services";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList, SITE_URL } from "@/lib/seo/schema";
 
 export async function generateStaticParams() {
   return technologies.map((tech) => ({ slug: tech.slug }));
@@ -21,6 +23,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${tech.name} Development`,
     description: tech.description,
+    alternates: {
+      canonical: `${SITE_URL}/technologies/${tech.slug}`,
+    },
     openGraph: {
       title: `${tech.name} Development`,
       description: tech.description,
@@ -43,6 +48,13 @@ export default async function TechnologyPage({ params }: { params: Promise<{ slu
 
   return (
     <div className="min-h-screen bg-background pt-24">
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Home", path: "/" },
+          { name: "Technologies", path: "/technologies" },
+          { name: tech.name, path: `/technologies/${tech.slug}` },
+        ])}
+      />
       {/* Breadcrumbs */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center gap-2 py-6 text-sm text-muted-foreground">

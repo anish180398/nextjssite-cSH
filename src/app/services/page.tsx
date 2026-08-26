@@ -2,10 +2,15 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { services, serviceIconMap, type Service } from "@/lib/data/services";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList, itemList } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
-  title: "Our Services | Kryttr",
+  title: "Our Services",
   description: "Comprehensive digital solutions including web development, mobile apps, UI/UX design, SEO, and digital strategy consulting.",
+  alternates: {
+    canonical: "https://kryttr.com/services",
+  },
   openGraph: {
     title: "Our Services | Kryttr",
     description: "Comprehensive digital solutions including web development, mobile apps, UI/UX design, SEO, and digital strategy consulting.",
@@ -54,6 +59,13 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-background pt-24">
+      <JsonLd data={breadcrumbList([{ name: "Home", path: "/" }, { name: "Services", path: "/services" }])} />
+      <JsonLd
+        data={itemList(
+          "Services",
+          services.map((s) => ({ name: s.title, path: `/services/${s.slug}`, description: s.description }))
+        )}
+      />
       {/* Hero */}
       <section className="py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">

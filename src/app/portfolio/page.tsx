@@ -5,14 +5,19 @@ import { ArrowRight } from "lucide-react";
 import { getAllPortfolioItems, PortfolioItem } from "@/lib/contentful";
 import { Button } from "@/components/ui/button";
 import PortfolioGrid from "@/components/portfolio/portfolio-grid";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbList } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Our Portfolio",
   description: "Explore our portfolio of successful projects including web applications, mobile apps, and digital solutions. See how we've helped businesses achieve their goals.",
+  alternates: {
+    canonical: "https://kryttr.com/portfolio",
+  },
   openGraph: {
     title: "Portfolio - Kryttr Digital Agency",
     description: "Discover the innovative digital solutions we've created for our clients across various industries.",
-    url: "https://reignofvision.com/portfolio",
+    url: "https://kryttr.com/portfolio",
   }
 };
 
@@ -190,6 +195,7 @@ async function PortfolioSection() {
 export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-background pt-24">
+      <JsonLd data={breadcrumbList([{ name: "Home", path: "/" }, { name: "Portfolio", path: "/portfolio" }])} />
       {/* Hero */}
       <section className="py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">
