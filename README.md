@@ -46,7 +46,7 @@ src/
 ### 1. Install Dependencies
 
 ```bash
-yarn install
+npm install
 ```
 
 ### 2. Environment Variables
@@ -128,16 +128,16 @@ Create the following content models in your Contentful space:
 
 ```bash
 # Start development server
-yarn dev
+npm run dev
 
 # Build for production
-yarn build
+npm run build
 
 # Start production server
-yarn start
+npm run start
 
 # Run linting
-yarn lint
+npm run lint
 ```
 
 ## 🎨 Customization
